@@ -1,0 +1,273 @@
+2018-12-13T00:16:01+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin.php(31): require_once('E:\\www\\wordpres...')
+#9 E:\www\wordpress\wp-admin\widgets.php(10): require_once('E:\\www\\wordpres...')
+#10 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:16:08+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin-ajax.php(22): require_once('E:\\www\\wordpres...')
+#9 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:18:10+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin-ajax.php(22): require_once('E:\\www\\wordpres...')
+#9 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:20:11+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin-ajax.php(22): require_once('E:\\www\\wordpres...')
+#9 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:22:12+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin-ajax.php(22): require_once('E:\\www\\wordpres...')
+#9 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:24:13+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin-ajax.php(22): require_once('E:\\www\\wordpres...')
+#9 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:24:54+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin.php(31): require_once('E:\\www\\wordpres...')
+#9 E:\www\wordpress\wp-admin\widgets.php(10): require_once('E:\\www\\wordpres...')
+#10 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:26:14+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin-ajax.php(22): require_once('E:\\www\\wordpres...')
+#9 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:28:15+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin-ajax.php(22): require_once('E:\\www\\wordpres...')
+#9 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:30:16+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin-ajax.php(22): require_once('E:\\www\\wordpres...')
+#9 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:32:17+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin-ajax.php(22): require_once('E:\\www\\wordpres...')
+#9 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:34:18+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin-ajax.php(22): require_once('E:\\www\\wordpres...')
+#9 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:36:19+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin-ajax.php(22): require_once('E:\\www\\wordpres...')
+#9 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:37:03+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin.php(31): require_once('E:\\www\\wordpres...')
+#9 E:\www\wordpress\wp-admin\widgets.php(10): require_once('E:\\www\\wordpres...')
+#10 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:37:06+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin.php(31): require_once('E:\\www\\wordpres...')
+#9 E:\www\wordpress\wp-admin\widgets.php(10): require_once('E:\\www\\wordpres...')
+#10 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:37:06+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin.php(31): require_once('E:\\www\\wordpres...')
+#9 E:\www\wordpress\wp-admin\widgets.php(10): require_once('E:\\www\\wordpres...')
+#10 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:37:07+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1656): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(467): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin.php(31): require_once('E:\\www\\wordpres...')
+#9 E:\www\wordpress\wp-admin\widgets.php(10): require_once('E:\\www\\wordpres...')
+#10 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:48:25+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1657): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(470): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin-ajax.php(22): require_once('E:\\www\\wordpres...')
+#9 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+
+2018-12-13T00:48:34+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Pic_Letter' not found in E:\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 E:\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Pic_L...')
+#1 E:\www\wordpress\wp-includes\widgets.php(1657): register_widget('WP_Widget_Pic_L...')
+#2 E:\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#3 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 E:\www\wordpress\wp-settings.php(470): do_action('init')
+#6 E:\www\wordpress\wp-config.php(89): require_once('E:\\www\\wordpres...')
+#7 E:\www\wordpress\wp-load.php(37): require_once('E:\\www\\wordpres...')
+#8 E:\www\wordpress\wp-admin\admin.php(31): require_once('E:\\www\\wordpres...')
+#9 E:\www\wordpress\wp-admin\widgets.php(10): require_once('E:\\www\\wordpres...')
+#10 {main}
+  thrown, em E:\www\wordpress\wp-includes\class-wp-widget-factory.php, na linha 100
+

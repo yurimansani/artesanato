@@ -1,0 +1,124 @@
+
+---Downloaded files---
+The import files for: Multicommerce Default were successfully downloaded!
+Initial max execution time = 300
+Files info:
+Site URL = http://artesanato.blackfox.com
+Data file = E:\www\wordpress/wp-content/uploads/2018/12/demo-content-import-file_2018-12-09__01-28-15.xml
+Widget file = E:\www\wordpress/wp-content/uploads/2018/12/demo-widgets-import-file_2018-12-09__01-28-15.json
+Customizer file = E:\www\wordpress/wp-content/uploads/2018/12/demo-customizer-import-file_2018-12-09__01-28-15.dat
+
+------
+Completed AJAX call number: 1
+
+
+------
+Completed AJAX call number: 2
+
+
+------
+Completed AJAX call number: 3
+
+
+------
+Completed AJAX call number: 4
+
+
+------
+Completed AJAX call number: 5
+
+
+------
+Completed AJAX call number: 6
+
+
+------
+Completed AJAX call number: 7
+
+
+------
+Completed AJAX call number: 8
+
+
+------
+Completed AJAX call number: 9
+
+
+------
+Completed AJAX call number: 10
+
+
+------
+Completed AJAX call number: 11
+
+
+---Importing content---
+[WARNING] Failed to import "Contact form 1": Invalid post type wpcf7_contact_form
+[WARNING] Could not find the author for comment #9
+
+Max execution time after content import = 300
+
+---Importing widgets---
+Right Sidebar : 
+
+Pesquisar - No Title - Imported
+Posts recentes - No Title - Imported
+Comentários - No Title - Imported
+Arquivos - No Title - Imported
+Categorias - No Title - Imported
+Meta - No Title - Imported
+
+Left Sidebar : 
+
+Posts recentes - Recent Blog - Imported
+Galeria - Product Gallery - Imported
+
+Product Right Sidebar : 
+
+Categorias de produto - Product categories - Imported
+Avaliações recentes de produtos - Recent reviews - Imported
+Produtos visualizados recentemente - Recently Viewed Products - Imported
+yith-woocompare-widget - Product Compare - Site does not support widget
+
+Homepage  Sections : 
+
+WooCommerce Categories - Product Categories - Imported
+WooCommerce Products - Featured Product - Imported
+WooCommerce Products - Bags - Imported
+WooCommerce Cats Tabs - Our Products - Imported
+WooCommerce Products - On Sale Products - Imported
+Posts Column - Blog - Imported
+Service Section - MultiCommerce Features - Imported
+Partners Logo - Our Partners - Imported
+
+Header Area : 
+
+Advanced WooCommerce Search - No Title - Imported
+
+Footer Top Column One : 
+
+Texto - About US - Imported
+
+Footer Top Column Two : 
+
+Posts recentes - Blog - Imported
+
+Footer Top Column Three : 
+
+Menu - Our Themes - Imported
+
+Footer Top Column Four : 
+
+Galeria - Gallery - Imported
+
+Footer Bottom Left Area : 
+
+Social Section - No Title - Imported
+
+
+
+---Importing customizer settings---
+Customizer settings import finished!
+
+---tetk-after-demo-content-import---
+

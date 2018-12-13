@@ -1,0 +1,378 @@
+2018-12-11T19:44:05+00:00 CRITICAL Uncaught MercadoPagoException: Could not resolve host: api.mercadopago.com in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 E:\, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T19:44:05+00:00 CRITICAL Uncaught MercadoPagoException: Could not resolve host: api.mercadopago.com in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 E:\, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T19:54:03+00:00 CRITICAL Uncaught MercadoPagoException: Operation timed out after 577203 milliseconds with 0 out of 0 bytes received in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453):, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T19:54:03+00:00 CRITICAL Uncaught MercadoPagoException: Operation timed out after 577188 milliseconds with 0 out of 0 bytes received in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453):, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T19:54:03+00:00 CRITICAL Uncaught MercadoPagoException: Operation timed out after 579735 milliseconds with 0 out of 0 bytes received in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453):, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T19:54:03+00:00 CRITICAL Uncaught MercadoPagoException: Operation timed out after 577672 milliseconds with 0 out of 0 bytes received in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453):, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:01:39+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054 in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:01:39+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054 in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:01:39+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to api.mercadopago.com:443  in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(4, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:01:39+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to api.mercadopago.com:443  in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(4, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:01:39+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054 in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:01:39+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to api.mercadopago.com:443  in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(4, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:50:02+00:00 CRITICAL Uncaught MercadoPagoException: Could not resolve host: api.mercadopago.com in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 E:\, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:51:02+00:00 CRITICAL Uncaught MercadoPagoException: Could not resolve host: api.mercadopago.com in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 E:\, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:55:14+00:00 CRITICAL Uncaught MercadoPagoException: Could not resolve host: api.mercadopago.com in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 E:\, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:56:56+00:00 CRITICAL Uncaught MercadoPagoException: Could not resolve host: api.mercadopago.com in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 E:\, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:57:14+00:00 CRITICAL Uncaught MercadoPagoException: Could not resolve host: api.mercadopago.com in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 E:\, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:58:14+00:00 CRITICAL Uncaught MercadoPagoException: Could not resolve host: api.mercadopago.com in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 E:\, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T20:59:14+00:00 CRITICAL Uncaught MercadoPagoException: Could not resolve host: api.mercadopago.com in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 E:\, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:02:14+00:00 CRITICAL Uncaught MercadoPagoException: Could not resolve host: api.mercadopago.com in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 E:\, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:03:14+00:00 CRITICAL Uncaught MercadoPagoException: Could not resolve host: api.mercadopago.com in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 E:\, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:04:33+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054 in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:04:33+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to api.mercadopago.com:443  in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(4, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:04:33+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to api.mercadopago.com:443  in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(4, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:04:33+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054 in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:04:33+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to api.mercadopago.com:443  in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(4, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:04:33+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to api.mercadopago.com:443  in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(4, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:04:33+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to api.mercadopago.com:443  in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(4, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:04:35+00:00 CRITICAL Uncaught MercadoPagoException: Failed to connect to api.mercadopago.com port 443: Host unreachable in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook-, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:04:35+00:00 CRITICAL Uncaught MercadoPagoException: Failed to connect to api.mercadopago.com port 443: Host unreachable in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook-, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:04:35+00:00 CRITICAL Uncaught MercadoPagoException: Failed to connect to api.mercadopago.com port 443: Host unreachable in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook-, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:05:03+00:00 CRITICAL Uncaught MercadoPagoException: Could not resolve host: api.mercadopago.com in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 E:\, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:09:22+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to api.mercadopago.com:443  in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(4, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:09:22+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to api.mercadopago.com:443  in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(4, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:09:22+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054 in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
+2018-12-11T21:09:22+00:00 CRITICAL Uncaught MercadoPagoException: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to api.mercadopago.com:443  in E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\wordpress\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\wordpress\wp-includes\plugin.php(4, em E:\www\wordpress\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+

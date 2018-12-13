@@ -1,0 +1,192 @@
+/*
+ Theme Name: Bulk Shop
+ Theme URI: https://themes4wp.com/theme/bulk-shop/
+ Description: Bulk Shop is a free WooCommerce theme for WordPress. The theme works perfectly for a store that offers fashions, electronics, or any other type of products. DEMO: http://bulk.themes4wp.com/bulk-shop/
+ Author: Themes4WP
+ Author URI: https://themes4wp.com/
+ Template: bulk
+ Version: 1.0.1
+ License: GNU General Public License v3
+ License URI: http://www.gnu.org/licenses/gpl.html
+ Tags: one-column, two-columns, right-sidebar, custom-background, custom-menu, featured-images, theme-options, translation-ready, custom-logo, e-commerce
+ Text Domain: bulk-shop
+*/
+
+body {
+    font-weight: 300;
+    line-height: 1.6;
+}
+a, a:active, a:hover, a:focus {
+    text-decoration: none;
+    color: #fab000;
+}
+#site-navigation, #site-navigation.shrink, 
+.transparent-header #site-navigation.shrink, 
+.dropdown-menu {
+    background-color: #171717;
+    color: #fff;
+}
+#site-navigation,  
+nav img, 
+.transparent-header #site-navigation.shrink .site-title a, 
+.transparent-header #site-navigation.shrink .site-title a:hover, 
+.transparent-header #site-navigation.shrink p.site-description, 
+.transparent-header #site-navigation.shrink .navbar-nav > li > a, 
+.dropdown-menu > li > a, 
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+.site-title a,
+p.site-description {
+    color: #fff;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > li > a:hover, 
+.navbar-default .navbar-nav > li > a:focus {
+    color: #fab000;
+}
+.dropdown-menu > .active > a, 
+.dropdown-menu > .active > a:hover, 
+.dropdown-menu > .active > a:focus {
+    background-color: #fab000;
+}
+@media (max-width: 767px) {
+  .open-panel span {
+      background: #fff;
+  }
+  .menu-container, .navbar-header {
+    background-color: #171717;
+    padding-right: 60px;
+  }
+  .dropdown-menu > li > a {
+    color: #ffffff;
+  }
+}
+@media (max-width: 991px) {
+  article {
+    clear: both !important;
+    width: 100% !important;
+  }
+}
+
+article {
+    clear: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 50%;
+}
+article:nth-child(2n-1) {
+    clear: both;
+}
+
+.woocommerce ul.products li.product:hover, .woocommerce-page ul.products li.product:hover {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.woocommerce ul.products li.product .button,
+.woocommerce #respond input#submit, 
+.woocommerce a.button, 
+.woocommerce button.button, 
+.woocommerce input.button, 
+.woocommerce #respond input#submit.alt, 
+.woocommerce a.button.alt, 
+.woocommerce button.button.alt, 
+.woocommerce input.button.alt,
+.btn-default, input[type="submit"],
+ input#submit, button, 
+ a.comment-reply-link {
+    border-radius: 3px;
+    background-color: #171717;
+    color: #ffffff;
+}
+.woocommerce #respond input#submit:hover, 
+.woocommerce a.button:hover, 
+.woocommerce button.button:hover, 
+.woocommerce input.button:hover, 
+.woocommerce #respond input#submit.alt:hover, 
+.woocommerce a.button.alt:hover, 
+.woocommerce button.button.alt:hover, 
+.woocommerce input.button.alt:hover {
+    background-color: #444;
+    border-color: #444;
+    color: #fff;
+}
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range,
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle,
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle {
+    background-color: #fab000;
+}
+.category-description {
+    font-size: 22px;
+    color: #fff;
+}
+.widget.woocommerce button {
+    width: 100%;
+    padding: 5px;
+}
+
+/* Header Cart */
+.header-cart-inner {
+    margin-left: 15px;
+} 
+.site-header-cart {
+    position: absolute;
+    top: 100px;
+    padding: 5px;
+    border: 1px solid #1E1E1E;
+    display: none;
+    opacity: 0;
+    min-width: 350px;
+    right: 0;
+    z-index: 999;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.17);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+@media (min-width: 767px) {
+  .header-cart-inner:hover .site-header-cart {
+      display: block;
+      opacity: 1;
+      top: 100%;
+  }
+}
+.woocommerce-cart .header-cart-inner:hover .site-header-cart,
+.woocommerce-checkout .header-cart-inner:hover .site-header-cart {
+    display: none;
+    opacity: 0;
+}
+.header-cart-inner span.simple-counter {
+    font-size: 12px;
+    padding: 0px 5px;
+    border: 1px solid;
+    border-radius: 50%;
+    line-height: 12px;
+    bottom: 2px;
+    position: relative;
+    margin-left: 3px;
+}
+.header-cart-inner span.simple-counter {
+    margin-left: -4px;
+    position: relative;
+    top: -8px;
+}
+.header-cart-inner span.simple-counter {
+    margin-left: -8px;
+}
+ul.nav.navbar-nav.navbar-right.visible-xs.login-cart {
+    float: right;
+    padding-top: 17px;
+}
+.shrink ul.nav.navbar-nav.navbar-right.visible-xs.login-cart {
+    padding-top: 6px;
+}
