@@ -1654,7 +1654,7 @@ function wp_widgets_init() {
 	register_widget( 'WP_Widget_Custom_HTML' );
 
 	//register widget
-	register_widget( 'WP_Widget_Pic_Letter' );
+	register_widget( 'WP_Widget_Photo_Text' );
 
 	/**
 	 * Fires after all default WordPress widgets have been registered.
