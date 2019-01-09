@@ -1,4 +1,5 @@
 .frame{
+  float: left;
    width: 100%;
    background-color: #000000;
 }
@@ -13,119 +14,53 @@
 .letter{
 }
 .letter-img{
-   width: 100%;
+   width: 90%;
 }
 .letter-img{
    height: 100% !important;
 }
 
-/*#options {
-   background-color: #D9EBEE;
-   border: #65A2D1 solid 1px;
-   border-radius: 10px;
-   width: 420px;
-   height: 142px;
-   padding: 20px;
+.frame-part {
+  width: 90%;
+  height: 15px;
+  display: contents;
+  background-color: red;
 }
-#colors {
-   position: relative;
-   top: -125px;
-   left: 300px;
-}
-select {
-   width: 100px;
-}
-#priceTag {
-   position: absolute;
-   background-color: #660033;
-   width: 40px;
+
+.cutCorner {
+   position:relative; background-color:blue; 
+   /*border:1px solid silver; display: inline-block;*/
+   width: 100%;
    height: 40px;
-   top: 10px;
-   right: 30px;
-   cursor: pointer;
-}
-#changes,
-#frame,
-#info {
-   width: 100%;
-   text-align: center;
-}
-#changes span {
-   cursor: pointer;
-   font-style: italic;
-   text-decoration: underline;
-}
-#info p {
-   font-style: italic;
-}
-#frame {
-   border: #000 solid 30px;
-   height: 200px;
-   width: 1000px;
-   margin: 30px auto;
-}
-#mat {
-   margin: auto;
-}
-.letterArt {
-   height: 180px;
-   width: 100px;
-   margin: 10px auto;
-   float: left;
-}
-#directions span {
-   font-weight: bold;
-}
-.images {
-   height: 180px;
-   width: 100px;
-   cursor: pointer;
-}
-.iframefloat {
-   width: 70%;
-   height: 400px;
-   position: absolute;
-   top: 350px;
-   left: 15%;
-   background-color: #FFF;
-   border: solid #BBB 7px;
-   border-radius: 10px;
-   z-index: 100;
-}
-#close {
-   z-index: 101;
-   width: 2%;
-   position: absolute;
-   top: 370px;
-   left: 81%;
-   cursor: pointer;
-}
-.imageChoices {
-   width: 100px;
-   background-color: #000;
-   border: solid #000 1px;
-   border-radius: 5px;
-   margin: 10px;
-   position: relative;
-   padding: 5px 0;
-   cursor: pointer;
-}
-.imageChoices:hover {
-   width: 120px;
-   position: relative;
-   margin: 0;
+
+   margin: 0px;
    padding: 0px;
-   -webkit-box-shadow: 0 0 30px rgba(187, 64, 49, 0.67);
-   -moz-box-shadow: 0 0 30px rgba(187, 64, 49, 0.67);
-   box-shadow: 0 0 30px rgba(187, 64, 49, 0.67);
 }
-#hide {
-   width: 100%;
-   height: 100%;
-   position: absolute;
-   top: 0px;
-   left: 0px;
-   background-color: #111;
-   opacity: 0.8;
-   z-index: 99;
+
+img.edge-img {
+   display:inline-block;
+
+   height: 40px;
+   width: 25%;
+   margin: 0px;
+   margin-right: -4px;
+   padding: 0px;
+}
+
+.cutCorner:before {
+   position:absolute;
+   right: -1px;
+   bottom: -1px;
+   content:'';
+   border-bottom: 40px solid silver;
+   border-left: 40px solid transparent;
+}
+
+.cutCorner:after {
+   position:absolute;
+   right: -2px;
+   bottom: -2px; 
+   content:'';
+   border-bottom: 40px solid white;
+   border-left: 40px solid transparent;
 }

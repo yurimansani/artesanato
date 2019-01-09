@@ -1,0 +1,13 @@
+Lia Mara Fischer Pereira Knebel
+Mercado Pago
+CLIENT_ID: 3210825479670406
+CLIENT_SECRET: WbXxa5lXjzquvovk4NeGsgO7pBSruuHL
+
+Public key: TEST-f28acb61-d300-433f-95e9-add4e037508e
+Access token: TEST-3210825479670406-121718-8c26d36f5270aa437a48af82748d11d7-268423402
+Modo Produção
+Suas credenciais de produção não estão habilitadas, faça primeiro a homologação para ser capaz de usá-las.
+
+O que preciso para ir a produção? Eu quero ir para produção
+Public key: APP_USR-d4eec274-41e3-4205-b9d7-0c44ee1cd744
+Access token: APP_USR-3210825479670406-121718-dea3279940e5f2242dda45f9fe55d3b9-268423402

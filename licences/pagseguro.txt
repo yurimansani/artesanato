@@ -1,0 +1,4 @@
+Olá Lia Mara Fischer Pereira Knebel,
+ 	O token de segurança para utilizar os serviços de integração do PagSeguro via API é:	 
+ 	
+47574ECBECED4200AF4902323BB125F2

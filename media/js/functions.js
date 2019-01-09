@@ -6,9 +6,9 @@ function setWord() {
    var word;
    var wordLength;
 
-   if (document.getElementById("selectedWord").value !== '') {
+   if (document.getElementById("palavra").value !== '') {
       clearWord();
-      word = document.getElementById("selectedWord").value;
+      word = document.getElementById("palavra").value;
       word = word.toUpperCase();
    }
    else {
@@ -188,24 +188,28 @@ function changeLetter(id, src) {
 
 function addItemCart() {
 
-   var word = document.getElementById("selectedWord").value;
+   var word = document.getElementById("palavra").value;
    word = word.toUpperCase();
    word = word.replace(/\s+/g, '');
    var wordArray = word.split("");
    
    var paspatur = $("#paspatur").val();
    if (paspatur == "") {
+
       return;
    }
+   console.log(paspatur);
 
    var frame = $("#frame").val();
    if (frame == "") {
       return;
    }
+   console.log(frame);
 
    if (word.length > 14) {
       return;
    }
+   console.log(wordArray);
    $.each(wordArray, (i, letter) => {
       var productLetterCode;
 
@@ -298,7 +302,7 @@ function addItemCart() {
 
    });
    var productPaspaturCode
-   switch(paspatur) {
+   switch(frame) {
       case "1":
          productPaspaturCode = '461';
          break;
@@ -319,6 +323,46 @@ function addItemCart() {
      dataType: "json",
    });
 
+   var productFrameCode
+   switch(paspatur) {
+      case "1":
+         productFrameCode = '426';
+         break;
+      case "2":
+         productFrameCode = '427';
+         break;
+      case "3":
+         productFrameCode = '428';
+         break;
+      case "4":
+         productFrameCode = '429';
+         break;
+      case "5":
+         productFrameCode = '425';
+         break;
+      case "6":
+         productFrameCode = '426';
+         break;
+      case "7":
+         productFrameCode = '427';
+         break;
+   }
+
+   $.ajax({
+     url: "/?wc-ajax=add_to_cart" ,
+     method: "POST",
+     dataType: "json", 
+     data: { product_sku : null, product_id:425,quantity:1, variation_id : productFrameCode},
+     success: (json) => {
+        alert(json);
+      }
+   });
 
 }
 
+setTimeout(() => { 
+  $('#palavra').blur(() => {
+    setWord();
+  });
+  setWord();  
+}, 1000);

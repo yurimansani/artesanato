@@ -1,9 +1,15 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  <script src="/media/js/functions.js"></script>
+ <link rel="stylesheet" type="text/css" href="/media/css/style.css"></script>
 
 
- 
+ <div class="cutCorner ">
+    <img class="edge-img" src="/media/img/molduras/moldura07.png">
+    <img class="edge-img" src="/media/img/molduras/moldura07.png">
+    <img class="edge-img" src="/media/img/molduras/moldura07.png">
+    <img class="edge-img" src="/media/img/molduras/moldura07.png">
+ </div>
 <div class="frame">
    
    <div class="letters">
@@ -38,7 +44,7 @@
    </label>
    <div class="col-sm-5">
       <select class="form-control" name="frame" id="frame" onchange="selectFrame();">
-         <option value="" selected>Selecione</option>
+         <option value="">Selecione</option>
          <option value="1" selected>Moldura 1</option>
          <option value="2">Moldura 2</option>
          <option value="3">Moldura 3</option>
@@ -52,6 +58,7 @@
 <div class="">
    <button class=" mx-auto btn btn-success" type="button" onclick="setWord()">Visualizar</button>
    <button class=" mx-auto btn btn-success" type="button" onclick="addItemCart()">Adicionar no carrinho</button>
+   <a href="/?add-to-cart=183" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="183" data-product_sku="" aria-label="Adicionar “Kit Capa de Banco e Cesto” no seu carrinho" rel="nofollow" tabindex="-1">Comprar</a>
 </div>
 <div class="modal fade" id="letter-modal" tabindex="-1" role="dialog" aria-labelledby="letter-modal-title" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -80,4 +87,3 @@ $(document).ready(setWord())
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 
- <link rel="stylesheet" type="text/css" href="/media/css/style.css"></script>
