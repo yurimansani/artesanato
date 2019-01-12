@@ -10,7 +10,7 @@
 		if (  ! empty( $terms ) && ! is_wp_error( $terms ) ) : ?>
 			<?php $current = ( isset( $_GET['product_category'] ) ) ? absint( $_GET['product_category'] ) : '' ; ?>
             <select class="select_products" name="product_category">
-                <option value=""><?php esc_html_e( 'All Categories', 'multicommerce' ); ?></option>
+                <option value=""><?php esc_html_e( 'Todas as Categorias', 'multicommerce' ); ?></option>
 				<?php foreach ( $terms as $cat ) : ?>
                     <option value="<?php echo esc_attr( $cat->term_id ); ?>" <?php selected( $current, $cat->term_id ); ?> ><?php echo esc_attr( $cat->name ); ?></option>
 				<?php endforeach; ?>

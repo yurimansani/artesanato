@@ -23,9 +23,12 @@ function setWord() {
       return;
    }
    //Call the setLetters function from below, giving it the word typed and its length
-   selectPaspatur();
    selectFrame();
+   selectPaspatur();
    getLetters(word);
+   setTimeout(() => { 
+    setImageDescripion(word);
+}, 1000);
 
 }
 
@@ -137,18 +140,17 @@ function selectPaspatur() {
    if (paspatur == "") {
       return;
    }
-
    switch(paspatur) {
-      case "1":
+      case "Preto":
          $(".frame").css('background-color','#000000');
          break;
-      case "2":
+      case "Branco":
          $(".frame").css('background-color','#ffffff');
          break;
-      case "3":
+      case "Chocolate":
          $(".frame").css('background-color','#5C2100');
          break;
-      case "4":
+      case "Creme":
          $(".frame").css('background-color','#fffdd0 ');
          break;
       default:
@@ -156,26 +158,76 @@ function selectPaspatur() {
    }
 }
 
-function selectFrame() {
-   var frame = $("#frame").val();
-   if (frame == "") {
+
+function selectPhotoColor() {
+   var photoColor = $("#cor_da_foto").val();
+   if (photoColor == "") {
       return;
    }
+   switch(photoColor) {
+      case "Colorida":
+        $("img.letter-img").css('filter','grayscale(0)');
+        $("img.letter-img").css('filter','sepia(0)');
+        break;
+      case "Preto e branco":
+        $("img.letter-img").css('filter','sepia(0)');
+        $("img.letter-img").css('filter','grayscale(100)');
+        break;
+      case "Sepia":
+        $("img.letter-img").css('filter','grayscale(0)');
+        $("img.letter-img").css('filter','sepia(100)');
+        break;
+   }
+}
+
+function selectFrame() {
+   var frame = $("#moldura").val();
+   if (frame == "") {
+    $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura1.png") 250 stretch');
+    $(".frame").css('-o-border-image','url(/media/img/molduras/moldura1.png) 250 stretch');
+    $(".frame").css('border-image','url(/media/img/molduras/moldura1.png) 250 stretch');
+   } 
    switch(frame) {
-      case "3":
-         $(".letters").css('-webkit-border--image','url(/media/img/molduras/moldura03.png) 4% 1% round');
-         $(".letters").css('-o-border-image','url(/media/img/molduras/moldura03.png) 4% 1% round');
-         $(".letters").css('border-image','url(/media/img/molduras/moldura03.png) 4% 1% round');
+      case "Moldura 1":
+         $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura1.png") 250 stretch');
+         $(".frame").css('-o-border-image','url(/media/img/molduras/moldura1.png) 250 stretch');
+         $(".frame").css('border-image','url(/media/img/molduras/moldura1.png) 250 stretch');
          break;
-      case "7":
-         $(".letters").css('-webkit-border--image','url(/media/img/molduras/moldura07.png) 4% 1% round');
-         $(".letters").css('-o-border-image','url(/media/img/molduras/moldura07.png) 4% 1% round');
-         $(".letters").css('border-image','url(/media/img/molduras/moldura07.png) 4% 1% round');
+      case "Moldura 2":
+         $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura2.png") 250 stretch');
+         $(".frame").css('-o-border-image','url(/media/img/molduras/moldura2.png) 250 stretch');
+         $(".frame").css('border-image','url(/media/img/molduras/moldura2.png) 250 stretch');
+         break;
+      case "Moldura 3":
+         $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura3.png") 250 stretch');
+         $(".frame").css('-o-border-image','url(/media/img/molduras/moldura3.png) 250 stretch');
+         $(".frame").css('border-image','url(/media/img/molduras/moldura3.png) 250 stretch');
+         break;
+      case "Moldura 4":
+         $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura4.png") 250 stretch');
+         $(".frame").css('-o-border-image','url(/media/img/molduras/moldura4.png) 250 stretch');
+         $(".frame").css('border-image','url(/media/img/molduras/moldura4.png) 250 stretch');
+         break;
+      case "Moldura 5":
+         $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura5.png") 250 stretch');
+         $(".frame").css('-o-border-image','url(/media/img/molduras/moldura5.png) 250 stretch');
+         $(".frame").css('border-image','url(/media/img/molduras/moldura5.png) 250 stretch');
+         break;
+      case "Moldura 6":
+         $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura6.png") 250 stretch');
+         $(".frame").css('-o-border-image','url(/media/img/molduras/moldura6.png) 250 stretch');
+         $(".frame").css('border-image','url(/media/img/molduras/moldura6.png) 250 stretch');
+         break;
+      case "Moldura 7":
+         $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura7.png") 250 stretch');
+         $(".frame").css('-o-border-image','url(/media/img/molduras/moldura7.png) 250 stretch');
+         $(".frame").css('border-image','url(/media/img/molduras/moldura7.png) 250 stretch');
          break;
       default:
-         $(".letters").css('-webkit-border--image','url(/media/img/molduras/moldura07.png) 4% 1% round');
-         $(".letters").css('-o-border-image','url(/media/img/molduras/moldura07.png) 4% 1% round');
-         $(".letters").css('border-image','url(/media/img/molduras/moldura07.png) 4% 1% round');
+         $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura7.png") 250 stretch');
+         $(".frame").css('-o-border-image','url(/media/img/molduras/moldura7.png) 250 stretch');
+         $(".frame").css('border-image','url(/media/img/molduras/moldura7.png) 250 stretch');
+         break;
    }
 }
 
@@ -360,9 +412,32 @@ function addItemCart() {
 
 }
 
+function setImageDescripion(word) {
+  var wordLength = word.split("");
+  $("#quadrojs").val("");
+  var textjs = '';
+
+  $.each(wordLength, (i,  letter) => {
+    var src = $('img#image_' + i).attr('src');
+    textjs += 'Letra ' + letter + ' -> ' + '<img src="'+ src + '" width="50px">' + '<br>' ;
+    
+  });
+    $("#quadrojs").val(textjs);
+
+}
+
 setTimeout(() => { 
   $('#palavra').blur(() => {
     setWord();
+  });
+  $('#paspatur').change(() => {
+    selectPaspatur();
+  });
+  $('#cor_da_foto').change(() => {
+    selectPhotoColor();
+  });
+  $('#moldura').change(() => {
+    selectFrame();
   });
   setWord();  
 }, 1000);

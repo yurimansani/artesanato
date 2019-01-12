@@ -1,25 +1,31 @@
 .frame{
   float: left;
    width: 100%;
-   background-color: #000000;
+  border: 40px solid transparent;  
+  background-color: #000;
 }
 .letters{
    display: flex;
    
-   border: 10px solid transparent;
-   padding: 15px;
-   -webkit-border--image: url(/media/img/molduras/moldura07.png) 4% 1% round;   -o-border-image: url(/media/img/molduras/moldura07.png) 4% 1% round;
-   border-image: url(/media/img/molduras/moldura07.png) 4% 1% round;
+   padding: 5px;
  }
 .letter{
+
+
 }
 .letter-img{
+   border: 3px solid #babaca !important;
    width: 90%;
-}
+ }
 .letter-img{
    height: 100% !important;
 }
+/*
+img.letter-img{
 
+   filter:grayscale(100);
+   filter:sepia(100);
+}*/
 .frame-part {
   width: 90%;
   height: 15px;
@@ -27,40 +33,33 @@
   background-color: red;
 }
 
-.cutCorner {
-   position:relative; background-color:blue; 
-   /*border:1px solid silver; display: inline-block;*/
-   width: 100%;
-   height: 40px;
-
-   margin: 0px;
-   padding: 0px;
+.select2-selection__rendered{
+  background-color: #fff !important;
 }
-
-img.edge-img {
-   display:inline-block;
-
-   height: 40px;
-   width: 25%;
-   margin: 0px;
-   margin-right: -4px;
-   padding: 0px;
+.variations{
+  display: none;
 }
-
-.cutCorner:before {
-   position:absolute;
-   right: -1px;
-   bottom: -1px;
-   content:'';
-   border-bottom: 40px solid silver;
-   border-left: 40px solid transparent;
+.ppom-label-item{
+  font-weight: bold;
 }
+/*------------------------------------------*/
+.conteudo {
+  width:404px;
+  height:275px;
+  border:4px solid #999;
+  background:transparent url('/media/letter/D/2.JPG');
+  }
 
-.cutCorner:after {
-   position:absolute;
-   right: -2px;
-   bottom: -2px; 
-   content:'';
-   border-bottom: 40px solid white;
-   border-left: 40px solid transparent;
-}
+.moldura-dois {
+  width: 404px; 
+  border:8px inset #5f6632;
+  padding:15px;
+  background: #b1b1c3;
+  }
+
+.moldura-um {
+  width: 450px; /*404+8+8(bordas)+15+15(paddings)*/
+  border:20px inset #5d738b;
+  padding:25px;
+  background: transparent url(/bg-um.gif);
+  }

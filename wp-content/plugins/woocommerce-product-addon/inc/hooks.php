@@ -382,10 +382,10 @@ function ppom_hooks_load_input_scripts( $product ) {
 	$ppom_input_vars['wc_decimal_sep']	= get_option('woocommerce_price_decimal_sep');
 	$ppom_input_vars['wc_no_decimal']	= $decimal_palces;
 	$ppom_input_vars['wc_product_price']= ppom_get_product_price($product);
-	$ppom_input_vars['product_base_label'] = __("Product Price", "ppom");
+	$ppom_input_vars['product_base_label'] = __("<b>Preço do produto</b>", "ppom");
 	$ppom_input_vars['option_total_label'] = __("Option Total", "ppom");
 	$ppom_input_vars['product_quantity_label'] = __("Product Quantity", "ppom");
-	$ppom_input_vars['total_without_fixed_label'] = __("Total", "ppom");
+	$ppom_input_vars['total_without_fixed_label'] = __("<b>Total</b>", "ppom");
 	$ppom_input_vars['product_title'] = sprintf(__("%s", "ppom"), $product->get_title());
 	$ppom_input_vars['total_discount_label'] = __("Total Discount", "ppom");
 	$ppom_input_vars['fixed_fee_heading'] = __("Fixed Fee", "ppom");

@@ -1,0 +1,22 @@
+2019-01-12T09:41:12+00:00 CRITICAL Uncaught Error: Call to undefined method DateTime::format() in E:\www\artesanato\wp-includes\formatting.php:3019
+Stack trace:
+#0 E:\www\artesanato\wp-content\plugins\woocommerce\includes\abstracts\abstract-wc-data.php(758): get_gmt_from_date('2018-12-08 17:2...')
+#1 E:\www\artesanato\wp-content\plugins\woocommerce\includes\class-wc-customer.php(778): WC_Data->set_date_prop('date_created', '2018-12-08 17:2...')
+#2 E:\www\artesanato\wp-content\plugins\woocommerce\includes\abstracts\abstract-wc-data.php(645): WC_Customer->set_date_created('2018-12-08 17:2...')
+#3 E:\www\artesanato\wp-content\plugins\woocommerce\includes\data-stores\class-wc-customer-data-store.php(172): WC_Data->set_props(Array)
+#4 E:\www\artesanato\wp-content\plugins\woocommerce\includes\class-wc-data-store.php(159): WC_Customer_Data_Store->read(Object(WC_Customer))
+#5 E:\www\artesanato\wp-content\plugins\woocommerce\includes\class-wc-customer.php(104): WC_Data_Store->read(Object(WC_Customer))
+#6 E:\www\artesanato\wp-content\plugins\woocommerce, em E:\www\artesanato\wp-includes\formatting.php, na linha 3019
+
+2019-01-12T09:41:12+00:00 CRITICAL Uncaught Error: Call to undefined method DateTime::format() in E:\www\artesanato\wp-includes\formatting.php:3019
+Stack trace:
+#0 E:\www\artesanato\wp-content\plugins\woocommerce\includes\abstracts\abstract-wc-data.php(758): get_gmt_from_date('2018-12-08 17:2...')
+#1 E:\www\artesanato\wp-content\plugins\woocommerce\includes\class-wc-customer.php(778): WC_Data->set_date_prop('date_created', '2018-12-08 17:2...')
+#2 E:\www\artesanato\wp-content\plugins\woocommerce\includes\abstracts\abstract-wc-data.php(645): WC_Customer->set_date_created('2018-12-08 17:2...')
+#3 E:\www\artesanato\wp-content\plugins\woocommerce\includes\data-stores\class-wc-customer-data-store.php(172): WC_Data->set_props(Array)
+#4 E:\www\artesanato\wp-content\plugins\woocommerce\includes\class-wc-data-store.php(159): WC_Customer_Data_Store->read(Object(WC_Customer))
+#5 E:\www\artesanato\wp-content\plugins\woocommerce\includes\class-wc-customer.php(104): WC_Data_Store->read(Object(WC_Customer))
+#6 E:\www\artesanato\wp-content\plugins\woocommerce, em E:\www\artesanato\wp-includes\formatting.php, na linha 3019
+
+2019-01-12T09:41:12+00:00 CRITICAL Cannot make static method DateTime::__construct() non static in class DateTime, em E:\www\artesanato\wp-content\plugins\woocommerce\includes\libraries\action-scheduler\classes\ActionScheduler_DateTime.php, na linha 76
+

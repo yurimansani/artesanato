@@ -4,24 +4,29 @@
  <link rel="stylesheet" type="text/css" href="/media/css/style.css"></script>
 
 
- <div class="cutCorner ">
+<!--  <div class="cutCorner ">
     <img class="edge-img" src="/media/img/molduras/moldura07.png">
     <img class="edge-img" src="/media/img/molduras/moldura07.png">
     <img class="edge-img" src="/media/img/molduras/moldura07.png">
     <img class="edge-img" src="/media/img/molduras/moldura07.png">
- </div>
+ </div> -->
 <div class="frame">
    
    <div class="letters">
    </div>
 </div>
+
+
+
+
+
    <div class="clearfix"></div>
 <div class="form-group row">
    <label for="selectedWord" class="col-sm-3 col-form-label">
       Digite a sua palavra:
    </label>
    <div class="col-sm-5">
-      <input type="text" class="form-control" id="selectedWord" placeholder="DECOPHOTO">
+      <input type="text" class="form-control" id="palavra" placeholder="DECOPHOTO">
    </div>
 </div>
 <div class="form-group row">

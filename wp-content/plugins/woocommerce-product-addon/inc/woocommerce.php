@@ -167,7 +167,7 @@ function ppom_check_validation($product_id, $post_data, $passed=true) {
 			
 			// Note: Checkbox is being validate by hook: ppom_has_posted_field_value
 			
-			$error_message = ($field['error_message'] != '') ? $title.": ".$field['error_message'] : "{$title} is a required field";
+			$error_message = ($field['error_message'] != '') ? $title.": ".$field['error_message'] : "{$title} é um campo obrigatório!";
 			$error_message = sprintf ( __ ( '%s', 'ppom' ), $error_message );
 			$error_message = stripslashes ($error_message);
 			ppom_wc_add_notice( $error_message );
