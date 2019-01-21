@@ -62,4 +62,10 @@ img.letter-img{
   border:20px inset #5d738b;
   padding:25px;
   background: transparent url(/bg-um.gif);
-  }
+}
+.price {
+  display: none !important; 
+}
+#ppom-price-container{
+  display: none;
+}

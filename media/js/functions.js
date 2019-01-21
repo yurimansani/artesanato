@@ -3,32 +3,41 @@ function setWord() {
    //Take the word typed in and convert to uppercase and get its length
    //If there is no word typed in - automatically use "FAMILY"
 
-   var word;
-   var wordLength;
+  var word;
+  var wordLength;
 
-   if (document.getElementById("palavra").value !== '') {
-      clearWord();
-      word = document.getElementById("palavra").value;
-      word = word.toUpperCase();
-   }
-   else {
-      clearWord();
-      word = "DECOPHOTO";
-   }
-   //Take out any spaces that may have been entered into the word
-   word = word.replace(/\s+/g, '');
-   wordLength = word.length;
+  if (document.getElementById("palavra").value !== '') {
+    clearWord();
+    word = document.getElementById("palavra").value;
+    word = word.toUpperCase();
+  }
+  else {
+    clearWord();
+    word = "DECOPHOTO";
+  }
 
-   if (wordLength > 14) {
-      return;
-   }
+  var space = word.indexOf(' ');
+
+  //Take out any spaces that may have been entered into the word
+  word = word.replace(/\s+/g, '');
+  wordLength = word.length;
+
+  if (wordLength > 14) {
+    return;
+  }
    //Call the setLetters function from below, giving it the word typed and its length
-   selectFrame();
-   selectPaspatur();
-   getLetters(word);
-   setTimeout(() => { 
+  selectFrame();
+  selectPaspatur();
+  getLetters(word);
+  setTimeout(() => { 
     setImageDescripion(word);
-}, 1000);
+    setQtdletter(wordLength);
+    setDependencies();
+  }, 1000);
+
+  if (space > 0) {
+    setSpace(space);
+  }
 
 }
 
@@ -189,41 +198,49 @@ function selectFrame() {
    } 
    switch(frame) {
       case "Moldura 1":
+         $("#molduras").val(frame);
          $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura1.png") 250 stretch');
          $(".frame").css('-o-border-image','url(/media/img/molduras/moldura1.png) 250 stretch');
          $(".frame").css('border-image','url(/media/img/molduras/moldura1.png) 250 stretch');
          break;
       case "Moldura 2":
+         $("#molduras").val(frame);
          $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura2.png") 250 stretch');
          $(".frame").css('-o-border-image','url(/media/img/molduras/moldura2.png) 250 stretch');
          $(".frame").css('border-image','url(/media/img/molduras/moldura2.png) 250 stretch');
          break;
       case "Moldura 3":
+         $("#molduras").val(frame);
          $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura3.png") 250 stretch');
          $(".frame").css('-o-border-image','url(/media/img/molduras/moldura3.png) 250 stretch');
          $(".frame").css('border-image','url(/media/img/molduras/moldura3.png) 250 stretch');
          break;
       case "Moldura 4":
+         $("#molduras").val(frame);
          $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura4.png") 250 stretch');
          $(".frame").css('-o-border-image','url(/media/img/molduras/moldura4.png) 250 stretch');
          $(".frame").css('border-image','url(/media/img/molduras/moldura4.png) 250 stretch');
          break;
       case "Moldura 5":
+         $("#molduras").val(frame);
          $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura5.png") 250 stretch');
          $(".frame").css('-o-border-image','url(/media/img/molduras/moldura5.png) 250 stretch');
          $(".frame").css('border-image','url(/media/img/molduras/moldura5.png) 250 stretch');
          break;
       case "Moldura 6":
+         $("#molduras").val(frame);
          $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura6.png") 250 stretch');
          $(".frame").css('-o-border-image','url(/media/img/molduras/moldura6.png) 250 stretch');
          $(".frame").css('border-image','url(/media/img/molduras/moldura6.png) 250 stretch');
          break;
       case "Moldura 7":
+         $("#molduras").val(frame);
          $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura7.png") 250 stretch');
          $(".frame").css('-o-border-image','url(/media/img/molduras/moldura7.png) 250 stretch');
          $(".frame").css('border-image','url(/media/img/molduras/moldura7.png) 250 stretch');
          break;
       default:
+         $("#molduras").val(frame);
          $(".frame").css('-webkit-border-image: url("/media/img/molduras/moldura7.png") 250 stretch');
          $(".frame").css('-o-border-image','url(/media/img/molduras/moldura7.png) 250 stretch');
          $(".frame").css('border-image','url(/media/img/molduras/moldura7.png) 250 stretch');
@@ -432,12 +449,51 @@ setTimeout(() => {
   });
   $('#paspatur').change(() => {
     selectPaspatur();
+    selectFrame();
   });
   $('#cor_da_foto').change(() => {
     selectPhotoColor();
+    selectFrame();
   });
   $('#moldura').change(() => {
     selectFrame();
+    setDependencies();
   });
   setWord();  
 }, 1000);
+
+
+function setSpace(index){
+  var html = "<div class='letter col'>&nbsp;</div>";
+  $(html).insertBefore($('.letter')[index]);
+// $(".letter")[index].insertAfter(html);
+}
+
+function setQtdletter(quantity) {
+  $('#quantidade-de-letras').val(quantity);
+}
+
+function setDependencies() {
+  var qtd = $('#quantidade-de-letras').val();
+  var frame = $('#moldura').val();
+  var produto_id = 320;
+
+
+  $("input[name='variation_id']").val();
+  $("#ppom_product_price").val();
+
+   $.ajax({
+     url: "/?wc-ajax=get_variation" ,
+     method: "POST",
+     dataType: "json", 
+     data: { 
+      "attribute_quantidade-de-letras" : qtd, 
+      attribute_molduras:frame,
+      product_id : produto_id
+    },
+     success: (json) => {
+        $("input[name='variation_id']").val(json["variation_id"]);
+        $("#ppom_product_price").val(json["display_price"]);
+      }
+   });
+}

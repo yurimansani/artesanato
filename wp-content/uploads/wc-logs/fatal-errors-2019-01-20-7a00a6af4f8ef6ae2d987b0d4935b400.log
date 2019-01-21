@@ -1,0 +1,12 @@
+2019-01-20T05:30:38+00:00 CRITICAL Maximum execution time of 300 seconds exceeded, em E:\www\artesanato\wp-includes\wp-db.php, na linha 1924
+
+2019-01-20T23:07:44+00:00 CRITICAL Uncaught MercadoPagoException: Failed to connect to api.mercadopago.com port 443: Timed out in E:\www\artesanato\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php:848
+Stack trace:
+#0 E:\www\artesanato\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php(946): MPRestClient::exec(Array, '3.0.17')
+#1 E:\www\artesanato\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(536): MPRestClient::get(Array, '3.0.17')
+#2 E:\www\artesanato\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(131): WC_Woo_Mercado_Pago_Module::get_categories()
+#3 E:\www\artesanato\wp-content\plugins\woocommerce-mercadopago\woocommerce-mercadopago.php(123): WC_Woo_Mercado_Pago_Module->__construct()
+#4 E:\www\artesanato\wp-includes\class-wp-hook.php(286): WC_Woo_Mercado_Pago_Module::init_mercado_pago_class('')
+#5 E:\www\artesanato\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 E:\www\artesanato\wp-includes\plugin.php(453): WP_Hook, em E:\www\artesanato\wp-content\plugins\woocommerce-mercadopago\includes\sdk\lib\mercadopago.php, na linha 848
+
