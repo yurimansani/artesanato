@@ -70,6 +70,8 @@ function clearWord() {
 
 
 function choosePic(letter, i) {
+  
+   $("#choose-letter-modal").html("")
    $('#letter-modal').modal('show');
 
    $.ajax({
