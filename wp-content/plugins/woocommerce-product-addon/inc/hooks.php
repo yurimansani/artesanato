@@ -145,7 +145,7 @@ function ppom_hooks_load_input_scripts( $product ) {
     $ppom		= new PPOM_Meta( $product_id );
 	if( ! $ppom->fields ) return '';
 	
-    $ppom_meta_settings = $ppom->settings;
+    $ppom_meta_settings = $ppom->ppom_settings;
     $ppom_meta_fields = $ppom->fields;
     
     $ppom_inputs        	= array();
@@ -382,10 +382,10 @@ function ppom_hooks_load_input_scripts( $product ) {
 	$ppom_input_vars['wc_decimal_sep']	= get_option('woocommerce_price_decimal_sep');
 	$ppom_input_vars['wc_no_decimal']	= $decimal_palces;
 	$ppom_input_vars['wc_product_price']= ppom_get_product_price($product);
-	$ppom_input_vars['product_base_label'] = __("<b>Preço do produto</b>", "ppom");
+	$ppom_input_vars['product_base_label'] = __("Product Price", "ppom");
 	$ppom_input_vars['option_total_label'] = __("Option Total", "ppom");
 	$ppom_input_vars['product_quantity_label'] = __("Product Quantity", "ppom");
-	$ppom_input_vars['total_without_fixed_label'] = __("<b>Total</b>", "ppom");
+	$ppom_input_vars['total_without_fixed_label'] = __("Total", "ppom");
 	$ppom_input_vars['product_title'] = sprintf(__("%s", "ppom"), $product->get_title());
 	$ppom_input_vars['total_discount_label'] = __("Total Discount", "ppom");
 	$ppom_input_vars['fixed_fee_heading'] = __("Fixed Fee", "ppom");
@@ -630,7 +630,7 @@ function ppom_hooks_render_shortcode( $atts ) {
     					'default_error_message'	=> __('it is a required field.', 'ppom'));
     wp_localize_script( 'woopa-ajax-validation', 'woopa_vars', $woopa_vars);*/
     
-    $template_vars = array('ppom_settings'  => $ppom->settings,
+    $template_vars = array('ppom_settings'  => $ppom->ppom_settings,
     						'product'	=> $product);
     
     ppom_load_template ( 'v10/render-fields.php', $template_vars );

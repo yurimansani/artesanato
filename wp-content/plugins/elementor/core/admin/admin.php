@@ -129,6 +129,11 @@ class Admin extends App {
 	 * @param \WP_Post $post The current post object.
 	 */
 	public function print_switch_mode_button( $post ) {
+		// Exit if Gutenberg are active.
+		if ( did_action( 'enqueue_block_editor_assets' ) ) {
+			return;
+		}
+
 		if ( ! User::is_current_user_can_edit( $post->ID ) ) {
 			return;
 		}
@@ -731,9 +736,11 @@ class Admin extends App {
 			'i18n' => [
 				'rollback_confirm' => __( 'Are you sure you want to reinstall previous version?', 'elementor' ),
 				'rollback_to_previous_version' => __( 'Rollback to Previous Version', 'elementor' ),
-				'yes' => __( 'Yes', 'elementor' ),
+				'yes' => __( 'Continue', 'elementor' ),
 				'cancel' => __( 'Cancel', 'elementor' ),
 				'new_template' => __( 'New Template', 'elementor' ),
+				'back_to_wordpress_editor_message' => __( 'Please note that you are switching to WordPress default editor. Your current layout, design and content might break.', 'elementor' ),
+				'back_to_wordpress_editor_header' => __( 'Back to WordPress Editor', 'elementor' ),
 			],
 		];
 

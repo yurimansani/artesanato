@@ -128,6 +128,11 @@ class NM_Palettes_wooproduct extends PPOM_Inputs{
 					'title' => __ ( 'Show as Circle', 'ppom' ),
 					'desc' => __ ( 'It will display color palettes as circle', 'ppom' )
 			),
+			'multiple_allowed' => array (
+					'type' => 'checkbox',
+					'title' => __ ( 'Multiple selections?', 'ppom' ),
+					'desc' => __ ( 'Allow users to select more then one palette?.', 'ppom' )
+			),
 			'logic' => array (
 					'type' => 'checkbox',
 					'title' => __ ( 'Enable Conditions', 'ppom' ),

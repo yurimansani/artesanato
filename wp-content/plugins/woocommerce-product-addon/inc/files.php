@@ -117,7 +117,7 @@ function ppom_upload_file() {
 	
 	$ppom_nonce = $_REQUEST['ppom_nonce'];
 	$file_upload_nonce_action = "ppom_uploading_file_action";
-	if ( ! wp_verify_nonce( $ppom_nonce, $file_upload_nonce_action ) ) {
+	if ( ! wp_verify_nonce( $ppom_nonce, $file_upload_nonce_action ) && apply_filters('ppom_verify_upload_file', true) ) {
     	$response ['status'] = 'error';
 		$response ['message'] = __ ( 'Due to security issue, you cannot upload file, please try again.', 'ppom' );
 		wp_send_json( $response );
@@ -585,8 +585,9 @@ function ppom_files_removed_unused_images(){
 		$dir_handle = opendir($dir);
 		while ($file = readdir($dir_handle)){
 				
-			if(!is_dir($file)){
-				@unlink($dir . $file);
+			$file_path = $dir.$file;
+			if( is_file ($file_path) ){
+				@unlink($file_path);
 			}
 		}
 			

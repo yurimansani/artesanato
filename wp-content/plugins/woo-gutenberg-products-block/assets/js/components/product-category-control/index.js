@@ -4,17 +4,17 @@
 import { __, _n, sprintf } from '@wordpress/i18n';
 import { addQueryArgs } from '@wordpress/url';
 import apiFetch from '@wordpress/api-fetch';
-import { Component } from '@wordpress/element';
-import { find, first, last } from 'lodash';
-import { MenuItem } from '@wordpress/components';
+import { Component, Fragment } from '@wordpress/element';
+import { find } from 'lodash';
 import PropTypes from 'prop-types';
+import { SelectControl } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
 import './style.scss';
-import { CheckedIcon, UncheckedIcon } from '../search-list-control/icons';
 import SearchListControl from '../search-list-control';
+import SearchListItem from '../search-list-control/item';
 
 class ProductCategoryControl extends Component {
 	constructor() {
@@ -38,22 +38,10 @@ class ProductCategoryControl extends Component {
 			} );
 	}
 
-	getBreadcrumbsForDisplay( breadcrumbs ) {
-		if ( breadcrumbs.length === 1 ) {
-			return first( breadcrumbs );
-		}
-		if ( breadcrumbs.length === 2 ) {
-			return first( breadcrumbs ) + ' › ' + last( breadcrumbs );
-		}
-
-		return first( breadcrumbs ) + ' … ' + last( breadcrumbs );
-	}
-
-	renderItem( { getHighlightedName, isSelected, item, onSelect, search, depth = 0 } ) {
+	renderItem( args ) {
+		const { item, search, depth = 0 } = args;
 		const classes = [
-			'woocommerce-search-list__item',
 			'woocommerce-product-categories__item',
-			`depth-${ depth }`,
 		];
 		if ( search.length ) {
 			classes.push( 'is-searching' );
@@ -67,12 +55,10 @@ class ProductCategoryControl extends Component {
 			`${ item.breadcrumbs.join( ', ' ) }, ${ item.name }`;
 
 		return (
-			<MenuItem
-				key={ item.id }
-				role="menuitemcheckbox"
+			<SearchListItem
 				className={ classes.join( ' ' ) }
-				onClick={ onSelect( item ) }
-				isSelected={ isSelected }
+				{ ...args }
+				showCount
 				aria-label={ sprintf(
 					_n(
 						'%s, has %d product',
@@ -83,39 +69,25 @@ class ProductCategoryControl extends Component {
 					accessibleName,
 					item.count
 				) }
-			>
-				<span className="woocommerce-search-list__item-state">
-					{ isSelected ? <CheckedIcon /> : <UncheckedIcon /> }
-				</span>
-				<span className="woocommerce-product-categories__item-label">
-					{ !! item.breadcrumbs.length && (
-						<span className="woocommerce-product-categories__item-prefix">
-							{ this.getBreadcrumbsForDisplay( item.breadcrumbs ) }
-						</span>
-					) }
-					<span
-						className="woocommerce-product-categories__item-name"
-						dangerouslySetInnerHTML={ {
-							__html: getHighlightedName( item.name, search ),
-						} }
-					/>
-				</span>
-				<span className="woocommerce-product-categories__item-count">
-					{ item.count }
-				</span>
-			</MenuItem>
+			/>
 		);
 	}
 
 	render() {
 		const { list, loading } = this.state;
-		const { selected, onChange } = this.props;
+		const { onChange, onOperatorChange, operator = 'any', selected } = this.props;
 
 		const messages = {
 			clear: __( 'Clear all product categories', 'woo-gutenberg-products-block' ),
 			list: __( 'Product Categories', 'woo-gutenberg-products-block' ),
-			noItems: __( 'Your store doesn\'t have any product categories.', 'woo-gutenberg-products-block' ),
-			search: __( 'Search for product categories', 'woo-gutenberg-products-block' ),
+			noItems: __(
+				"Your store doesn't have any product categories.",
+				'woo-gutenberg-products-block'
+			),
+			search: __(
+				'Search for product categories',
+				'woo-gutenberg-products-block'
+			),
 			selected: ( n ) =>
 				sprintf(
 					_n(
@@ -126,20 +98,46 @@ class ProductCategoryControl extends Component {
 					),
 					n
 				),
-			updated: __( 'Category search results updated.', 'woo-gutenberg-products-block' ),
+			updated: __(
+				'Category search results updated.',
+				'woo-gutenberg-products-block'
+			),
 		};
 
 		return (
-			<SearchListControl
-				className="woocommerce-product-categories"
-				list={ list }
-				isLoading={ loading }
-				selected={ selected.map( ( id ) => find( list, { id } ) ).filter( Boolean ) }
-				onChange={ onChange }
-				renderItem={ this.renderItem }
-				messages={ messages }
-				isHierarchical
-			/>
+			<Fragment>
+				<SearchListControl
+					className="woocommerce-product-categories"
+					list={ list }
+					isLoading={ loading }
+					selected={ selected.map( ( id ) => find( list, { id } ) ).filter( Boolean ) }
+					onChange={ onChange }
+					renderItem={ this.renderItem }
+					messages={ messages }
+					isHierarchical
+				/>
+				{ ( !! onOperatorChange ) && (
+					<div className={ selected.length < 2 ? 'screen-reader-text' : '' }>
+						<SelectControl
+							className="woocommerce-product-categories__operator"
+							label={ __( 'Display products matching', 'woo-gutenberg-products-block' ) }
+							help={ __( 'Pick at least two categories to use this setting.', 'woo-gutenberg-products-block' ) }
+							value={ operator }
+							onChange={ onOperatorChange }
+							options={ [
+								{
+									label: __( 'Any selected categories', 'woo-gutenberg-products-block' ),
+									value: 'any',
+								},
+								{
+									label: __( 'All selected categories', 'woo-gutenberg-products-block' ),
+									value: 'all',
+								},
+							] }
+						/>
+					</div>
+				) }
+			</Fragment>
 		);
 	}
 }
@@ -149,6 +147,14 @@ ProductCategoryControl.propTypes = {
 	 * Callback to update the selected product categories.
 	 */
 	onChange: PropTypes.func.isRequired,
+	/**
+	 * Callback to update the category operator. If not passed in, setting is not used.
+	 */
+	onOperatorChange: PropTypes.func,
+	/**
+	 * Setting for whether products should match all or any selected categories.
+	 */
+	operator: PropTypes.oneOf( [ 'all', 'any' ] ),
 	/**
 	 * The list of currently selected category IDs.
 	 */

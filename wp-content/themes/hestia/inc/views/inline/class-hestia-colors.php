@@ -92,7 +92,7 @@ class Hestia_Colors extends Hestia_Abstract_Main {
 		.label.label-primary,
 		.hestia-work .portfolio-item:nth-child(6n+1) .label,
 		.nav-cart .nav-cart-content .widget .buttons .button,
-		.has-background.has-accent-background-color {
+		.has-accent-background-color {
 		    background-color: ' . esc_html( $color_accent ) . ';
 		}
 		
@@ -116,12 +116,14 @@ class Hestia_Colors extends Hestia_Abstract_Main {
 		.btn.btn-primary,
 		.widget_product_search button[type="submit"],
 		.hestia-sidebar-open.btn.btn-rose,
-		.hestia-sidebar-close.btn.btn-rose {
+		.hestia-sidebar-close.btn.btn-rose,
+		.everest-forms button[type=submit].everest-forms-submit-button {
 		    -webkit-box-shadow: 0 2px 2px 0 ' . hestia_hex_rgba( $color_accent, '0.14' ) . ',0 3px 1px -2px ' . hestia_hex_rgba( $color_accent, '0.2' ) . ',0 1px 5px 0 ' . hestia_hex_rgba( $color_accent, '0.12' ) . ';
 		    box-shadow: 0 2px 2px 0 ' . hestia_hex_rgba( $color_accent, '0.14' ) . ',0 3px 1px -2px ' . hestia_hex_rgba( $color_accent, '0.2' ) . ',0 1px 5px 0 ' . hestia_hex_rgba( $color_accent, '0.12' ) . ';
 		}
 		
-		.card .header-primary, .card .content-primary {
+		.card .header-primary, .card .content-primary,
+		.everest-forms button[type=submit].everest-forms-submit-button {
 		    background: ' . esc_html( $color_accent ) . ';
 		}
 		
@@ -141,7 +143,10 @@ class Hestia_Colors extends Hestia_Abstract_Main {
 		.btn.btn-primary:active:hover, 
 		.hestia-sidebar-open.btn.btn-rose:hover,
 		.hestia-sidebar-close.btn.btn-rose:hover,
-		.pagination span.current:hover{
+		.pagination span.current:hover,
+		.everest-forms button[type=submit].everest-forms-submit-button:hover,
+ 		.everest-forms button[type=submit].everest-forms-submit-button:focus,
+ 		.everest-forms button[type=submit].everest-forms-submit-button:active {
 			-webkit-box-shadow: 0 14px 26px -12px' . hestia_hex_rgba( $color_accent, '0.42' ) . ',0 4px 23px 0 rgba(0,0,0,0.12),0 8px 10px -5px ' . hestia_hex_rgba( $color_accent, '0.2' ) . ';
 		    box-shadow: 0 14px 26px -12px ' . hestia_hex_rgba( $color_accent, '0.42' ) . ',0 4px 23px 0 rgba(0,0,0,0.12),0 8px 10px -5px ' . hestia_hex_rgba( $color_accent, '0.2' ) . ';
 			color: #fff;
@@ -165,10 +170,10 @@ class Hestia_Colors extends Hestia_Abstract_Main {
 		// Header Gradient Color + support for Gutenberg color.
 		$custom_css .= ! empty( $header_gradient ) ? '
 		.header-filter-gradient { 
-			background: linear-gradient(45deg, ' . hestia_hex_rgba( $header_gradient ) . ' 0%, ' . $this->hestia_generate_gradient_color( $header_gradient ) . ' 100%); 
+			background: linear-gradient(45deg, ' . hestia_hex_rgba( $header_gradient ) . ' 0%, ' . hestia_generate_gradient_color( $header_gradient ) . ' 100%); 
 		}
 		.has-header-gradient-color { color: ' . $header_gradient . '; }
-		.has-background.has-header-gradient-background-color { background-color: ' . $header_gradient . '; }
+		.has-header-gradient-background-color { background-color: ' . $header_gradient . '; }
 		 ' : '';
 
 		// Gutenberg support for the background color
@@ -176,7 +181,7 @@ class Hestia_Colors extends Hestia_Abstract_Main {
 
 		$custom_css .= '
 		.has-background-color-color { color: ' . $background_color . '; }
-		.has-background.has-background-color-background-color { background-color: ' . $background_color . '; }
+		.has-background-color-background-color { background-color: ' . $background_color . '; }
 		';
 
 		return $custom_css;
@@ -344,37 +349,5 @@ class Hestia_Colors extends Hestia_Abstract_Main {
 		' : '';
 
 		return $custom_css_woocommerce;
-	}
-
-	/**
-	 * Generate gradient second color based on Header Gradient color
-	 *
-	 * @return string RGBA string.
-	 * @since Hestia 1.1.53
-	 *
-	 * @param string $input the color from which to generate the gradient color.
-	 * @param string $opacity the opacity for the generated color.
-	 */
-	function hestia_generate_gradient_color( $input, $opacity = '' ) {
-
-		$rgb = hestia_hex_rgb( $input );
-
-		$rgb[0] = $rgb[0] + 66;
-		$rgb[1] = $rgb[1] + 28;
-		$rgb[2] = $rgb[2] - 21;
-
-		if ( $rgb[0] >= 255 ) {
-			$rgb[0] = 255;
-		}
-
-		if ( $rgb[1] >= 255 ) {
-			$rgb[1] = 255;
-		}
-
-		if ( $rgb[2] <= 0 ) {
-			$rgb[2] = 0;
-		}
-
-		return hestia_rgb_to_rgba( $rgb, $opacity );
 	}
 }

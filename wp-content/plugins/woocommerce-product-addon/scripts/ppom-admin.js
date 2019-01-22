@@ -42,6 +42,35 @@ jQuery(function($){
 
 
     /**
+        PPOM Model
+    **/
+    var append_overly_model =  ("<div class='ppom-modal-overlay ppom-js-modal-close'></div>");
+
+    $(document).on('click', '[data-modal-id]', function(e){
+        e.preventDefault();
+        $("body").append(append_overly_model);
+        var modalBox = $(this).attr('data-modal-id');
+        $('#'+modalBox).fadeIn();
+    });  
+    
+    ppom_close_popup();
+    function ppom_close_popup(){
+
+        $(".ppom-js-modal-close, .ppom-modal-overlay").click(function(e) {
+            
+            var target = $( e.target );
+            if (target.hasClass("ppom-modal-overlay")) {
+                return false;
+            }
+            $(".ppom-modal-box, .ppom-modal-overlay").fadeOut('fast', function() {
+                $(".ppom-modal-overlay").remove();
+            });
+         
+        });
+    }
+
+
+    /**
         1- Submit PPOM Form Fields
     **/
     $(".ppom-save-fields-meta").submit(function(e){
@@ -213,7 +242,6 @@ jQuery(function($){
         event.preventDefault();
 
         var the_id = $(this).attr('id');
-        $('#ppom_field_model_'+the_id+'').modal('show');
         $('#ppom_field_model_'+the_id+'').find('.ppom-close-checker').removeClass('ppom-close-fields');
     });
 
@@ -230,16 +258,20 @@ jQuery(function($){
             return;
         }
 
+        var copy_model_id = $(this).attr('data-copy-model-id');
         var id = $(this).attr('data-field-index');
             id = Number(id);
+        console.log(id);
 
-        // console.log(id);    
-        var field_title = $('#ppom_field_model_'+id+'').find('.modal-body .ppom-fields-actions').attr('data-table-id'); 
+        var field_title = $('#ppom_field_model_'+id+'').find('.ppom-modal-body .ppom-fields-actions').attr('data-table-id'); 
         var data_name   = $('#ppom_field_model_'+id+'').find('[data-meta-id="data_name"] input').val();
         var title       = $('#ppom_field_model_'+id+'').find('[data-meta-id="title"] input').val();
         var placeholder = $('#ppom_field_model_'+id+'').find('[data-meta-id="placeholder"] input').val();
         var required    = $('#ppom_field_model_'+id+'').find('[data-meta-id="required"] input').prop('checked');
         var type        = $(this).attr('data-field-type');
+
+        console.log(field_title);    
+
         if (required == true) {
             var _ok = 'Yes';
         }else{
@@ -264,16 +296,25 @@ jQuery(function($){
                 html += '<td class="ppom_meta_field_plchlder">'+placeholder+'</td>';
                 html += '<td class="ppom_meta_field_req">'+_ok+'</td>';
                 html += '<td>';
-                    html += '<button class="ppom_copy_field btn" data-field-type="'+field_title+'" style="margin-right: 4px;"><i class="fa fa-clone" aria-hidden="true"></i></button>';
-                    html += '<button class="ppom-edit-field btn" id="'+id+'"><i class="fa fa-pencil" aria-hidden="true"></i></button>';
+                    html += '<button class="ppom_copy_field btn" id="'+id+'" data-field-type="'+field_title+'" style="margin-right: 4px;"><i class="fa fa-clone" aria-hidden="true"></i></button>';
+                    html += '<button class="ppom-edit-field btn" id="'+id+'" data-modal-id="ppom_field_model_'+id+'"><i class="fa fa-pencil" aria-hidden="true"></i></button>';
                 html += '</td>';
             html += '</tr>';
 
-        $(html).appendTo('.ppom_field_table tbody');
+        // console.log(copy_model_id);
+        if (copy_model_id != '' && copy_model_id != undefined ) {
+            $(html).find('.ppom_field_table tbody').end().insertAfter('#ppom_sort_id_'+copy_model_id+'');
+        }else{
+            $(html).appendTo('.ppom_field_table tbody');
+        }
+
+        $(".ppom-modal-box, .ppom-modal-overlay").fadeOut('fast', function() {
+            $(".ppom-modal-overlay").remove();
+        });
 
         $(this).removeClass('ppom-add-field').addClass('ppom-update-field');
         $(this).html('Update Field');
-        $('#ppom_field_model_'+id+'').modal('hide');
+        
     });
 
 
@@ -313,7 +354,9 @@ jQuery(function($){
         row.find(".ppom_meta_field_plchlder").html(placeholder);
         row.find(".ppom_meta_field_req").html(_ok);
 
-        $('#ppom_field_model_'+id+'').modal('hide');
+        $(".ppom-modal-box, .ppom-modal-overlay").fadeOut('fast', function() {
+            $(".ppom-modal-overlay").remove();
+        });
     });
 
 
@@ -351,6 +394,7 @@ jQuery(function($){
 
         clone_new_field.find('.ppom_save_fields_model').end().appendTo('.ppom_save_fields_model').attr('id', field_model_id);
         clone_new_field.find('.ppom-field-checker').attr('data-field-index', field_no);
+        clone_new_field.find('.ppom-field-checker').addClass('ppom-add-fields-js-action');
 
         clone_new_field.addClass('ppom_sort_id_'+field_no+'');
         var field_index = field_no;
@@ -365,7 +409,8 @@ jQuery(function($){
         ppom_add_condition_set_index(add_cond_selector, field_index, field_type, option_index);
         
         // popup fields on model
-        $('#ppom_field_model_'+field_no+'').modal('show');
+        ppom_close_popup();
+        $('#ppom_field_model_'+field_no+'').fadeIn();
 
         field_no++;
     });
@@ -375,16 +420,26 @@ jQuery(function($){
         13- Clone Existing Fields
     **/
     var copy_no = 0;
-    $(document).on('click', '.ppom_copy_field', function(e) {
+    $('.ppom-main-field-wrapper').on('click', '.ppom_copy_field', function(e) {
         e.preventDefault();
 
-        var field_type = $(this).data('field-type');
-    
-        var clone_new_field = $(".ppom-field-"+field_type+":last").clone();
+        var model_id_no = $(this).attr('id');
         
-        clone_new_field.find('.ppom_save_fields_model').end().appendTo('.ppom_save_fields_model').attr('id','ppom_field_model_'+field_no+'');
-        clone_new_field.find('.ppom-field-checker').attr('data-field-index', field_no);
+        var field_type  = $(this).data('field-type');
+        console.log(model_id_no);
+
+        var clone_new_field = $('.ppom_save_fields_model #ppom_field_model_'+model_id_no+'').clone(true);
+        // clone_new_field.find('.ppom_save_fields_model').end().appendTo('.ppom_save_fields_model').attr('id','ppom_field_model_'+field_no+'');
+        clone_new_field.find('.ppom_save_fields_model').end().insertAfter('#ppom_field_model_'+model_id_no+'').attr('id','ppom_field_model_'+field_no+'');
+        clone_new_field.find('.ppom-add-fields-js-action').attr('data-field-index', field_no);
         clone_new_field.find('.ppom-close-fields').attr('data-field-index', field_no);
+        clone_new_field.find('.ppom-js-modal-close').addClass('ppom-close-fields');
+        clone_new_field.find('.ppom-add-fields-js-action').removeClass('ppom-update-field');
+        clone_new_field.find('.ppom-add-fields-js-action').attr('data-copy-model-id', model_id_no);
+        clone_new_field.find('.ppom-add-fields-js-action').addClass('ppom-add-field');
+        clone_new_field.find('.ppom-add-fields-js-action').addClass('ppom-insertafter-field');
+        clone_new_field.find('.ppom-add-fields-js-action').html('Add Field');
+        clone_new_field.removeClass('ppom_sort_id_'+model_id_no+'');
         clone_new_field.addClass('ppom_sort_id_'+field_no+'');
         
         // field attr name apply on all fields meta with ppom-meta-field class 
@@ -415,11 +470,20 @@ jQuery(function($){
         var option_selector   = clone_new_field.find('.ppom-option-keys');  
         var add_cond_selector = clone_new_field.find('.ppom-conditional-keys'); 
 
+        // reset option to one
+        clone_new_field.find('[data-table-id="image"] .data-options').remove();
+        clone_new_field.find('[data-table-id="audio"] .pre-upload-box li').remove();
+        clone_new_field.find('[data-table-id="imageselect"] .pre-upload-box li').remove();
+        clone_new_field.find('.data-options').not(':last').remove();
+        clone_new_field.find('.webcontact-rules').not(':last').remove();
+
         ppom_create_option_index(option_selector, field_index , option_index, ppom_option_type);
         ppom_add_condition_set_index(add_cond_selector, field_index, field_type, option_index);
         
         // popup fields on model
-        $('#ppom_field_model_'+field_no+'').modal('show');
+        $("body").append(append_overly_model);
+        ppom_close_popup();
+        $('#ppom_field_model_'+field_no+'').fadeIn();
 
         field_no++;
     });
@@ -547,10 +611,6 @@ jQuery(function($){
     
         e.preventDefault();
         $(this).closest('li').remove();
-    });
-
-    $(document).on('click', '.media-button', function(){
-        $('body').addClass('modal-open');
     });
 
 

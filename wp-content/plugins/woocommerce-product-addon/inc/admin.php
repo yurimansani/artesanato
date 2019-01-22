@@ -40,7 +40,7 @@ function ppom_admin_product_meta_column( $column, $post_id ) {
                 	echo sprintf(__('<a href="%s">%s</a>', "ppom"), $url_edit, $meta_title);
                 	echo ', ';
             	}
-            } else if ( $ppom->settings ){
+            } else if ( $ppom->ppom_settings ){
                 $url_edit = add_query_arg(array('productmeta_id'=> $ppom->meta_id, 'do_meta'=>'edit'), $ppom_settings_url);
                 echo sprintf(__('<a href="%s">%s</a>', "ppom"), $url_edit, $ppom->meta_title);
             }else{
@@ -406,11 +406,13 @@ function ppom_admin_simplify_meta($meta) {
 function ppom_admin_bar_menu() {
 
 	if( ! is_product() ) return;
-
+	
 	global $wp_admin_bar, $product;
-
+	
 	$product_id = ppom_get_product_id( $product ); 
 	$ppom		= new PPOM_Meta( $product_id );
+	
+	if( ! $ppom->is_exists ) return;
 
 	$ppom_setting_url = admin_url( 'admin.php');
 	$ppom_setting_url = add_query_arg(array('page'=>'ppom',

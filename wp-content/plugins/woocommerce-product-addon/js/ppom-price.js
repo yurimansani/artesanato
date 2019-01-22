@@ -83,6 +83,17 @@ jQuery(function($){
     });
     
     
+    // Delete option from price table
+    // Since 16.4
+    $(document).on('click', '.ppom-delete-option-table', function(e) {
+       
+       var field_name   = $(this).closest('tr').attr('data-data_name');
+       var option_id    = $(this).closest('tr').attr('data-option_id');
+       if( field_name ) {
+           
+           ppom_delete_option_from_price_table( field_name, option_id );
+       }
+    });
 });
 
 
@@ -217,14 +228,13 @@ function ppom_update_option_prices() {
         // Totals the options
         ppom_option_total += option_price_with_qty;
         
-        // console.log(show_option_price_indivisually);
         // Check if to shos options or not
         if( ! show_option_price_indivisually ) return ;
         var price_tag = ppom_get_wc_price(option.price);
         
         var option_label_with_qty = option.label+' '+jQuery(price_tag).html()+' x '+ppom_get_order_quantity();
         
-        ppom_add_price_item_in_table( option_label_with_qty, option_price_with_qty, 'ppom-variable-price');
+        ppom_add_price_item_in_table( option_label_with_qty, option_price_with_qty, 'ppom-variable-price', '', option);
         
     });
     /** ====== Options price variable =========== ***/
@@ -241,7 +251,7 @@ function ppom_update_option_prices() {
         if( option.apply !== 'onetime') return;
         var option_label_with_qty = option.label
         
-        ppom_add_price_item_in_table( option_label_with_qty, option.price, 'ppom-fixed-price');
+        ppom_add_price_item_in_table( option_label_with_qty, option.price, 'ppom-fixed-price', '', option);
         
         // Totals the options
         ppom_option_total += parseFloat(option.price);
@@ -399,9 +409,15 @@ function ppom_calculate_totals(ppom_total_discount, productBasePrice, ppom_optio
 }
 
 // Adding TDs item in price container
-function ppom_add_price_item_in_table( label, price, item_class, append_to_price) {
+function ppom_add_price_item_in_table( label, price, item_class, append_to_price, option) {
     
     var formatted_price = '';
+    var row_id          = '';
+    var row_data_name   = '';
+    if( option !== undefined ) {
+        row_id = option.option_id;
+        row_data_name = option.data_name;
+    }
     
     if(price == 0) return;
     
@@ -419,15 +435,19 @@ function ppom_add_price_item_in_table( label, price, item_class, append_to_price
     
     ppomPriceListContainerRow = jQuery('<tr/>')
                                 .addClass('ppom-option-price-list')
+                                .attr('data-option_id', row_id)
+                                .attr('data-data_name', row_data_name)
                                 .appendTo(ppomPriceListContainer);
                                 
     if( item_class ) {
         ppomPriceListContainerRow.addClass(item_class);
     }
-                                
-    /*var ppomListItem        = jQuery('<td/>')
-                                .addClass( item_class )
-                                .appendTo(ppomPriceListContainerRow);*/
+  
+    // Delete Option
+    if( row_data_name ) {
+        label = '<span class="fa fa-times ppom-delete-option-table" title="Remove"></span> '+label;
+    }
+    
     // Label Item
     var totalWithoutFixedLabel  = jQuery('<th/>')
                                 .html( label )
@@ -759,4 +779,28 @@ function ppom_get_order_quantity(){
 function ppom_set_order_quantity(qty){
     
     wc_product_qty.val(qty);
+}
+
+// Deleting option from price table
+function ppom_delete_option_from_price_table( field_name, option_id ) {
+    
+    var field_type = ppom_get_field_type_by_id( field_name );
+    console.log(field_type);
+    
+    switch( field_type ) {
+        
+        case 'palettes':
+        case 'image':
+        case 'radio':
+        case 'checkbox':
+            
+            jQuery("#"+option_id).prop('checked', false);
+            ppom_update_option_prices();
+        break;
+        
+        case 'select':
+            jQuery("#"+field_name).val('')
+            ppom_update_option_prices();
+        break;
+    }
 }

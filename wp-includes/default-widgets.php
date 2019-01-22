@@ -63,6 +63,3 @@ require_once( ABSPATH . WPINC . '/widgets/class-wp-nav-menu-widget.php' );
 
 /** WP_Widget_Custom_HTML class */
 require_once( ABSPATH . WPINC . '/widgets/class-wp-widget-custom-html.php' );
-
-/** WP_Widget_Photo_Text class */
-require_once( ABSPATH . WPINC . '/widgets/photo-text/class-wp-widget-photo-text.php' );

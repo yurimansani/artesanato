@@ -1,4 +1,4 @@
-.ti-sites-lib {
+.templates-wrapper{
 	display: -ms-grid;
 	display: grid;
 
@@ -6,6 +6,7 @@
 	-ms-grid-columns: (minmax(32%, 1fr))[auto-fill];
 	grid-row-gap: 20px;
 	grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+	margin-bottom: 20px;
 }
 
 .ti-sites-lib__preview {
@@ -151,6 +152,10 @@
 	-ms-flex-item-align: end;
 }
 
+.modal__footer .after__actions .button-link{
+	float: left;
+}
+
 .modal__content.import__done {
 	flex-direction: column;
 	padding-bottom: 20px;
@@ -174,6 +179,7 @@ a.expander {
 .skip-wrap {
     width: 100%;
     text-align: center;
+	margin-bottom: 1em;
 }
 
 .is__onboarding {
@@ -241,7 +247,7 @@ a.expander {
 	justify-content: center;
 }
 
-.is__onboarding .ti-sites-lib > div,
+.is__onboarding .ti-sites-lib > div:not(.tabs-component),
 .migrate-notice .ti-sites-lib > div {
 	width: 32%;
 	margin-right: 2%;
@@ -421,4 +427,88 @@ a.expander {
 
 .about-wrap h3{
 	margin-top: 0;
+}
+
+
+/* Tabs component */
+.tabs-component{
+	width: 100%;
+}
+.tabs-component-tabs {
+	border: solid 1px #ddd;
+	border-radius: 6px;
+	margin-bottom: 5px;
+}
+
+@media (min-width: 700px) {
+	.tabs-component-tabs {
+		border: 0;
+		align-items: stretch;
+		display: flex;
+		justify-content: flex-start;
+		margin-bottom: -1px;
+	}
+}
+
+.tabs-component-tab {
+	color: #999;
+	font-size: 14px;
+	font-weight: 600;
+	margin-right: 0;
+	list-style: none;
+}
+
+.tabs-component-tab:not(:last-child) {
+	border-bottom: dotted 1px #ddd;
+}
+
+.tabs-component-tab:hover {
+	color: #666;
+}
+
+.tabs-component-tab.is-active {
+	color: #000;
+}
+
+.tabs-component-tab.is-disabled * {
+	color: #cdcdcd;
+	cursor: not-allowed !important;
+}
+
+@media (min-width: 700px) {
+	.tabs-component-tab {
+		background-color: #fff;
+		border: solid 1px #ddd;
+		border-radius: 3px 3px 0 0;
+		margin-right: .5em;
+		transform: translateY(2px);
+		transition: transform .3s ease;
+	}
+
+	.tabs-component-tab.is-active {
+		border-bottom: solid 1px #fff;
+		z-index: 2;
+		transform: translateY(0);
+	}
+}
+
+.tabs-component-tab-a {
+	align-items: center;
+	color: inherit;
+	display: flex;
+	padding: .75em 1em;
+	text-decoration: none;
+	text-transform: capitalize;
+}
+
+.template-serach-wrapper{
+	text-align: right;
+	width: 100%;
+	margin-bottom: 20px;
+}
+.template-serach{
+	line-height: 1.5;
+	font-size: 16px;
+	font-weight: 300;
+	padding: 3px 5px;
 }

@@ -1,4 +1,10 @@
 
+ ### v2.2.45 - 2018-12-13 
+ **Changes:** 
+ * Add Gutenberg support
+* Fix the issue with the description meta box that was not saving  
+* Fix a styling issue that appears on single product edited with Elementor
+ 
  ### v2.2.44 - 2018-12-03 
  **Changes:** 
  * Fix the problem with map section in microsoft edge

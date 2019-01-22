@@ -16,26 +16,17 @@
 				<template v-if="Object.keys(themeStrings).length">
 				<h3 v-if="containsKey(themeStrings, 'templates_title')">{{themeStrings.templates_title}}</h3>
 				<p v-if="containsKey(themeStrings, 'templates_description')">{{themeStrings.templates_description}}</p>
+				<div class="skip-wrap" v-if="this.$store.state.onboard === 'yes' && ! isLoading">
+					<a @click="cancelOnboarding" class="skip-onboarding button button-primary">
+						{{strings.later}}
+					</a>
+				</div>
 				</template>
 				<div class="ti-sites-lib">
-					<default-item v-if="this.$store.state.sitesData.default_template"></default-item>
-					<div v-for="site in sites.local">
-						<SiteItem :site_data="site"></SiteItem>
-					</div>
-					<div v-for="site in sites.remote">
-						<SiteItem :site_data="site"></SiteItem>
-					</div>
-					<div v-for="site in sites.upsell">
-						<SiteItem :site_data="site"></SiteItem>
-					</div>
+					<EditorsTabs></EditorsTabs>
 					<Preview v-if="previewOpen"></Preview>
 				</div>
 			</template>
-		</div>
-		<div class="skip-wrap" v-if="this.$store.state.onboard === 'yes' && ! isLoading">
-			<a @click="cancelOnboarding" class="skip-onboarding button button-primary">
-				{{strings.later}}
-			</a>
 		</div>
 		<import-modal v-if="modalOpen">
 		</import-modal>
@@ -44,12 +35,10 @@
 
 <script>
 	import Loader from './loader.vue'
-	import SiteItem from './site-item.vue'
 	import Preview from './preview.vue'
 	import ImportModal from './import-modal.vue'
 	import MigrateNotice from './migrate-notice.vue'
-	import DefaultItem from './default-item.vue'
-
+	import EditorsTabs from './editors-tabs.vue';
 	module.exports = {
 		name: 'app',
 		data: function () {
@@ -60,9 +49,6 @@
 		computed: {
 			isLoading: function () {
 				return this.$store.state.ajaxLoader
-			},
-			sites: function () {
-				return this.$store.state.sitesData
 			},
 			previewOpen: function () {
 				return this.$store.state.previewOpen
@@ -87,11 +73,10 @@
 		},
 		components: {
 			Loader,
-			SiteItem,
 			Preview,
 			ImportModal,
 			MigrateNotice,
-			DefaultItem,
+			EditorsTabs,
 		},
 	}
 </script>

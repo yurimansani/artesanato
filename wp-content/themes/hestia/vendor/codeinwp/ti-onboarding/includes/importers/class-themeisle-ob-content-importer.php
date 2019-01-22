@@ -61,12 +61,12 @@ class Themeisle_OB_Content_Importer {
 
 		do_action( 'themeisle_ob_after_xml_import' );
 
-		print_r( 'Content imported.' . "\n", false );
+//		//print_r( 'Content imported.' . "\n", false );
 		$this->maybe_bust_elementor_cache();
 
 		// Set front page.
 		if ( isset( $body['frontPage'] ) ) {
-			$this->setup_front_page( $body['frontPage'] );
+			$frontpage_id = $this->setup_front_page( $body['frontPage'] );
 		}
 		do_action( 'themeisle_ob_after_front_page_setup' );
 
@@ -76,7 +76,14 @@ class Themeisle_OB_Content_Importer {
 		}
 		do_action( 'themeisle_ob_after_shop_pages_setup' );
 
-		die();
+		if( !empty( $frontpage_id ) ) {
+			wp_send_json_success( array(
+				'message' => 'Success',
+				'frontpage_id' => $frontpage_id
+			) );
+		}
+
+		wp_send_json_error('error', 500);
 	}
 
 	/**
@@ -107,13 +114,13 @@ class Themeisle_OB_Content_Importer {
 	 */
 	private function setup_front_page( $args ) {
 		if ( ! is_array( $args ) ) {
-			print_r( 'Invalid front page option.' . "\n" );
+			//print_r( 'Invalid front page option.' . "\n" );
 
 			return;
 		}
 
 		if ( $args['front_page'] === null && $args['blog_page'] === null ) {
-			print_r( 'No front page to set up.' . "\n" );
+			//print_r( 'No front page to set up.' . "\n" );
 
 			return;
 		}
@@ -134,7 +141,10 @@ class Themeisle_OB_Content_Importer {
 			}
 		}
 
-		print_r( 'Front page set up.' . "\n", false );
+		//print_r( 'Front page set up.' . "\n", false );
+		if ( isset( $front_page_obj->ID ) ) {
+			return $front_page_obj->ID;
+		}
 	}
 
 	/**
@@ -144,12 +154,12 @@ class Themeisle_OB_Content_Importer {
 	 */
 	private function setup_shop_pages( $pages ) {
 		if ( ! class_exists( 'WooCommerce' ) ) {
-			print_r( 'WooCommerce not available.' . "\n", false );
+			//print_r( 'WooCommerce not available.' . "\n", false );
 
 			return;
 		}
 		if ( ! is_array( $pages ) ) {
-			print_r( 'Cannot set up shop pages.' . "\n", false );
+			//print_r( 'Cannot set up shop pages.' . "\n", false );
 
 			return;
 		}
@@ -161,7 +171,7 @@ class Themeisle_OB_Content_Importer {
 				}
 			}
 		}
-		print_r( 'Shop pages set up.' . "\n", false );
+		//print_r( 'Shop pages set up.' . "\n", false );
 	}
 
 	/**
@@ -177,7 +187,7 @@ class Themeisle_OB_Content_Importer {
 					),
 				)
 			);
-			print_r( 'Busted Elementor Cache.' . "\n", false );
+			//print_r( 'Busted Elementor Cache.' . "\n", false );
 		}
 	}
 

@@ -69,8 +69,9 @@
 					<button class="button button-primary" :disabled="! checIfShouldImport" v-on:click="startImport">{{strings.import_btn}}</button>
 				</template>
 				<div v-else class="after__actions">
-					<button class="button button-secondary" v-if="this.$store.state.onboard !== 'yes'" v-on:click="resetImport">{{strings.back}}</button>
-					<button class="button button-primary" v-on:click="redirectToHome">{{strings.go_to_site}}</button>
+					<a class="button-link" v-if="this.$store.state.onboard !== 'yes'" v-on:click="resetImport">{{strings.back}}</a>
+					<button class="button button-secondary" v-on:click="redirectToHome">{{strings.go_to_site}}</button>
+					<button class="button button-primary" v-on:click="editTemplate">{{strings.edit_template}}</button>
 				</div>
 			</div>
 		</div>
@@ -81,6 +82,7 @@
 	import { directive as onClickaway } from 'vue-clickaway'
 	import Stepper from './stepper.vue'
 	import Loader from './loader.vue'
+	import Tabs from './tabs.vue'
 
 	export default {
 		name: 'import-modal',
@@ -128,6 +130,12 @@
 			willInstallPlugin: function ( slug ) {
 				return this.$store.state.importOptions.installablePlugins[ slug ];
 			},
+			getEditor:function(){
+				return this.$store.state.editor;
+			},
+			getPageId: function(){
+				return this.$store.state.frontPageId;
+			},
 			closeModal: function () {
 				if ( this.importing ) {
 					return false
@@ -159,6 +167,18 @@
 			},
 			resetImport: function () {
 				this.$store.commit( 'resetStates' );
+			},
+			editTemplate: function (  ) {
+				var editor = this.getEditor();
+				var pageId = this.getPageId();
+				var url = this.homeUrl;
+				if( editor === 'elementor'){
+					url = this.homeUrl + '/wp-admin/post.php?post='+pageId+'&action=elementor';
+				}
+				if( editor === 'gutenberg'){
+					url = this.homeUrl + '/wp-admin/post.php?post='+pageId+'&action=edit';
+				}
+				window.location.replace( url );
 			}
 		},
 		directives: {
@@ -167,6 +187,7 @@
 		components: {
 			Stepper,
 			Loader,
+			Tabs
 		}
 	}
 </script>

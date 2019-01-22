@@ -15,6 +15,13 @@
  * @package themeisle-onboarding
  */
 class Themeisle_OB_Rest_Server {
+
+	/**
+	 * Frontpage Id
+	 * @var
+	 */
+	public $frontpage_id;
+
 	/**
 	 * Initialize the rest functionality.
 	 */
@@ -124,75 +131,99 @@ class Themeisle_OB_Rest_Server {
 			return array();
 		}
 		$i18n                 = isset( $theme_support[0]['i18n'] ) ? $theme_support[0]['i18n'] : array();
+		$editors              = isset( $theme_support[0]['editors'] ) ? $theme_support[0]['editors'] : array();
 		$migrate_data         = isset( $theme_support[0]['can_migrate'] ) ? $theme_support[0]['can_migrate'] : array();
-		$local_data           = isset( $theme_support[0]['local'] ) ? $theme_support[0]['local'] : array();
-		$remote_data          = isset( $theme_support[0]['remote'] ) ? $theme_support[0]['remote'] : array();
-		$upsell_data          = isset( $theme_support[0]['upsell'] ) ? $theme_support[0]['upsell'] : array();
 		$default_template     = isset( $theme_support[0]['default_template'] ) ? $theme_support[0]['default_template'] : array();
 		$pro_link             = isset( $theme_support[0]['pro_link'] ) ? $theme_support[0]['pro_link'] : '';
 		$data                 = array();
 		$data['i18n']         = $i18n;
+		$data['editors']      = $editors;
 		$data['migrate_data'] = $this->get_migrateable( $migrate_data );
 
-		foreach ( $local_data as $slug => $args ) {
-			$json_path = get_template_directory() . '/onboarding/' . $slug . '/data.json';
+		$editors = array(
+			'elementor',
+			'gutenberg'
+		);
 
-			if ( ! file_exists( $json_path ) || ! is_readable( $json_path ) ) {
+		require_once( ABSPATH . '/wp-admin/includes/file.php' );
+		global $wp_filesystem;
+
+		foreach ( $editors as $template_editor ){
+			$local_data = isset( $theme_support[0]['local'][$template_editor] ) ? $theme_support[0]['local'][$template_editor] : array();
+			if( empty($local_data) ){
 				continue;
 			}
 
-			require_once( ABSPATH . '/wp-admin/includes/file.php' );
-			global $wp_filesystem;
-			WP_Filesystem();
-			$json = $wp_filesystem->get_contents( $json_path );
+			foreach ( $local_data as $slug => $args ){
+				$json_path = get_template_directory() . '/onboarding/' . $slug . '/data.json';
+				if ( ! file_exists( $json_path ) || ! is_readable( $json_path ) ) {
+					continue;
+				}
 
-			$data['local'][ $slug ]                 = json_decode( $json, true );
-			$data['local'][ $slug ]['title']        = esc_html( $args['title'] );
-			$data['local'][ $slug ]['demo_url']     = esc_url( $args['url'] );
-			$data['local'][ $slug ]['content_file'] = get_template_directory() . '/onboarding/' . $slug . '/export.xml';
-			$data['local'][ $slug ]['screenshot']   = esc_url( get_template_directory_uri() . '/onboarding/' . $slug . '/screenshot.png' );
-			$data['local'][ $slug ]['source']       = 'local';
+				WP_Filesystem();
+				$json = $wp_filesystem->get_contents( $json_path );
+
+				$data['local'][$template_editor][ $slug ]                 = json_decode( $json, true );
+				$data['local'][$template_editor][ $slug ]['title']        = esc_html( $args['title'] );
+				$data['local'][$template_editor][ $slug ]['demo_url']     = esc_url( $args['url'] );
+				$data['local'][$template_editor][ $slug ]['content_file'] = get_template_directory() . '/onboarding/' . $slug . '/export.xml';
+				$data['local'][$template_editor][ $slug ]['screenshot']   = esc_url( get_template_directory_uri() . '/onboarding/' . $slug . '/screenshot.png' );
+				$data['local'][$template_editor][ $slug ]['source']       = 'local';
+			}
 		}
 
-		foreach ( $remote_data as $slug => $args ) {
-			$request       = wp_remote_get( $args['url'] . '/wp-json/ti-demo-data/data' );
-			$response_code = wp_remote_retrieve_response_code( $request );
-
-			if ( $response_code !== 200 ) {
+		foreach ( $editors as $template_editor ) {
+			$remote_data = isset( $theme_support[0]['remote'][ $template_editor ] ) ? $theme_support[0]['remote'][ $template_editor ] : array();
+			if ( empty( $remote_data ) ) {
 				continue;
 			}
+			foreach ( $remote_data as $slug => $args ) {
+				$request       = wp_remote_get( $args['url'] . '/wp-json/ti-demo-data/data' );
+				$response_code = wp_remote_retrieve_response_code( $request );
 
-			if ( empty( $request['body'] ) || ! isset( $request['body'] ) ) {
-				continue;
+				if ( $response_code !== 200 ) {
+					continue;
+				}
+
+				if ( empty( $request['body'] ) || ! isset( $request['body'] ) ) {
+					continue;
+				}
+
+				$data['remote'][$template_editor][ $slug ]               = json_decode( $request['body'], true );
+				$data['remote'][$template_editor][ $slug ]['title']      = esc_html( $args['title'] );
+				$data['remote'][$template_editor][ $slug ]['demo_url']   = esc_url( $args['url'] );
+				$data['remote'][$template_editor][ $slug ]['screenshot'] = esc_url( $args['screenshot'] );
+				$data['remote'][$template_editor][ $slug ]['source']     = 'remote';
 			}
-
-			$data['remote'][ $slug ]               = json_decode( $request['body'], true );
-			$data['remote'][ $slug ]['title']      = esc_html( $args['title'] );
-			$data['remote'][ $slug ]['demo_url']   = esc_url( $args['url'] );
-			$data['remote'][ $slug ]['screenshot'] = esc_url( $args['screenshot'] );
-			$data['remote'][ $slug ]['source']     = 'remote';
 		}
 
-		foreach ( $upsell_data as $slug => $args ) {
-			$request       = wp_remote_get( $args['url'] . '/wp-json/ti-demo-data/data' );
-			$response_code = wp_remote_retrieve_response_code( $request );
-			if ( $response_code !== 200 ) {
+		foreach ( $editors as $template_editor ) {
+			$upsell_data = isset( $theme_support[0]['upsell'][$template_editor] ) ? $theme_support[0]['upsell'][$template_editor] : array();
+			if( empty($upsell_data) ){
 				continue;
 			}
-			if ( empty( $request['body'] ) || ! isset( $request['body'] ) ) {
-				continue;
+			foreach ( $upsell_data as $slug => $args ) {
+				$request       = wp_remote_get( $args['url'] . '/wp-json/ti-demo-data/data' );
+				$response_code = wp_remote_retrieve_response_code( $request );
+				if ( $response_code !== 200 ) {
+					continue;
+				}
+				if ( empty( $request['body'] ) || ! isset( $request['body'] ) ) {
+					continue;
+				}
+				$data['upsell'][$template_editor][ $slug ]               = json_decode( $request['body'], true );
+				$data['upsell'][$template_editor][ $slug ]['title']      = esc_html( $args['title'] );
+				$data['upsell'][$template_editor][ $slug ]['demo_url']   = esc_url( $args['url'] );
+				$data['upsell'][$template_editor][ $slug ]['screenshot'] = esc_url( $args['screenshot'] );
+				$data['upsell'][$template_editor][ $slug ]['source']     = 'remote';
+				$data['upsell'][$template_editor][ $slug ]['in_pro']     = true;
 			}
-			$data['upsell'][ $slug ]               = json_decode( $request['body'], true );
-			$data['upsell'][ $slug ]['title']      = esc_html( $args['title'] );
-			$data['upsell'][ $slug ]['demo_url']   = esc_url( $args['url'] );
-			$data['upsell'][ $slug ]['screenshot'] = esc_url( $args['screenshot'] );
-			$data['upsell'][ $slug ]['source']     = 'remote';
-			$data['upsell'][ $slug ]['in_pro']     = true;
 		}
 
 		if ( !empty( $default_template ) ) {
 			$data['default_template']['screenshot'] = $default_template['screenshot'];
 			$data['default_template']['name']       = $default_template['name'];
+			$data['default_template']['editor']     = $default_template['editor'];
 		}
 
 		if ( isset( $pro_link ) ) {
@@ -261,6 +292,9 @@ class Themeisle_OB_Rest_Server {
 		}
 		$content_importer = new Themeisle_OB_Content_Importer();
 		$content_importer->import_remote_xml( $request );
+		if( !empty( $frontpage_id ) ){
+			$this->frontpage_id = $frontpage_id;
+		}
 	}
 
 	/**
@@ -318,6 +352,6 @@ class Themeisle_OB_Rest_Server {
 			wp_send_json_error( 'error', 500 );
 		}
 		set_theme_mod( $params['theme_mod'], 'yes' );
-		wp_send_json_success( 'success', 200 );
+		wp_send_json_success( $this->frontpage_id );
 	}
 }

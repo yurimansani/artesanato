@@ -757,20 +757,40 @@ class NM_Form {
             
 			
 			$html .= '<label for="'.esc_attr($option_id).'"> ';
-				$html .= '<input id="'.esc_attr($option_id).'" ';
-				$html .= 'data-price="'.esc_attr($option_price).'" ';
-				$html .= 'data-label="'.esc_attr($color_label).'"';
-				$html   .= 'data-title="'.esc_attr($title).'"'; // Input main label/title
-				$html .= 'type="radio" ';
-				$html .= 'name="'.esc_attr($name).'" ';
-				$html .= 'value="'.esc_attr($raw_label).'" ';
-				$html .= 'data-onetime="'.esc_attr($onetime).'"';
-                $html .= 'data-taxable="'.esc_attr($taxable).'"';
-                $html .= 'data-without_tax="'.esc_attr($without_tax).'"';
-				$html .= $checked_option;
-				$html .= '>';
 			
-				
+			if ($args['multiple_allowed'] == 'on') {
+    			$html .= '<input id="'.esc_attr($option_id).'" ';
+    			$html .= 'data-price="'.esc_attr($option_price).'" ';
+    			$html .= 'data-label="'.esc_attr($color_label).'"';
+    			$html   .= 'data-title="'.esc_attr($title).'"'; // Input main label/title
+    			$html .= 'type="checkbox" ';
+    			$html .= 'name="'.esc_attr($name).'[]" ';
+    			$html .= 'value="'.esc_attr($raw_label).'" ';
+    			$html .= 'data-onetime="'.esc_attr($onetime).'" ';
+                $html .= 'data-taxable="'.esc_attr($taxable).'" ';
+                $html .= 'data-without_tax="'.esc_attr($without_tax).'" ';
+                $html .= 'data-optionid="'.esc_attr($option_id).'" ';
+                $html .= 'data-data_name="'.esc_attr($id).'" ';
+    			$html .= $checked_option;
+    			$html .= '>';
+    		}else{
+    			
+    			$html .= '<input id="'.esc_attr($option_id).'" ';
+    			$html .= 'data-price="'.esc_attr($option_price).'" ';
+    			$html .= 'data-label="'.esc_attr($color_label).'"';
+    			$html   .= 'data-title="'.esc_attr($title).'"'; // Input main label/title
+    			$html .= 'type="radio" ';
+    			$html .= 'name="'.esc_attr($name).'" ';
+    			$html .= 'value="'.esc_attr($raw_label).'" ';
+    			$html .= 'data-onetime="'.esc_attr($onetime).'" ';
+                $html .= 'data-taxable="'.esc_attr($taxable).'" ';
+                $html .= 'data-without_tax="'.esc_attr($without_tax).'" ';
+                $html .= 'data-optionid="'.esc_attr($option_id).'" ';
+                $html .= 'data-data_name="'.esc_attr($id).'" ';
+    			$html .= $checked_option;
+    			$html .= '>';
+    		}
+		
 			$html .= '<span class="ppom-single-palette" ';
 			$html	.= 'title="'.esc_attr($option_label).'" data-html="true" data-toggle="tooltip"';
 			$html	.= 'style="background-color:'.esc_attr($color_code).';';
@@ -825,10 +845,11 @@ class NM_Form {
 	        $html .= '<div class="ppom_upload_image_box">';
 			foreach ($images as $image){
 						
-				$image_full   = isset($image['link']) ? $image['link'] : 0;
-				$image_id   = isset($image['id']) ? $image['id'] : 0;
-				$image_title= isset($image['title']) ? stripslashes($image['title']) : 0;
-				$image_price= isset($image['price']) ? $image['price'] : 0;
+				$image_full     = isset($image['link']) ? $image['link'] : 0;
+				$image_id       = isset($image['id']) ? $image['id'] : 0;
+				$image_title    = isset($image['title']) ? stripslashes($image['title']) : 0;
+				$image_price    = isset($image['price']) ? $image['price'] : 0;
+				$option_id      = $id.'-'.$image_id;
 				
 				// If price set in %
 				if(strpos($image['price'],'%') !== false){
@@ -865,9 +886,12 @@ class NM_Form {
 				$html	.= '<div class="input_image">';
 				if ($args['multiple_allowed'] == 'on') {
 					$html	.= '<input type="checkbox" ';
+					$html   .= 'id="'.esc_attr($option_id).'"';
 					$html   .= 'data-price="'.esc_attr($image_price).'" ';
 					$html   .= 'data-label="'.esc_attr($image_title).'" ';
-					$html   .= 'data-title="'.esc_attr($title).'"'; // Input main label/title
+					$html   .= 'data-title="'.esc_attr($title).'" '; // Input main label/title
+					$html   .= 'data-optionid="'.esc_attr($option_id).'" ';
+                    $html   .= 'data-data_name="'.esc_attr($id).'" ';
 					$html   .= 'name="'.$args['name'].'[]" ';
 					$html   .= 'value="'.esc_attr(json_encode($image)).'" />';
 				}else{
@@ -875,10 +899,13 @@ class NM_Form {
 					//default selected
 					$checked = ($image['title'] == $default_value ? 'checked = "checked"' : '' );
 					$html	.= '<input type="radio" ';
-					$html   .= 'data-price="'.esc_attr($image_price).'"';
+					$html   .= 'id="'.esc_attr($option_id).'"';
+					$html   .= 'data-price="'.esc_attr($image_price).'" ';
 					$html   .= 'data-label="'.esc_attr($image_title).'" ';
-					$html   .= 'data-title="'.esc_attr($title).'"'; // Input main label/title
+					$html   .= 'data-title="'.esc_attr($title).'" '; // Input main label/title
 					$html   .= 'data-type="'.esc_attr($type).'" name="'.$args['name'].'[]" ';
+					$html   .= 'data-optionid="'.esc_attr($option_id).'" ';
+                    $html   .= 'data-data_name="'.esc_attr($id).'" ';
 					$html   .= 'value="'.esc_attr(json_encode($image)).'" '.$checked_option.' />';
 				}
 					
@@ -946,7 +973,9 @@ class NM_Form {
 							$html   .= 'id="'.esc_attr($option_id).'"';
 							$html   .= 'data-price="'.esc_attr($image_price).'" ';
 							$html   .= 'data-label="'.esc_attr($image_title).'" ';
-							$html   .= 'data-title="'.esc_attr($title).'"'; // Input main label/title
+							$html   .= 'data-title="'.esc_attr($title).'" '; // Input main label/title
+							$html   .= 'data-optionid="'.esc_attr($option_id).'" ';
+                            $html   .= 'data-data_name="'.esc_attr($id).'" ';
 							$html   .= 'name="'.$args['name'].'[]" ';
 							$html   .= 'value="'.esc_attr(json_encode($image)).'" '.esc_attr($checked_option).' />';
 						}else{
@@ -954,13 +983,16 @@ class NM_Form {
 							//default selected
 				// 			$checked = ($image['title'] == $default_value ? 'checked = "checked"' : '' );
 							$html	.= '<input type="radio" ';
-							$html   .= 'id="'.esc_attr($option_id).'"';
-							$html   .= 'data-price="'.esc_attr($image_price).'"';
+							$html   .= 'id="'.esc_attr($option_id).'" ';
+							$html   .= 'data-price="'.esc_attr($image_price).'" ';
 							$html   .= 'data-label="'.esc_attr($image_title).'" ';
-							$html   .= 'data-title="'.esc_attr($title).'"'; // Input main label/title
+							$html   .= 'data-title="'.esc_attr($title).'" '; // Input main label/title
+							$html   .= 'data-optionid="'.esc_attr($option_id).'" ';
+                            $html   .= 'data-data_name="'.esc_attr($id).'" ';
 							$html   .= 'data-type="'.esc_attr($type).'" name="'.$args['name'].'[]" ';
 							$html   .= 'value="'.esc_attr(json_encode($image)).'" '.esc_attr($checked_option).' />';
 						}
+						
 					if($image['id'] != ''){
 						if( isset($image['url']) && $image['url'] != '' ) {
 							$html .= '<a href="'.$image['url'].'"><img src="'.wp_get_attachment_thumb_url( $image['id'] ).'" /></a>';

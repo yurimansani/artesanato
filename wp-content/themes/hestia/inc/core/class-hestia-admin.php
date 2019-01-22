@@ -28,7 +28,7 @@ class Hestia_Admin {
 		$config = array(
 			'welcome_notice'      => array(
 				'type'            => 'custom',
-				'notice_class'    => 'ti-welcome-notice',
+				'notice_class'    => 'ti-welcome-notice updated',
 				'dismiss_option'  => 'hestia_notice_dismissed',
 				'render_callback' => array( $this, 'welcome_notice_content' ),
 			),
@@ -38,11 +38,11 @@ class Hestia_Admin {
 				'content' => array(
 					array(
 						'title'    => esc_html__( 'Recommended actions', 'hestia' ),
-						'text'     => esc_html__( 'Hestia now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'hestia' ),
-						'text_old' => esc_html__( 'We have compiled a list of steps for you to take so we can ensure that the experience you have using one of our products is very easy to follow.', 'hestia' ),
+						'text_old' => esc_html__( 'Hestia now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'hestia' ),
+						'text'     => esc_html__( 'We have compiled a list of steps for you to take so we can ensure that the experience you have using one of our products is very easy to follow.', 'hestia' ),
 						'button'   => array(
-							'label'     => esc_html__( 'Sites Library', 'hestia' ),
-							'link'      => esc_url( '#sites_library' ),
+							'label'     => esc_html__( 'Recommended actions', 'hestia' ),
+							'link'      => esc_url( '#recommended_actions' ),
 							'is_button' => true,
 							'blank'     => false,
 						),
@@ -485,77 +485,108 @@ class Hestia_Admin {
 		$slug            = $theme_args->__get( 'stylesheet' );
 		$notice_template = '
 			<div class="ti-notice-wrapper">
-				<div class="ti-notice-image">%1$s</div>
-				<div class="ti-notice-text">%2$s</div>
-				<div class="ti-notice-button">%3$s</div>
+				<div class="ti-notice-text">%1$s</div>
 			</div>
-			<style>%4$s</style>';
-		$image           = sprintf(
-			/* translators: 1 - logo url, 2 - theme name */
-			'<img src="%1$s" alt="%2$s"/>',
-			esc_url( get_template_directory_uri() . '/assets/img/logo.png' ),
-			$name
-		);
-		$content = sprintf(
-			/* translators: 1 - notice message */
-			'<p>%1$s</p>',
-			sprintf(
-				/* translators: theme name */
-				esc_html__( 'Thank you for installing %1$s! Let\'s get you ready. It will take only a few minutes.', 'hestia' ),
-				$name
-			)
-		);
-		$button = sprintf(
-			/* Translators: 1 - onboarding url, 2 - button text */
+			<style>%2$s</style>';
+
+		$ob_btn = sprintf(
+			/* translators: 1 - options page url, 2 - button text */
 			'<a href="%1$s" class="button button-primary" style="text-decoration: none;">%2$s</a>',
-			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
-			esc_html__( 'Getting Started', 'hestia' )
+			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ),
+			esc_html__( 'Go to the theme settings', 'hestia' )
 		);
+		$options_page_btn = sprintf(
+			/* translators: 1 - onboarding url, 2 - button text */
+			'<a href="%1$s" class="onboarding-btn">%2$s</a>',
+			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
+			sprintf( esc_html__( 'or try one of our ready to use Starter Sites', 'hestia' ) )
+		);
+
+		$content = sprintf(
+			/* translators: 1 - notice title, 2 - notice message, 3 - options page button, 4 - starter sites button, 5 - notice closing button */
+			'<h3>%1$s</h3>
+					<p>%2$s</p>
+					<p>%3$s %4$s</p>
+					<p class="ti-return-dashboard"><span>%5$s</span></p>',
+			sprintf(
+				esc_html__( 'Congratulations!', 'hestia' ),
+				$name
+			),
+			sprintf(
+				/* translators: %s - theme name */
+				esc_html__( '%s is now installed and ready to use. We\'ve assembled some links to get you started.', 'hestia' ),
+				$name
+			),
+			$ob_btn,
+			$options_page_btn,
+			esc_html__( 'Return to your dashboard', 'hestia' )
+		);
+
 		$style = '
 		.wrap .notice.ti-welcome-notice{
-			border:0;
 			padding:10px;
 			margin: 20px 0;
 		}
 		.ti-notice-wrapper {
 			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-			background: #e6edf1;
-			padding: 60px 0;
+		    justify-content: center;
+		    align-items: center;
+		    flex-direction: column;
+		    padding: 40px 0 10px;
 		}
 		.ti-notice-image, .ti-notice-text, .ti-notice-button {text-align:center;}
 		.ti-notice-image{
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    flex-direction: column;
 			width: 90px;
 			height: 90px;
 			border-radius: 50%;
 			background: #fff;
+			margin-bottom:20px;
 		}
 		.ti-notice-image img{
 			max-width:80px;
 		}
-		.ti-notice-text h3{
-			margin: 0 12px 8px;
-			padding: 0;
-			font-size: 16px;
-			font-weight: 400;
-			color: #23282d;
+		.ti-notice-text{
+			display: flex;
+			flex-direction: column;
 		}
-		.ti-notice-text p{
-			color: #59798f;
-			margin: 30px 0;
+		.ti-notice-text h3{
+		    margin: 0 12px 8px;
+		    padding: 0;
+		    font-size: 16px;
+		    font-weight: 500;
+		    color: #23282d;
+		}
+		.ti-notice-text p:first-of-type{
+			font-size: 15px;
+		}
+		.ti-notice-text .button.button-primary:active {
+			vertical-align: inherit;
+		}
+		.onboarding-btn,
+		.onboarding-btn:hover{
+		    color: inherit;
+		    text-decoration: none;
+		}
+		.ti-notice-text p.ti-return-dashboard{
+			margin-top: 30px;
+		}
+		.ti-return-dashboard span{
+			align-self: end;
+			color: #b5b5b5;
+			text-decoration: none;
+			font-weight: 300;			
+		}
+		.ti-return-dashboard span:hover {
+			cursor: pointer;
 		}
 		';
 		echo sprintf(
 			$notice_template,
-			$image,
 			$content,
-			$button,
 			$style
 		);
 	}

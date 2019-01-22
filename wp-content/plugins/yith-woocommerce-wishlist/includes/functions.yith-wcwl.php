@@ -296,6 +296,11 @@ if( !function_exists( 'yith_wcwl_get_hidden_products' ) ){
         }
 
         $hidden_products = $wpdb->get_col( $wpdb->prepare( $query, $query_args ) );
-        return apply_filters( 'yith_wcwl_hidden_products', $hidden_products );
+
+        /**
+         * array_filter was added to prevent errors when previous query returns for some reason just 0 index
+         * @since 2.2.6
+         */
+        return apply_filters( 'yith_wcwl_hidden_products', array_filter( $hidden_products ) );
     }
 }

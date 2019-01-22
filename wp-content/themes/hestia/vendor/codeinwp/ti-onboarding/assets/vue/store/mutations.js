@@ -23,9 +23,14 @@ const updateSteps = ( state, data ) => {
 const updatePlugins= ( state, data ) => {
 	state.importOptions.installablePlugins = data;
 };
-
 const updateImportOptions= ( state, data ) => {
 	state.importOptions = data;
+};
+const updateEditor=( state, data ) => {
+	state.editor = data;
+};
+const setFrontPageId = ( state, data ) => {
+	state.frontPageId = data;
 };
 
 const resetStates = ( state ) => {
@@ -56,4 +61,6 @@ export default {
 	updateImportOptions,
 	resetStates,
 	migrationComplete,
+	updateEditor,
+	setFrontPageId
 };

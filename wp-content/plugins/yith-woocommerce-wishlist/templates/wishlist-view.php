@@ -169,7 +169,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
                             <td class="product-price">
                                 <?php
                                 $base_product = $product->is_type( 'variable' ) ? $product->get_variation_regular_price( 'max' ) : $product->get_price();
-                                echo $base_product ? $product->get_price_html() : apply_filters( 'yith_free_text', __( 'Free!', 'yith-woocommerce-wishlist' ) ); 
+                                echo $base_product ? $product->get_price_html() : apply_filters( 'yith_free_text', __( 'Free!', 'yith-woocommerce-wishlist' ), $product );
                                 ?>
                             </td>
                         <?php endif ?>

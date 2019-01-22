@@ -1161,3 +1161,69 @@ if ( !function_exists( 'yith_plugin_fw_is_panel' ) ) {
         return $screen instanceof WP_Screen && strpos( $screen->id, $panel_screen_id ) !== false;
     }
 }
+
+/* === Gutenberg Support === */
+
+if( ! function_exists( 'yith_plugin_fw_is_gutenberg_enabled' ) ){
+	function yith_plugin_fw_is_gutenberg_enabled(){
+		return function_exists( 'YITH_Gutenberg' );
+	}
+}
+
+if( ! function_exists( 'yith_plugin_fw_gutenberg_add_block' ) ){
+	/**
+	 * Add new blocks to Gutenberg
+	 *
+	 * @param $blocks string|array new blocks
+	 * @return bool true if add a new blocks, false otherwise
+	 *
+	 * @author Andrea Grillo <andrea.grillo@yithemes.com>
+	 */
+	function yith_plugin_fw_gutenberg_add_blocks( $blocks ){
+		$added = false;
+		if( yith_plugin_fw_is_gutenberg_enabled() ) {
+			// ADD Blocks
+			$added = YITH_Gutenberg()->add_blocks( $blocks );
+
+			//ADD Blocks arguments
+			if( $added ){
+				YITH_Gutenberg()->set_block_args( $blocks );
+			}
+		}
+
+		return $added;
+	}
+}
+
+if( ! function_exists( 'yith_plugin_fw_gutenberg_get_registered_blocks' ) ){
+	/**
+	 * Return an array with the registered blocks
+	 *
+	 * @return array
+	 */
+	function yith_plugin_fw_gutenberg_get_registered_blocks(){
+		return yith_plugin_fw_is_gutenberg_enabled() ? YITH_Gutenberg()->get_registered_blocks() : array();
+	}
+}
+
+if( ! function_exists( 'yith_plugin_fw_gutenberg_get_to_register_blocks' ) ){
+	/**
+	 * Return an array with the blocks to register
+	 *
+	 * @return array
+	 */
+	function yith_plugin_fw_gutenberg_get_to_register_blocks(){
+		return yith_plugin_fw_is_gutenberg_enabled() ? YITH_Gutenberg()->get_to_register_blocks() : array();
+	}
+}
+
+if( ! function_exists( 'yith_plugin_fw_get_default_logo' ) ){
+	/**
+	 * Get the default SVG logo
+	 *
+	 * @return string default logo image url
+	 */
+	function yith_plugin_fw_get_default_logo(){
+		return YIT_CORE_PLUGIN_URL . '/assets/images/yith-icon.svg';
+	}
+}

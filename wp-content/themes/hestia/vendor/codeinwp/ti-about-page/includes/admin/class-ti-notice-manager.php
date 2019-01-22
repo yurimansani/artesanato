@@ -52,7 +52,35 @@ class Ti_Notice_Manager {
 	public function init() {
 		$this->handle_data();
 		add_action( 'admin_notices', array( $this, 'admin_notice' ), defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : 99999 );
-		add_action( 'admin_init', array( $this, 'remove_notice' ), defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : 99999 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_notice_scripts' ) );
+		add_action( 'wp_ajax_ti_about_dismiss_welcome_notice', array( $this, 'remove_notice' ) );
+	}
+
+	/**
+	 * Welcome notice scripts
+	 */
+	public function enqueue_notice_scripts() {
+
+		if ( get_option( self::$dismiss_key ) === 'yes' ) {
+			return;
+		}
+
+		wp_enqueue_script(
+			'ti-notice-manager-scripts',
+			TI_ABOUT_PAGE_URL . '/js/ti_notice_manager_scripts.js',
+			array(),
+			TI_ABOUT_PAGE_VERSION,
+			true
+		);
+		wp_localize_script(
+			'ti-notice-manager-scripts',
+			'tiAboutNotice',
+			array(
+				'ajaxurl'      => admin_url( 'admin-ajax.php' ),
+				'dismissNonce' => wp_create_nonce( 'remove_notice_confirmation' ),
+				'dismissKey'   => self::$dismiss_key,
+			)
+		);
 	}
 
 	/**
@@ -93,6 +121,11 @@ class Ti_Notice_Manager {
 	 * Add notice.
 	 */
 	public function admin_notice() {
+		$current_screen = get_current_screen();
+		if( $current_screen->id !== 'dashboard' && $current_screen->id !== 'themes' ) {
+			return;
+		}
+
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			return;
 		}
@@ -161,8 +194,7 @@ class Ti_Notice_Manager {
 		echo '<style>' . $style . '</style>';
 		echo '<div class="' . esc_attr( $this->notice_data['notice_class'] ) . ' notice ti-about-notice">';
 
-		echo '<a href="' . wp_nonce_url( add_query_arg( array( self::$dismiss_key => 'yes' ) ), 'remove_notice_confirmation', 'remove_notice' ) . '"
-			   class=" notice-dismiss"></a>';
+		echo '<div class="notice-dismiss"></div>';
 		call_user_func( $this->notice_data['render_callback'] );
 		echo '</div>';
 	}
@@ -171,19 +203,17 @@ class Ti_Notice_Manager {
 	 * Remove notice;
 	 */
 	public function remove_notice() {
-		if ( ! isset( $_GET[ self::$dismiss_key ] ) ) {
+
+
+		if ( ! isset( $_POST['nonce'] ) ) {
 			return;
 		}
-		if ( $_GET[ self::$dismiss_key ] !== 'yes' ) {
+		if ( ! wp_verify_nonce( $_POST['nonce'], 'remove_notice_confirmation' ) ) {
 			return;
 		}
-		if ( ! isset( $_GET['remove_notice'] ) ) {
-			return;
-		}
-		if ( ! wp_verify_nonce( $_GET['remove_notice'], 'remove_notice_confirmation' ) ) {
-			return;
-		}
+
 		update_option( self::$dismiss_key, 'yes' );
+		wp_die();
 	}
 
 	/**

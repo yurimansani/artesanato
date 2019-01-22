@@ -2,19 +2,29 @@
 /**
  * ShopIsle setup functions
  *
- * @package WordPress
+ * @package    WordPress
  * @subpackage Shop Isle
  */
 
 define( 'SHOP_ISLE_PHP_INCLUDE', get_template_directory() . '/inc' );
+define( 'SHOP_ISLE_PHP_INCLUDE_URI', get_template_directory_uri() . '/inc' );
+define( 'SHOP_ISLE_COMPATIBILITY_DIR', get_template_directory() . '/inc/compatibility' );
 
 /**
  * Assign the ShopIsle version to a var
  */
 
 if ( ! defined( 'SI_VERSION' ) ) {
-	define( 'SI_VERSION', '1.1.50' );
+	define( 'SI_VERSION', '1.1.51' );
 }
+
+/**
+ * Run the compatibility modules.
+ */
+require SHOP_ISLE_COMPATIBILITY_DIR . '/compatibility-runner.php';
+$runner = new Compatibility_Runner();
+$runner->init();
+
 
 /**
  * Sets the content width in pixels, based on the theme's design and stylesheet.
@@ -26,6 +36,7 @@ if ( ! defined( 'SI_VERSION' ) ) {
 function shop_isle_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'shop_isle_content_width', 980 );
 }
+
 add_action( 'after_setup_theme', 'shop_isle_content_width', 0 );
 
 /**
@@ -72,6 +83,7 @@ function shop_isle_filter_features( $array ) {
 		)
 	);
 }
+
 add_filter( 'shop_isle_filter_features', 'shop_isle_filter_features' );
 
 /**
@@ -88,6 +100,7 @@ function shop_isle_include_features() {
 		}
 	}
 }
+
 add_action( 'after_setup_theme', 'shop_isle_include_features' );
 
 if ( ! function_exists( 'shop_isle_setup' ) ) :
@@ -337,7 +350,17 @@ function shop_isle_scripts() {
 
 	wp_enqueue_script( 'owl-carousel-js', get_template_directory_uri() . '/assets/js/vendor/owl.carousel.min.js', array( 'jquery' ), '2.1.8', true );
 
-	wp_enqueue_script( 'shop-isle-custom', get_template_directory_uri() . '/assets/js/custom.js', array( 'jquery', 'flexslider', 'jquery-mb-YTPlayer' ), '20180411', true );
+	wp_enqueue_script(
+		'shop-isle-custom',
+		get_template_directory_uri() . '/assets/js/custom.js',
+		array(
+			'jquery',
+			'flexslider',
+			'jquery-mb-YTPlayer',
+		),
+		'20180411',
+		true
+	);
 
 	wp_enqueue_script( 'shop-isle-navigation', get_template_directory_uri() . '/js/navigation.min.js', array(), '20120208', true );
 
@@ -351,16 +374,6 @@ function shop_isle_scripts() {
 	}
 
 }
-
-/**
- * This is a fix for the meta wysiwyg in Gutenberg. Remove this function and the script when they'll fix it in core.
- * See https://github.com/WordPress/gutenberg/issues/7176
- */
-function shop_isle_gutenberg_meta_fix() {
-	wp_enqueue_script( 'wysiwyg-gutenberg-fix', get_template_directory_uri() . '/js/wysiwyg-gutenberg-fix.js', array( 'jquery' ), SI_VERSION );
-}
-add_action( 'enqueue_block_editor_assets', 'shop_isle_gutenberg' );
-
 
 /**
  * Enqueue Admin Styles
@@ -654,6 +667,7 @@ function shop_isle_add_id() {
 		update_option( 'shop_isle_migrate_translation', true );
 	}// End if().
 }
+
 add_action( 'shutdown', 'shop_isle_add_id' );
 
 add_action( 'wp_head', 'shop_isle_php_style' );
@@ -909,6 +923,7 @@ function shop_isle_pro_function_for_mega_menu() {
 	echo '</style>';
 
 }
+
 add_action( 'wp_footer', 'shop_isle_pro_function_for_mega_menu', 100 );
 
 /**
@@ -967,6 +982,7 @@ function shop_isle_site_title_selective_refresh( $wp_customize ) {
 	);
 
 }
+
 add_action( 'customize_register', 'shop_isle_site_title_selective_refresh' );
 
 /**

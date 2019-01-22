@@ -141,6 +141,10 @@ const importContent = function ( { commit, state }, data ) {
 		responseType: 'json',
 	} ).then( function ( response ) {
 		if ( response.ok ) {
+			console.log(response.data.data.frontpage_id);
+			if( response.data.data.frontpage_id ){
+				commit( 'setFrontPageId', response.data.data.frontpage_id);
+			}
 			console.log( '%c Imported Content.', 'color: #4B9BE7' );
 			importThemeMods( { commit, state }, data );
 		} else {

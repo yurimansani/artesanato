@@ -4,7 +4,7 @@ Tags: woocommerce, pesonalized products, woocommerce variations, woocommerce pro
 Donate link: http://www.najeebmedia.com/donate
 Requires at least: 3.5
 Tested up to: 5.0
-Stable tag: 16.0
+Stable tag: 16.4
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 5.6
@@ -83,7 +83,20 @@ Drag & Drop input fields with many options. Prices can also be added with option
 9. Attach inputs to bulk products
 
 == Changelog ==
-= 16.0 December 8, 2018 =
+= 16.4 January 16, 2019 =
+* Feature: [Palette now have option to be selected multiple](https://clients.najeebmedia.com/forums/topic/multiple-selection-for-color-palettes-on-frontend/)
+* Feature: Queries optimized for fast page loading.
+* Feature: Now option price can be removed from price table by client
+* Bug [fixed: Function not found error with latest WC/WP updates fixed](https://wordpress.org/support/topic/doesnt-work-with-latest-update-2/)
+= 16.3 January 4, 2019 =
+* Feature: [Filter added to change 'Select Options' text on shop page](https://wordpress.org/support/topic/change-select-options-button-text/)
+* Bug fixed: [Validation quantities field validation issue fixed](https://clients.najeebmedia.com/forums/topic/variations-quantity-as-required-field-not-working/)
+= 16.2 December 31, 2018 =
+* Bug fixed: [Options were not translating on cart page with WPML, it is fixed now](https://wordpress.org/support/topic/multilingual-cart-issue/)
+* Bug fixed: [Order again were not working, it is fixed now](https://clients.najeebmedia.com/forums/topic/when-customers-reorder-using-the-reorder-order-button/)
+= 16.1 December 29, 2018 =
+* Bug fixed: [Upload image from backend was not working, it is fixed](https://clients.najeebmedia.com/forums/topic/file-input-image-upload-not-working/)
+= 16.0 December 20, 2018 =
 * Feature: Now Multi Meta can be sortable Thanks @Chris Hearn for providing script
 * Feature: Awesome Admin Panel
 * Feature: Now PPOM Meta can be applied from Product Page on Frontend Using Admin Bar :):)

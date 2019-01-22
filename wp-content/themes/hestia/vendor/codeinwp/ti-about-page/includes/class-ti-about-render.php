@@ -75,7 +75,7 @@ class TI_About_Render {
 			<div class="info"><h1>Welcome to <?php echo esc_html( $this->theme['name'] ); ?>! - Version <span
 							class="version-container"><?php echo esc_html( $this->theme['version'] ); ?></span></h1>
 			</div>
-			<a href="https://themeisle.com/" target="_blank" class="wp-badge epsilon-welcome-logo"></a></div>
+			<a href="https://themeisle.com/" class="wp-badge epsilon-welcome-logo"></a></div>
 		<?php
 	}
 
@@ -361,7 +361,6 @@ class TI_About_Render {
 
 		echo '<a href="' . esc_url( $button['link'] ) . '"';
 		echo $button['is_button'] ? 'class="button button-primary"' : '';
-		echo $button['blank'] ? 'target="_blank"' : '';
 		echo '>';
 		echo $button['label'];
 		echo '</a>';
@@ -395,7 +394,7 @@ class TI_About_Render {
 				echo '<p>' . wp_kses_post( $text ) . '</p>';
 			}
 			if ( ! empty( $link_text ) && ! empty( $link ) ) {
-				echo '<a href="' . esc_url( $link ) . '" target="_blank">' . wp_kses_post( $link_text ) . '</a>';
+				echo '<a href="' . esc_url( $link ) . '">' . wp_kses_post( $link_text ) . '</a>';
 			}
 			echo '</div>';
 			echo '</div>';

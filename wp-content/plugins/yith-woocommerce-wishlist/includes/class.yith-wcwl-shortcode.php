@@ -16,6 +16,133 @@ if( ! class_exists( 'YITH_WCWL_Shortcode' ) ) {
 	 * @since 1.0.0
 	 */
 	class YITH_WCWL_Shortcode {
+
+		/**
+		 * Init shortcodes available for the plugin
+		 *
+		 * @return void
+		 */
+		public static function init() {
+			// register shortcodes
+			add_shortcode( 'yith_wcwl_wishlist', array( 'YITH_WCWL_Shortcode', 'wishlist' ) );
+			add_shortcode( 'yith_wcwl_add_to_wishlist', array( 'YITH_WCWL_Shortcode', 'add_to_wishlist' ) );
+
+			// register gutenberg blocks
+			add_action( 'init', array( 'YITH_WCWL_Shortcode', 'register_gutenberg_blocks' ) );
+			add_action( 'yith_plugin_fw_gutenberg_before_do_shortcode', array( 'YITH_WCWL_Shortcode', 'fix_for_gutenberg_blocks' ), 10, 1 );
+		}
+
+		/**
+		 * Register available gutenberg blocks
+		 *
+		 * @return void
+		 */
+		public static function register_gutenberg_blocks() {
+			$blocks = array(
+				'yith-wcwl-add-to-wishlist' => array(
+					'style'          => 'yith-wcwl-main',
+					'script'         => 'jquery-yith-wcwl',
+					'title'          => _x( 'YITH Add to Wishlist', '[gutenberg]: block name', 'yith-woocommerce-brands-add-on' ),
+					'description'    => _x( 'Shows Add to Wishlist button', '[gutenberg]: block description', 'yith-woocommerce-brands-add-on' ),
+					'shortcode_name' => 'yith_wcwl_add_to_wishlist',
+					'attributes'     => array(
+						'product_id'  => array(
+							'type'    => 'text',
+							'label'   => __( 'ID of the product to add to wishlist (leave empty to use global product)', 'yith-woocommerce-brands-add-on' ),
+							'default' => '',
+						),
+						'wishlist_url'  => array(
+							'type'    => 'text',
+							'label'   => __( 'Url of wishlist page (leave empty to use default)', 'yith-woocommerce-brands-add-on' ),
+							'default' => '',
+						),
+						'label'  => array(
+							'type'    => 'text',
+							'label'   => __( 'Button label (leave empty to use default)', 'yith-woocommerce-brands-add-on' ),
+							'default' => '',
+						),
+						'browse_wishlist_text'  => array(
+							'type'    => 'text',
+							'label'   => __( '"Browse wishlist" label (leave empty to use default)', 'yith-woocommerce-brands-add-on' ),
+							'default' => '',
+						),
+						'already_in_wishslist_text'  => array(
+							'type'    => 'text',
+							'label'   => __( '"Product already in wishlist" label (leave empty to use default)', 'yith-woocommerce-brands-add-on' ),
+							'default' => '',
+						),
+						'product_added_text'  => array(
+							'type'    => 'text',
+							'label'   => __( '"Product added to wishlist" label (leave empty to use default)', 'yith-woocommerce-brands-add-on' ),
+							'default' => '',
+						),
+						'icon'  => array(
+							'type'    => 'text',
+							'label'   => __( 'Icon for the button (use any FontAwesome valid class, or leave empty to use default)', 'yith-woocommerce-brands-add-on' ),
+							'default' => '',
+						),
+						'link_classes'  => array(
+							'type'    => 'text',
+							'label'   => __( 'Additional css classes for the button (leave empty to use default)', 'yith-woocommerce-brands-add-on' ),
+							'default' => '',
+						),
+					),
+				),
+				'yith-wcwl-wishlist' => array(
+					'style'          => 'yith-wcwl-main',
+					'script'         => 'jquery-yith-wcwl',
+					'title'          => _x( 'YITH Wishlist', '[gutenberg]: block name', 'yith-woocommerce-brands-add-on' ),
+					'description'    => _x( 'Shows list of products in wishlist', '[gutenberg]: block description', 'yith-woocommerce-brands-add-on' ),
+					'shortcode_name' => 'yith_wcwl_wishlist',
+					'attributes'     => array(
+						'pagination'    => array(
+							'type'    => 'select',
+							'label'   => __( 'Choose whether to paginate items in the wishlist or show them all', 'yith-woocommerce-brands-add-on' ),
+							'default' => 'no',
+							'options' => array(
+								'yes' => __( 'Paginate', 'yith-woocommerce-wishlist' ),
+								'no' => __( 'Do not paginate', 'yith-woocommerce-wishlist' )
+							)
+						),
+						'per_page'    => array(
+							'type'    => 'number',
+							'label'   => __( 'Number of items to show for each page', 'yith-woocommerce-brands-add-on' ),
+							'default' => '5',
+						),
+						'wishlist_id'  => array(
+							'type'    => 'text',
+							'label'   => __( 'ID of the wishlist to show (EG: K6EOWXB888ZD)', 'yith-woocommerce-brands-add-on' ),
+							'default' => '',
+						),
+					),
+				),
+			);
+
+			yith_plugin_fw_gutenberg_add_blocks( $blocks );
+		}
+
+		/**
+		 * Fix preview of Gutenberg blocks at backend
+		 *
+		 * @param $shortcode string Shortcode to render
+		 * @return void
+		 */
+		public static function fix_for_gutenberg_blocks( $shortcode ){
+			if( strpos( $shortcode, '[yith_wcwl_add_to_wishlist' ) !== false ){
+				if( strpos( $shortcode, 'product_id=""' ) !== false ){
+					$products = wc_get_products( array(
+						'type' => 'simple',
+						'limit' => 1
+					) );
+
+					if( ! empty( $products ) ){
+						global $product;
+						$product = array_shift( $products );
+					}
+				}
+			}
+		}
+
 		/**
 		 * Print the wishlist HTML.
 		 *
@@ -383,6 +510,8 @@ if( ! class_exists( 'YITH_WCWL_Shortcode' ) ) {
 			$additional_params = apply_filters( 'yith_wcwl_add_to_wishlist_params', $additional_params );
 			$additional_params['template_part'] = isset( $additional_params['template_part'] ) ? $additional_params['template_part'] : $template_part;
 
+			$atts = is_array( $atts ) ? array_filter( $atts ) : $atts;
+
 			$atts = shortcode_atts(
 				$additional_params,
 				$atts
@@ -400,5 +529,4 @@ if( ! class_exists( 'YITH_WCWL_Shortcode' ) ) {
 	}
 }
 
-add_shortcode( 'yith_wcwl_wishlist', array( 'YITH_WCWL_Shortcode', 'wishlist' ) );
-add_shortcode( 'yith_wcwl_add_to_wishlist', array( 'YITH_WCWL_Shortcode', 'add_to_wishlist' ) );
+YITH_WCWL_Shortcode::init();

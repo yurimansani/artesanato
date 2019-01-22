@@ -87,6 +87,10 @@ h6.category {
   font-weight: 700;
 }
 
+.hestia-title {
+  word-break: break-word;
+}
+
 button,
 input[type="submit"],
 input[type="button"],
@@ -1127,10 +1131,6 @@ dl dd, pre {
 
 .alignright .avatar {
   margin-left: 24px;
-}
-
-article.sticky h2:before {
-  content: "Featured: ";
 }
 
 img.centered, .aligncenter {

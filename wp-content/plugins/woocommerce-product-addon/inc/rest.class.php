@@ -197,7 +197,7 @@ class PPOM_Rest {
         
         $product_id = intval( $product_id );
 	    $ppom		= new PPOM_Meta( $product_id );
-        $ppom_settings = $ppom->settings;
+        $ppom_settings = $ppom->ppom_settings;
         
         $ppom_fields = json_decode( stripslashes($all_data['fields']), true );
         
@@ -257,7 +257,7 @@ class PPOM_Rest {
             
         $product_id = intval( $product_id );
 	    $ppom		= new PPOM_Meta( $product_id );
-        $ppom_settings = $ppom->settings;
+        $ppom_settings = $ppom->ppom_settings;
         
         $delete_fields = json_decode( stripslashes($all_data['fields']) );
         

@@ -51,40 +51,36 @@ if( ! defined('ABSPATH' ) ){ exit; }
 <div class="ppom-admin-fields-wrapper">
 
 	<!-- All fields inputs name show -->
-	<div class="modal fade ppom-fields-name-model" id="ppom_fields_model_id" role="dialog" data-backdrop="static" data-keyboard="false">
-	    <div class="modal-dialog">
-	        <div class="modal-content">
-	            <div class="modal-header">
-	                <h4 class="modal-title"><?php _e('Select Field', 'ppom'); ?></h4>
-	            </div>
-	            <div class="modal-body">
-	                <ul class="list-group list-inline">
-	                    <?php
-                        foreach ( PPOM() -> inputs as $field_type => $meta ) {
+	<div id="ppom_fields_model_id" class="ppom-modal-box ppom-fields-name-model">
+	    <header> 
+	        <h3><?php _e('Select Field', 'ppom'); ?></h3>
+	    </header>
+	    <div class="ppom-modal-body">
+	        <ul class="list-group list-inline">
+                <?php
+                foreach ( PPOM() -> inputs as $field_type => $meta ) {
 
-                        	if( $meta != NULL ){
-	                        	$fields_title = isset($meta -> title)? $meta -> title : null;
-	                        	$fields_icon = isset($meta -> icon)? $meta -> icon : null;
-		                    ?> 
-			                    <li class="ppom_select_field list-group-item"  data-field-type="<?php echo esc_attr($field_type); ?>" >
-			                        <span class="ppom-fields-icon">
-			                        	<?php echo $fields_icon;  ?>
-			                        </span>
-			                        <span>
-			                            <?php echo $fields_title;  ?>
-			                        </span>
-			                    </li>
-		                    <?php 
-	                		} 
-	                    }
-	                    ?>
-	                </ul>
-	            </div>
-	            <div class="modal-footer">
-	                <button type="button" class="btn btn-default close-model" data-dismiss="modal"><?php _e('Close' , 'ppom'); ?></button>
-	            </div>
-	        </div>
+                	if( $meta != NULL ){
+                    	$fields_title = isset($meta -> title)? $meta -> title : null;
+                    	$fields_icon = isset($meta -> icon)? $meta -> icon : null;
+                    ?> 
+	                    <li class="ppom_select_field list-group-item"  data-field-type="<?php echo esc_attr($field_type); ?>" >
+	                        <span class="ppom-fields-icon">
+	                        	<?php echo $fields_icon;  ?>
+	                        </span>
+	                        <span>
+	                            <?php echo $fields_title;  ?>
+	                        </span>
+	                    </li>
+                    <?php 
+            		} 
+                }
+                ?>
+            </ul>
 	    </div>
+	    <footer>
+	    	<button type="button" class="btn btn-default close-model ppom-js-modal-close"><?php _e('Close' , 'ppom'); ?></button>
+	    </footer>
 	</div>
 
 	<div class="ppom-main-field-wrapper">
@@ -169,32 +165,34 @@ if( ! defined('ABSPATH' ) ){ exit; }
                         $the_placeholder = isset($field_meta['placeholder']) ? $field_meta['placeholder'] : '';
                         $defualt_fields  = isset(PPOM() -> inputs[$field_type]-> settings) ? PPOM() -> inputs[$field_type]-> settings : array();
 		        ?>
-		                <div class="modal fade ppom-slider ppom_sort_id_<?php echo esc_attr($f_index); ?>" id="ppom_field_model_<?php echo esc_attr($f_index); ?>" role="dialog" data-backdrop="static" data-keyboard="false">
-		                    <div class="modal-dialog">
-		                        <div class="modal-content">
-		                            <div class="modal-header">
-		                                <h4 class="modal-title"><?php echo $field_type; ?>	
-		                                <span class="ppom-dataname-reader">(<?php echo $the_field_id; ?>)</span>
-		                                </h4>
-		                            </div>
-		                            <div class="modal-body">
-		                            <?php
+
+		                <!-- New PPOM Model  -->
+		                <div id="ppom_field_model_<?php echo esc_attr($f_index); ?>" class="ppom-modal-box ppom-slider ppom_sort_id_<?php echo esc_attr($f_index); ?>">
+						    <div class="ppom-model-content">
+						    	
+							    <header> 
+							        <h3>
+							        	<?php echo $field_type; ?>
+							        	<span class="ppom-dataname-reader">(<?php echo $the_field_id; ?>)</span>
+							        </h3>
+							    </header>
+							    <div class="ppom-modal-body">
+							        <?php
 		                            echo $form_meta->render_field_meta($defualt_fields, $field_type, $f_index, $field_meta);
 		                        	?>
-		                            </div>
-		                            <div class="modal-footer">
-		                                <span class="ppom-req-field-id"></span>
-		                                <button type="button" class="btn btn-default close-model" data-dismiss="modal"><?php _e('Close', 'ppom'); ?></button>
-		                                <button class="btn btn-primary ppom-update-field" data-field-index='<?php echo esc_attr($f_index); ?>' data-field-type='<?php echo esc_attr($field_type); ?>' ><?php _e('Update Field', 'ppom'); ?></button>
-		                            </div>
-			                        <?php 
-			                        $ppom_field_index = $f_index;
-			                        $ppom_field_index++;
-			                        $f_index++;
-			                        ?> 
-		                        </div>
-		                    </div>
-		                </div>
+							    </div>
+							    <footer> 
+							        <span class="ppom-req-field-id"></span>
+	                                <button type="button" class="btn btn-default close-model ppom-js-modal-close"><?php _e('Close', 'ppom'); ?></button>
+	                                <button class="btn btn-primary ppom-update-field ppom-add-fields-js-action" data-field-index='<?php echo esc_attr($f_index); ?>' data-field-type='<?php echo esc_attr($field_type); ?>' ><?php _e('Update Field', 'ppom'); ?></button> 
+							    </footer>
+						    <?php 
+	                        $ppom_field_index = $f_index;
+	                        $ppom_field_index++;
+	                        $f_index++;
+	                        ?> 
+							</div>
+						</div>
 		            <?php
 		            }
 		        }
@@ -210,8 +208,7 @@ if( ! defined('ABSPATH' ) ){ exit; }
 		            <thead>
 		                <tr>            
 		                    <th colspan="6">
-		                        <button type="button" class="btn btn-primary" data-toggle="modal" 
-		                         data-target="#ppom_fields_model_id"><?php _e('Add field', 'ppom'); ?></button>
+		                        <button type="button" class="btn btn-primary" data-modal-id="ppom_fields_model_id"><?php _e('Add field', 'ppom'); ?></button>
 		                        <button type="button" class="btn btn-danger ppom_remove_field"><?php _e('Remove', 'ppom'); ?></button>
 		                    </th>  
 		                </tr>
@@ -291,8 +288,8 @@ if( ! defined('ABSPATH' ) ){ exit; }
                                 <td class="ppom_meta_field_plchlder"><?php echo $the_placeholder; ?></td>
                                 <td class="ppom_meta_field_req"><?php echo $_ok; ?></td> 
                                 <td>
-                                    <button class="btn  ppom_copy_field" data-field-type="<?php echo esc_attr($field_type); ?>" title="<?php _e('Copy Field','ppom'); ?>"><i class="fa fa-clone" aria-hidden="true"></i></button>
-                                    <button class="btn ppom-edit-field" id="<?php echo esc_attr($f_index); ?>" title="<?php _e('Edit Field','ppom'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                    <button class="btn  ppom_copy_field" data-field-type="<?php echo esc_attr($field_type); ?>" title="<?php _e('Copy Field','ppom'); ?>" id="<?php echo esc_attr($f_index); ?>"><i class="fa fa-clone" aria-hidden="true"></i></button>
+                                    <button class="btn ppom-edit-field" data-modal-id="ppom_field_model_<?php echo esc_attr($f_index); ?>" id="<?php echo esc_attr($f_index); ?>" title="<?php _e('Edit Field','ppom'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                                 </td>
 	                        </tr> 
 	                        <?php   

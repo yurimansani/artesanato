@@ -1,0 +1,195 @@
+# Translation of Plugins - WooCommerce Correios &#8211; Cálculo de Frete na Página do Produto - Stable (latest release) in Portuguese (Brazil)
+# This file is distributed under the same license as the Plugins - WooCommerce Correios &#8211; Cálculo de Frete na Página do Produto - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-01-17 12:31:38+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: pt_BR\n"
+"Project-Id-Version: Plugins - WooCommerce Correios &#8211; Cálculo de Frete na Página do Produto - Stable (latest release)\n"
+
+#: src/Exceptions/PackageException.php:16
+msgid "Could not validate product dimensions. Check if product width, height, length and weight are valid."
+msgstr "Não foi possível validar as dimensões do produto. Verifique se a largura, altura, comprimento e peso são válidos."
+
+#: src/Exceptions/ResponseException.php:14
+msgid "Price provided for response was invalid."
+msgstr "Preço fornecido na resposta da API foi inválido."
+
+#: src/Exceptions/ShippingZoneException.php:16
+msgid "The provided Shipping Zone is invalid. It must be an instance of \\WC_Shipping_Zone."
+msgstr "A Zona de Entrega fornecida é inválida. Deve ser uma instância de WC_Shipping_Zone."
+
+#. translators: %s class name for shipping method
+#: src/Exceptions/FactoryException.php:39
+msgid "Shipping method not currently supported by CFPP. Handler not found. (%s)"
+msgstr "Método de entrega não suportado pelo CFPP. Handler não encontrado. (%s)"
+
+#. translators: %s class name for shipping method
+#: src/Exceptions/FactoryException.php:23
+msgid "Custom Handler provided for shipping method \"%s\" is invalid. The handler must extend CFPP\\Shipping\\ShippingMethods\\Handler"
+msgstr "Handler fornecido para o método de entrega \"%s\" é inválido. O Handler deve extender CFPP\\Shipping\\ShippingMethods\\Handler"
+
+#. translators: %s: Minimum WooCommerce version number
+#: src/Exceptions/MinimumRequirementNotMetException.php:76
+msgid "CFPP requires WordPress %s or higher."
+msgstr "CFPP necessita de WordPress %s ou superior."
+
+#: src/Exceptions/MinimumRequirementNotMetException.php:61
+msgid "Before using this plugin, please configure your store postcode in WooCommerce -> Settings. Also make sure the postcode has 8 numeric digits: XXXXXXXX or XXXXX-XXX"
+msgstr "Antes de usar este plugin, configure o CEP da sua loja em WooCommerce -> Configurações. Verifique também que o cep informado tenha 8 dígitos numéricos: XXXXXXXX ou XXXXX-XXX"
+
+#: src/Exceptions/MinimumRequirementNotMetException.php:59
+msgid "Constant CFPP_CEP is in an invalid format, please fill it in this exact format: XXXXX-XXX, replacing X by the number of your postcode."
+msgstr "A constante CFPP_CEP está num formato inválido, por favor preencha exatamente neste formato: XXXXX-XXX, substituindo os X pelo número do seu CEP."
+
+#. translators: %s: Minimum WooCommerce version number
+#: src/Exceptions/MinimumRequirementNotMetException.php:46
+msgid "CFPP requires WooCommerce %s or higher. Optionally, you can add this code to your wp-config.php: <strong>define(\"CFPP_CEP\", \"XXXXX-XXX\");</strong> (add it right under WP_DEBUG)"
+msgstr "O plugin Cálculo de Frete na Página requer WooCommerce %s ou superior. Como você está usando uma versão inferior, é necessário adicionar este código no seu wp-config.php: <strong>define(\\\"CFPP_CEP\\\", \\\"XXXXX-XXX\\\");</strong> (coloque logo abaixo do WP_DEBUG)"
+
+#: src/Exceptions/MinimumRequirementNotMetException.php:33
+msgid "WooCommerce plugin must be active to use this plugin."
+msgstr "O plugin WooCommerce deve estar ativo para usar este plugin."
+
+#. translators: %s: Minimum PHP version number
+#: src/Exceptions/MinimumRequirementNotMetException.php:21
+msgid "Minimum PHP version required: %s"
+msgstr "Versão mínima do PHP necessária: %s"
+
+#: src/Exceptions/HandlerException.php:54
+msgid "Shipping Method Handler got an unexpected result: %s"
+msgstr "O Handler de um método de entrega retornou um resultado inesperado: %s"
+
+#: src/Exceptions/HandlerException.php:33
+msgid "Unexpected response from reflection method."
+msgstr "Resposta inesperada de um método reflection."
+
+#. translators: %s class name that tried reflect and failed
+#: src/Exceptions/HandlerException.php:21
+msgid "Unable to reflect %s"
+msgstr "Não foi possível refletir %s"
+
+#: src/Exceptions/CostsException.php:14
+#: src/Exceptions/ShippingMethodsException.php:30
+msgid "Could not find any shipping method for this postcode and product."
+msgstr "Não foi possível encontrar nenhum método de entrega para esta combinação de CEP e produto."
+
+#: src/Exceptions/ShippingMethodsException.php:19
+msgid "The provided Shipping Method is invalid. It must be an instance of \\WC_Shipping_Method."
+msgstr "O método de entrega fornecido é inválido. Deve ser uma instância de WP_Shipping_Method."
+
+#. translators: 1: height, 2: width, 3: length, 4: maximum value, 5: unit
+#: src/Shipping/ShippingMethods/Traits/ValidateRequestTrait.php:149
+msgid "Sum of Height, Width and Length (%1$sx%2$sx%3$s%5$s) is smaller than the minimum required for this shipping method (%4$s%5$s)."
+msgstr "Soma da Altura, Largura e Comprimento (%1$sx%2$sx%3$s%5$s) é menor do que o mínimo permitido para este método de entrega (%4$s%5$s)."
+
+#. translators: 1: height, 2: width, 3: length, 4: maximum value, 5: unit
+#: src/Shipping/ShippingMethods/Traits/ValidateRequestTrait.php:139
+msgid "Sum of Height, Width and Length (%1$sx%2$sx%3$s%5$s) is bigger than the maximum allowed for this shipping method (%4$s%5$s)."
+msgstr "Soma da Altura, Largura e Comprimento (%1$sx%2$sx%3$s%5$s) é maior do que o máximo permitido para este método de entrega (%4$s%5$s)."
+
+#. translators: 1: readable property, 2: value, 3: minimum value, 4: unit
+#: src/Shipping/ShippingMethods/Traits/ValidateRequestTrait.php:106
+msgid "Package %1$s (%2$s%4$s) is smaller than the minimum required for this shipping method (%3$s%4$s)."
+msgstr "Pacote %1$s (%2$s%4$s) é menor do que o mínimo exigido para este método de entrega (%3$s%4$s)."
+
+#. translators: 1: readable property, 2: value, 3: maximum value, 4: unit
+#: src/Shipping/ShippingMethods/Traits/ValidateRequestTrait.php:96
+msgid "Package %1$s (%2$s%4$s) is bigger than the maximum allowed for this shipping method (%3$s%4$s)."
+msgstr "Pacote %1$s (%2$s%4$s) é maior do que o máximo permitido para este método de entrega (%3$s%4$s)."
+
+#: src/Shipping/ShippingMethods/Handlers/WC_Shipping_Free_Shipping.php:28
+msgid "Does not meet free shipping requirements."
+msgstr "Não se enquadra nos requisitos de frete grátis."
+
+#: src/Shipping/ShippingMethods/Handlers/WC_Shipping_Flat_Rate.php:60
+#: src/Shipping/ShippingMethods/Handlers/WC_Shipping_Free_Shipping.php:25
+#: src/Shipping/ShippingMethods/Handlers/WC_Shipping_Local_Pickup.php:23
+msgid "Contact us"
+msgstr "Consulte-nos"
+
+#: src/Shipping/ShippingMethods/Response.php:52
+msgid "Free"
+msgstr "Grátis"
+
+#. translators: %d Estimated days for delivery
+#: src/Shipping/ShippingMethods/Response.php:37
+msgid "Up to a day"
+msgid_plural "Up to %d days"
+msgstr[0] "Cerca de um dia"
+msgstr[1] "Cerca de %d dias"
+
+#: src/Shipping/ShippingMethods/Response.php:22
+#: src/Shipping/ShippingMethods/Response.php:23
+#: src/Shipping/ShippingMethods/Response.php:24
+msgid "Undefined"
+msgstr "Indefinido"
+
+#: src/Frontend.php:47
+msgid "99999-999"
+msgstr "99999-999"
+
+#: src/Frontend.php:46
+msgid "Sorry, the shipping costs are only available in the cart right now. Please proceed with your purchase normally."
+msgstr "Desculpe, o valor do frete só está disponível no carrinho neste momento. Por favor, prossiga com a compra normalmente."
+
+#: src/Frontend.php:45
+msgid "One or more shipping methods were not shown. Only administrators can see this message."
+msgstr "Somente administradores podem ver esta mensagem. Um ou mais métodos de entrega não foram exibidos."
+
+#: src/Notifications.php:53
+msgid "CFPP plugin DEACTIVATED itself, because:"
+msgstr "O plugin CFPP se DESATIVOU, porquê:"
+
+#: src/Notifications.php:52 src/Notifications.php:65
+msgid "CFPP - Cálculo de Frete na Página do Produto"
+msgstr "CFPP - Cálculo de Frete na Página do Produto"
+
+#: views/product-page-cfpp.php:26
+msgid "Estimated Delivery"
+msgstr "Entrega Estimada"
+
+#: views/product-page-cfpp.php:25
+msgid "Estimated Price"
+msgstr "Custo Estimado"
+
+#: views/product-page-cfpp.php:24
+msgid "Shipping Method"
+msgstr "Forma de Envio"
+
+#: views/product-page-cfpp.php:13
+msgid "Calculate Shipping"
+msgstr "Calcular Frete"
+
+#: src/Frontend.php:44
+msgid "Please, check if postcode is valid."
+msgstr "Por favor, verifique se o CEP informado é válido."
+
+#. translators: %s: Product name
+#: src/Exceptions/PayloadException.php:22
+msgid "Could not calculate shipping with variation data for product that is not variable. (%s)"
+msgstr "Não foi possível calcular frete com informações de produto variável para produto que não é variável. (%s)"
+
+#. Author URI of the plugin
+msgid "https://www.lucasbustamante.com.br"
+msgstr "https://www.lucasbustamante.com.br"
+
+#. Author of the plugin
+msgid "Lucas Bustamante"
+msgstr "Lucas Bustamante"
+
+#. Description of the plugin
+msgid "Habilita o cálculo de frete na página do produto."
+msgstr "Habilita o cálculo de frete na página do produto."
+
+#. Plugin URI of the plugin
+msgid "https://github.com/Luc45/WooCommerce-Correios-Calculo-de-Frete-na-Pagina-do-Produto"
+msgstr "https://github.com/Luc45/WooCommerce-Correios-Calculo-de-Frete-na-Pagina-do-Produto"
+
+#. Plugin Name of the plugin
+msgid "WooCommerce Correios - Cálculo de Frete na Página do Produto (CFPP)"
+msgstr "WooCommerce Correios - Cálculo de Frete na Página do Produto (CFPP)"

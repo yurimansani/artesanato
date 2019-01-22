@@ -99,7 +99,7 @@ class NM_Image_wooproduct extends PPOM_Inputs{
 			),
 			'multiple_allowed' => array (
 					'type' => 'checkbox',
-					'title' => __ ( 'Multiple selection?', 'ppom' ),
+					'title' => __ ( 'Multiple selections?', 'ppom' ),
 					'desc' => __ ( 'Allow users to select more then one images?.', 'ppom' )
 			),
 			'show_popup' => array (

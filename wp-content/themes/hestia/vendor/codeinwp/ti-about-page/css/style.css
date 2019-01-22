@@ -193,6 +193,7 @@
 #free_pro .free_vs_pro_banner {
 	padding: 20px;
 	background: #fff;
+	width: auto;
 }
 
 .badge-action-count {

@@ -3,8 +3,8 @@
 Contributors: yithemes
 Tags: wishlist, woocommerce, products, yit, e-commerce, shop, ecommerce wishlist, yith, woocommerce wishlist, shop wishlist
 Requires at least: 4.0
-Tested up to: 4.9.8
-Stable tag: 2.2.5
+Tested up to: 5.0.0
+Stable tag: 2.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,21 @@ you should ask theme developers to update custom templates and replace the old t
 4. The Wishlist settings page
 
 == Changelog ==
+
+= 2.2.7 - Released: Dec, 21 - 2018 =
+
+* Fix: possible warning when Add to Wishlist shortcode is called with no params
+
+= 2.2.6 - Released: Dec, 21 - 2018 =
+
+* New: added support to WordPress 5.0
+* New: added support to WooCommerce 3.5.3
+* New: added Gutenberg blocks for plugin shortcodes
+* Update: internal plugin framework
+* Update: italian language
+* Fix: preventing sql error when hidden products list just contains 0 id
+* Fix: problem with sprintf on backend
+* Dev: added product param to yith_free_text filter
 
 = 2.2.5 - Released: Oct, 24 - 2018 =
 
@@ -488,17 +503,13 @@ Full documentation is available [here](http://yithemes.com/docs-plugins/yith-woo
 
 == Upgrade notice ==
 
-= 2.2.4 - Released: Oct, 04 - 2018 =
+= 2.2.6 - Released: Dec, 21 - 2018 =
 
-* New: added support to WooCoommerce 3.5
-* New: added support to WordPress 4.9.8
-* New: updated plugin framework
-* New: added method that returns localization variables
-* Tweak: type attribute from <script> tag
-* Update: Spanish language
-* Update: Italian language
-* Dev: added new filter yith_wcwl_localize_script to let third party dev filter localization variables
-* Dev: added new filter yith_wcwl_share_conditions to display the share buttons for no logged users
-* Dev: added new filter yith_wcwl_set_cookie to let third party code skip cookie saving
-* Dev: added new filter yith_wcwl_wishlist_param to change query-string param
-* Dev: added new filter yith_wcwl_remove_product_wishlist_message_title
+* New: added support to WordPress 5.0
+* New: added support to WooCommerce 3.5.3
+* New: added Gutenberg blocks for plugin shortcodes
+* Update: internal plugin framework
+* Update: italian language
+* Fix: preventing sql error when hidden products list just contains 0 id
+* Fix: problem with sprintf on backend
+* Dev: added product param to yith_free_text filter

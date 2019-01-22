@@ -1,4 +1,39 @@
 
+ ### v2.1.1 - 2019-01-17 
+ **Changes:** 
+ * Changed the boxed layout for the third header layout
+* Improved layout of the onboarding notice and page
+* Small layout fixes for the Orfeo child theme
+* Fixed the upgrade link
+ 
+ ### v2.1.0 - 2019-01-09 
+ **Changes:** 
+ * NEW Custom integration with Gutenberg
+* NEW Options to differentially enable/disable navigation and footer areas on posts/pages
+* Fixed compatibility with Everest Forms plugin
+* Fixed compatibility with Quiz Cat plugin
+* Fixed problem with the About Section background image remaining fixed in Firefox
+* Removed the Featured tag for the sticky posts
+ 
+ ### v2.0.19 - 2018-12-18 
+ **Changes:** 
+ * Fixed WooCommerce related product layout in Fagri
+* Fixed issue with the Very Top Bar not visible on Elementor Full Width page templates
+* Fixed issue with the Contact section content area that did not opened with Gutenberg
+ 
+ ### v2.0.18 - 2018-12-12 
+ **Changes:** 
+ * Revert Font Awesome 5
+ 
+ ### v2.0.17 - 2018-12-11 
+ **Changes:** 
+ * Update to Font Awesome 5
+ 
+ ### v2.0.16 - 2018-12-10 
+ **Changes:** 
+ * Updated Tested up to version to 5.0
+* Removed unused notice
+ 
  ### v2.0.15 - 2018-12-05 
  **Changes:** 
  * Fixed problem with Very Top Bar not visible on mobile on the single product page

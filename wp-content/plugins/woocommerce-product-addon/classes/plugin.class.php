@@ -48,7 +48,7 @@ class NM_PersonalizedProduct {
 		
 		/** ============ NEW Hooks ==================== */
 		
-		add_action( 'wp_enqueue_scripts', 'ppom_hooks_scripts' );
+		// add_action( 'wp_enqueue_scripts', 'ppom_hooks_scripts' );
 		add_action( 'admin_bar_menu',   'ppom_admin_bar_menu', 1000 );
 		
 		// Rendering fields on product page
@@ -56,6 +56,7 @@ class NM_PersonalizedProduct {
 		if( apply_filters('ppom_remove_duplicate_fields', true) ) {
 			add_action ( 'woocommerce_single_variation', 'ppom_woocommerce_show_fields', 15);
 		}
+		
 		
 		// Validating before add to cart
 		add_filter ( 'woocommerce_add_to_cart_validation', 'ppom_woocommerce_validate_product', 10, 3 );
@@ -149,7 +150,7 @@ class NM_PersonalizedProduct {
 		 add_filter('ppom_cart_fixed_fee', 'ppom_hooks_convert_price_back');
 		 
 		 // Shortcode
-		 add_shortcode('ppom', 'ppom_hooks_render_shortcode');
+		 //add_shortcode('ppom', 'ppom_hooks_render_shortcode');
 		 
 		 /** ============ Ajax callbacks ==================== */
 		 add_action('wp_ajax_nopriv_ppom_upload_file', 'ppom_upload_file');
@@ -208,8 +209,6 @@ class NM_PersonalizedProduct {
 		 */
 		add_action('do_action_remove_images', 'ppom_files_removed_unused_images');
 		
-		
-
 		add_action('admin_footer-edit.php', array($this, 'nm_add_bulk_meta'));
 		
 		add_action('load-edit.php', array(&$this, 'nm_meta_bulk_action'));
@@ -297,7 +296,7 @@ class NM_PersonalizedProduct {
   		if (!in_array($product->get_type(), array('variable', 'grouped', 'external'))) {
   			// only if can be purchased
   			if ($ppom->is_exists) {
-  				return __('Select options', 'woocommerce');
+  				$text = apply_filters('ppom_select_option_text', __('Select options', 'woocommerce'), $text, $product);
   			}
   		}
   		return $text;

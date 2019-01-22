@@ -56,7 +56,7 @@ $debug                         = isset( $_REQUEST[ 'yith-license-debug' ] ) ? $_
                                 <?php echo $this->display_product_name( $info[ 'Name' ] ) ?>
                             </td>
                             <td>
-                                <input type="email" name="email" placeholder="Your email on yithemes.com" value="" class="user-email"/>
+                                <input type="text" name="email" placeholder="Your email on yithemes.com" value="" class="user-email"/>
                             </td>
                             <td>
                                 <input type="text" name="licence_key" placeholder="License Key" value="" class="licence-key"/>

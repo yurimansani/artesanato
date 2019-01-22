@@ -102,10 +102,11 @@ class NM_PersonalizedProduct_Admin extends NM_PersonalizedProduct {
 			$this -> clone_product_meta($_REQUEST ['productmeta_id']);
 		}else{
 			$url_add = add_query_arg(array('action' => 'new'));
+			$video_url = 'https://najeebmedia.com/wordpress-plugin/woocommerce-personalized-product-option/#ppom-quick-video';
 			
 			echo '<div class="ppom-product-meta-block text-center ppom-meta-card-block">';
 				echo '<h2>' . __ ( 'How it works?', "ppom" ) . '</h2>';
-				echo '<p>' . __ ( 'Create PPOM Meta Group and attach this meta group with Product inside product edit page.', "ppom" ) . '</p>';
+				printf(__('<p><a href="%s" target="_blank">Watch a Quick Video</a></p>', 'ppom'), $video_url);
 				echo '<a class="btn btn-success" href="'.esc_url($url_add).'"><span class="dashicons dashicons-plus"></span> '. __ ( 'Add PPOM Meta Group', "ppom" ) . '</a>';
 			echo '</div>';
 			echo '<br>';

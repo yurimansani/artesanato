@@ -26,6 +26,8 @@ export default new Vuex.Store( {
 		strings: themeisleSitesLibApi.i18ln ,
 		homeUrl: themeisleSitesLibApi.homeUrl,
 		currentStep: 'inactive',
+		editor: '',
+		frontPageId: -1,
 		migration: 'inactive',
 		onboard: themeisleSitesLibApi.onboarding,
 		contentImported: themeisleSitesLibApi.contentImported,

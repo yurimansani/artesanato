@@ -72,7 +72,7 @@ class Hestia_Upsell_Manager extends Hestia_Register_Customizer_Controls {
 						esc_html__( 'The ability to reorganize your Frontpage Sections more easily and quickly.', 'hestia' ),
 						esc_html__( '24/7 HelpDesk Professional Support', 'hestia' ),
 					),
-					'button_url'         => esc_url( apply_filters( 'hestia_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/hestia-pro/upgrade?utm_medium=customizer&utm_source=button&utm_campaign=profeatures' ) ),
+					'button_url'         => esc_url( apply_filters( 'hestia_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/hestia-pro/upgrade/?utm_medium=customizer&utm_source=button&utm_campaign=profeatures' ) ),
 					'button_text'        => esc_html__( 'Get the PRO version!', 'hestia' ),
 				),
 				'Hestia_Control_Upsell'

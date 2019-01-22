@@ -5,7 +5,7 @@ const { InspectorControls, BlockControls } = wp.editor;
 const { Toolbar, Button, Dashicon, RangeControl, Tooltip, SelectControl } = wp.components;
 const { apiFetch } = wp;
 
-import '../../css/products-block.scss';
+import './products-block.scss';
 
 import { ProductsSpecificSelect } from './views/specific-select.jsx';
 import { ProductsCategorySelect } from './views/category-select.jsx';
@@ -903,8 +903,11 @@ class ProductsBlock extends Component {
 registerBlockType( 'woocommerce/products', {
 	title: __( 'Products' ),
 	icon: 'screenoptions',
-	category: 'widgets',
+	category: 'woocommerce',
 	description: __( 'Display a grid of products from a variety of sources.' ),
+	supports: {
+		inserter: false,
+	},
 
 	attributes: {
 

@@ -1,0 +1,59 @@
+# Translation of Plugins - WooCommerce Shipping Additional  Days - Stable (latest release) in Portuguese (Brazil)
+# This file is distributed under the same license as the Plugins - WooCommerce Shipping Additional  Days - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-07-18 17:28:42+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: pt_BR\n"
+"Project-Id-Version: Plugins - WooCommerce Shipping Additional  Days - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "https://mariovalney.com"
+msgstr "https://mariovalney.com"
+
+#. Author of the plugin/theme
+msgid "Mário Valney"
+msgstr "Mário Valney"
+
+#. Description of the plugin/theme
+msgid "Allows you to set additional days to your delivery date into Products and Shipping Classes."
+msgstr "Permite escolher dias extras para a sua data de entrega nos Produtos e nas Classes de Entrega."
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/mariovalney/woocommerce-shipping-additional-days"
+msgstr "https://github.com/mariovalney/woocommerce-shipping-additional-days"
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Shipping Additional Days"
+msgstr "WooCommerce Shipping Additional Days"
+
+#: modules/shipping/includes/views/status-report-errors.php:18
+msgid "None of shipping supported plugins are activated."
+msgstr "Nenhum dos plugins de entrega suportados estão ativos."
+
+#: modules/shipping/includes/views/status-report-errors.php:14
+#: modules/shipping/includes/views/status-report-errors.php:15
+msgid "Errors"
+msgstr "Erros"
+
+#: modules/shipping/includes/views/status-report-errors.php:7
+msgid "This section shows infos about WooCommerce Shipping Additional Days plugin."
+msgstr "Essa seção mostra informações sobre o plugin WooCommerce Shipping Additional Days"
+
+#: modules/shipping/includes/views/status-report-errors.php:4
+#: modules/shipping/includes/views/status-report-errors.php:6
+msgid "Shipping Additional Days"
+msgstr "Dias Adicionais de Entrega"
+
+#: modules/products/includes/views/product-shipping-additional-time.php:13
+msgid "Additional Days will be used to increase the delivery date if you need some days to have the product into stock."
+msgstr "Dias adicionais serão usados para aumentar a data de entrega, se você precisa de mais dias para ter o produto em estoque."
+
+#: modules/products/includes/views/product-shipping-additional-time.php:10
+#: modules/shipping-classes/class-module-shipping-classes.php:93
+msgid "Additional Days"
+msgstr "Dias adicionais"

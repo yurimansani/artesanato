@@ -3643,7 +3643,6 @@ Elements
 hr {
 	height: 1px;
 	margin-bottom: 1.5em;
-	border: 0;
 }
 
 ul,
@@ -4561,7 +4560,7 @@ ul.products li.product:hover img:nth-child(2) {
 	transition: all 0.5s;
 }
 
-.product:hover .prod-img-wrap:before,
+.product:not(.elementor):hover .prod-img-wrap:before,
 .shop-item:hover .prod-img-wrap:before,
 .prod-img-wrap:hover:before {
 	background: rgba(255,255,255,0.6);
@@ -4625,7 +4624,7 @@ ul.products li.product:hover img:nth-child(2) {
 }
 
 .shop-item:hover .shop-item-detail,
-.product:hover .add_to_cart_button {
+.product:not(.elementor):hover .add_to_cart_button {
 	bottom: 50%;
 	opacity: 1;
 	-webkit-transform: translateY(50%);

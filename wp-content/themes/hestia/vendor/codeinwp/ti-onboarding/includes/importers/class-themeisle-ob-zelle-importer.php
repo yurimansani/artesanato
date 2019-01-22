@@ -85,6 +85,11 @@ class Themeisle_OB_Zelle_Importer {
 		$uploads      = wp_upload_dir();
 		$path_to_file = $uploads['basedir'] . '/zelle.json';
 
+
+		// Mime a supported document type.
+		$elementor_plugin = \Elementor\Plugin::$instance;
+		$elementor_plugin->documents->register_document_type( 'not-supported', \Elementor\Modules\Library\Documents\Page::get_class_full_name() );
+
 		$wp_filesystem->put_contents( $path_to_file, json_encode( $data ), 0644 );
 
 		$_FILES['file']['tmp_name'] = $path_to_file;

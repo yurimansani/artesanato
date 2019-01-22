@@ -1,4 +1,4 @@
-/*! elementor - v2.3.4 - 29-11-2018 */
+/*! elementor - v2.4.3 - 21-01-2019 */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -82,226 +82,10 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 181);
+/******/ 	return __webpack_require__(__webpack_require__.s = 180);
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ 0:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var Module = function Module() {
-	var $ = jQuery,
-	    instanceParams = arguments,
-	    self = this,
-	    events = {};
-
-	var settings = void 0;
-
-	var ensureClosureMethods = function ensureClosureMethods() {
-		$.each(self, function (methodName) {
-			var oldMethod = self[methodName];
-
-			if ('function' !== typeof oldMethod) {
-				return;
-			}
-
-			self[methodName] = function () {
-				return oldMethod.apply(self, arguments);
-			};
-		});
-	};
-
-	var initSettings = function initSettings() {
-		settings = self.getDefaultSettings();
-
-		var instanceSettings = instanceParams[0];
-
-		if (instanceSettings) {
-			$.extend(settings, instanceSettings);
-		}
-	};
-
-	var init = function init() {
-		self.__construct.apply(self, instanceParams);
-
-		ensureClosureMethods();
-
-		initSettings();
-
-		self.trigger('init');
-	};
-
-	this.getItems = function (items, itemKey) {
-		if (itemKey) {
-			var keyStack = itemKey.split('.'),
-			    currentKey = keyStack.splice(0, 1);
-
-			if (!keyStack.length) {
-				return items[currentKey];
-			}
-
-			if (!items[currentKey]) {
-				return;
-			}
-
-			return this.getItems(items[currentKey], keyStack.join('.'));
-		}
-
-		return items;
-	};
-
-	this.getSettings = function (setting) {
-		return this.getItems(settings, setting);
-	};
-
-	this.setSettings = function (settingKey, value, settingsContainer) {
-		if (!settingsContainer) {
-			settingsContainer = settings;
-		}
-
-		if ('object' === (typeof settingKey === 'undefined' ? 'undefined' : _typeof(settingKey))) {
-			$.extend(settingsContainer, settingKey);
-
-			return self;
-		}
-
-		var keyStack = settingKey.split('.'),
-		    currentKey = keyStack.splice(0, 1);
-
-		if (!keyStack.length) {
-			settingsContainer[currentKey] = value;
-
-			return self;
-		}
-
-		if (!settingsContainer[currentKey]) {
-			settingsContainer[currentKey] = {};
-		}
-
-		return self.setSettings(keyStack.join('.'), value, settingsContainer[currentKey]);
-	};
-
-	this.forceMethodImplementation = function (methodArguments) {
-		var functionName = methodArguments.callee.name;
-
-		throw new ReferenceError('The method ' + functionName + ' must to be implemented in the inheritor child.');
-	};
-
-	this.on = function (eventName, callback) {
-		if ('object' === (typeof eventName === 'undefined' ? 'undefined' : _typeof(eventName))) {
-			$.each(eventName, function (singleEventName) {
-				self.on(singleEventName, this);
-			});
-
-			return self;
-		}
-
-		var eventNames = eventName.split(' ');
-
-		eventNames.forEach(function (singleEventName) {
-			if (!events[singleEventName]) {
-				events[singleEventName] = [];
-			}
-
-			events[singleEventName].push(callback);
-		});
-
-		return self;
-	};
-
-	this.off = function (eventName, callback) {
-		if (!events[eventName]) {
-			return self;
-		}
-
-		if (!callback) {
-			delete events[eventName];
-
-			return self;
-		}
-
-		var callbackIndex = events[eventName].indexOf(callback);
-
-		if (-1 !== callbackIndex) {
-			delete events[eventName][callbackIndex];
-		}
-
-		return self;
-	};
-
-	this.trigger = function (eventName) {
-		var methodName = 'on' + eventName[0].toUpperCase() + eventName.slice(1),
-		    params = Array.prototype.slice.call(arguments, 1);
-
-		if (self[methodName]) {
-			self[methodName].apply(self, params);
-		}
-
-		var callbacks = events[eventName];
-
-		if (!callbacks) {
-			return self;
-		}
-
-		$.each(callbacks, function (index, callback) {
-			callback.apply(self, params);
-		});
-
-		return self;
-	};
-
-	init();
-};
-
-Module.prototype.__construct = function () {};
-
-Module.prototype.getDefaultSettings = function () {
-	return {};
-};
-
-Module.extendsCount = 0;
-
-Module.extend = function (properties) {
-	var $ = jQuery,
-	    parent = this;
-
-	var child = function child() {
-		return parent.apply(this, arguments);
-	};
-
-	$.extend(child, parent);
-
-	child.prototype = Object.create($.extend({}, parent.prototype, properties));
-
-	child.prototype.constructor = child;
-
-	/*
-  * Constructor ID is used to set an unique ID
-     * to every extend of the Module.
-     *
-  * It's useful in some cases such as unique
-  * listener for frontend handlers.
-  */
-	var constructorID = ++Module.extendsCount;
-
-	child.prototype.getConstructorID = function () {
-		return constructorID;
-	};
-
-	child.__super__ = parent.prototype;
-
-	return child;
-};
-
-module.exports = Module;
-
-/***/ }),
 
 /***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
@@ -309,30 +93,400 @@ module.exports = Module;
 "use strict";
 
 
-var Module = __webpack_require__(0),
-    ViewModule;
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var userAgent = navigator.userAgent;
 
-ViewModule = Module.extend({
-	elements: null,
+exports.default = {
+	webkit: -1 !== userAgent.indexOf('AppleWebKit'),
+	firefox: -1 !== userAgent.indexOf('Firefox'),
+	ie: /Trident|MSIE/.test(userAgent),
+	edge: -1 !== userAgent.indexOf('Edge'),
+	mac: -1 !== userAgent.indexOf('Macintosh')
+};
 
-	getDefaultElements: function getDefaultElements() {
-		return {};
-	},
+/***/ }),
 
-	bindEvents: function bindEvents() {},
+/***/ 14:
+/***/ (function(module, exports, __webpack_require__) {
 
-	onInit: function onInit() {
-		this.initElements();
+"use strict";
 
-		this.bindEvents();
-	},
 
-	initElements: function initElements() {
-		this.elements = this.getDefaultElements();
+/**
+ * Handles managing all events for whatever you plug it into. Priorities for hooks are based on lowest to highest in
+ * that, lowest priority hooks are fired first.
+ */
+
+var EventManager = function EventManager() {
+	var slice = Array.prototype.slice,
+	    MethodsAvailable;
+
+	/**
+  * Contains the hooks that get registered with this EventManager. The array for storage utilizes a "flat"
+  * object literal such that looking up the hook utilizes the native object literal hash.
+  */
+	var STORAGE = {
+		actions: {},
+		filters: {}
+	};
+
+	/**
+  * Removes the specified hook by resetting the value of it.
+  *
+  * @param type Type of hook, either 'actions' or 'filters'
+  * @param hook The hook (namespace.identifier) to remove
+  *
+  * @private
+  */
+	function _removeHook(type, hook, callback, context) {
+		var handlers, handler, i;
+
+		if (!STORAGE[type][hook]) {
+			return;
+		}
+		if (!callback) {
+			STORAGE[type][hook] = [];
+		} else {
+			handlers = STORAGE[type][hook];
+			if (!context) {
+				for (i = handlers.length; i--;) {
+					if (handlers[i].callback === callback) {
+						handlers.splice(i, 1);
+					}
+				}
+			} else {
+				for (i = handlers.length; i--;) {
+					handler = handlers[i];
+					if (handler.callback === callback && handler.context === context) {
+						handlers.splice(i, 1);
+					}
+				}
+			}
+		}
 	}
+
+	/**
+  * Use an insert sort for keeping our hooks organized based on priority. This function is ridiculously faster
+  * than bubble sort, etc: http://jsperf.com/javascript-sort
+  *
+  * @param hooks The custom array containing all of the appropriate hooks to perform an insert sort on.
+  * @private
+  */
+	function _hookInsertSort(hooks) {
+		var tmpHook, j, prevHook;
+		for (var i = 1, len = hooks.length; i < len; i++) {
+			tmpHook = hooks[i];
+			j = i;
+			while ((prevHook = hooks[j - 1]) && prevHook.priority > tmpHook.priority) {
+				hooks[j] = hooks[j - 1];
+				--j;
+			}
+			hooks[j] = tmpHook;
+		}
+
+		return hooks;
+	}
+
+	/**
+  * Adds the hook to the appropriate storage container
+  *
+  * @param type 'actions' or 'filters'
+  * @param hook The hook (namespace.identifier) to add to our event manager
+  * @param callback The function that will be called when the hook is executed.
+  * @param priority The priority of this hook. Must be an integer.
+  * @param [context] A value to be used for this
+  * @private
+  */
+	function _addHook(type, hook, callback, priority, context) {
+		var hookObject = {
+			callback: callback,
+			priority: priority,
+			context: context
+		};
+
+		// Utilize 'prop itself' : http://jsperf.com/hasownproperty-vs-in-vs-undefined/19
+		var hooks = STORAGE[type][hook];
+		if (hooks) {
+			// TEMP FIX BUG
+			var hasSameCallback = false;
+			jQuery.each(hooks, function () {
+				if (this.callback === callback) {
+					hasSameCallback = true;
+					return false;
+				}
+			});
+
+			if (hasSameCallback) {
+				return;
+			}
+			// END TEMP FIX BUG
+
+			hooks.push(hookObject);
+			hooks = _hookInsertSort(hooks);
+		} else {
+			hooks = [hookObject];
+		}
+
+		STORAGE[type][hook] = hooks;
+	}
+
+	/**
+  * Runs the specified hook. If it is an action, the value is not modified but if it is a filter, it is.
+  *
+  * @param type 'actions' or 'filters'
+  * @param hook The hook ( namespace.identifier ) to be ran.
+  * @param args Arguments to pass to the action/filter. If it's a filter, args is actually a single parameter.
+  * @private
+  */
+	function _runHook(type, hook, args) {
+		var handlers = STORAGE[type][hook],
+		    i,
+		    len;
+
+		if (!handlers) {
+			return 'filters' === type ? args[0] : false;
+		}
+
+		len = handlers.length;
+		if ('filters' === type) {
+			for (i = 0; i < len; i++) {
+				args[0] = handlers[i].callback.apply(handlers[i].context, args);
+			}
+		} else {
+			for (i = 0; i < len; i++) {
+				handlers[i].callback.apply(handlers[i].context, args);
+			}
+		}
+
+		return 'filters' === type ? args[0] : true;
+	}
+
+	/**
+  * Adds an action to the event manager.
+  *
+  * @param action Must contain namespace.identifier
+  * @param callback Must be a valid callback function before this action is added
+  * @param [priority=10] Used to control when the function is executed in relation to other callbacks bound to the same hook
+  * @param [context] Supply a value to be used for this
+  */
+	function addAction(action, callback, priority, context) {
+		if ('string' === typeof action && 'function' === typeof callback) {
+			priority = parseInt(priority || 10, 10);
+			_addHook('actions', action, callback, priority, context);
+		}
+
+		return MethodsAvailable;
+	}
+
+	/**
+  * Performs an action if it exists. You can pass as many arguments as you want to this function; the only rule is
+  * that the first argument must always be the action.
+  */
+	function doAction() /* action, arg1, arg2, ... */{
+		var args = slice.call(arguments);
+		var action = args.shift();
+
+		if ('string' === typeof action) {
+			_runHook('actions', action, args);
+		}
+
+		return MethodsAvailable;
+	}
+
+	/**
+  * Removes the specified action if it contains a namespace.identifier & exists.
+  *
+  * @param action The action to remove
+  * @param [callback] Callback function to remove
+  */
+	function removeAction(action, callback) {
+		if ('string' === typeof action) {
+			_removeHook('actions', action, callback);
+		}
+
+		return MethodsAvailable;
+	}
+
+	/**
+  * Adds a filter to the event manager.
+  *
+  * @param filter Must contain namespace.identifier
+  * @param callback Must be a valid callback function before this action is added
+  * @param [priority=10] Used to control when the function is executed in relation to other callbacks bound to the same hook
+  * @param [context] Supply a value to be used for this
+  */
+	function addFilter(filter, callback, priority, context) {
+		if ('string' === typeof filter && 'function' === typeof callback) {
+			priority = parseInt(priority || 10, 10);
+			_addHook('filters', filter, callback, priority, context);
+		}
+
+		return MethodsAvailable;
+	}
+
+	/**
+  * Performs a filter if it exists. You should only ever pass 1 argument to be filtered. The only rule is that
+  * the first argument must always be the filter.
+  */
+	function applyFilters() /* filter, filtered arg, arg2, ... */{
+		var args = slice.call(arguments);
+		var filter = args.shift();
+
+		if ('string' === typeof filter) {
+			return _runHook('filters', filter, args);
+		}
+
+		return MethodsAvailable;
+	}
+
+	/**
+  * Removes the specified filter if it contains a namespace.identifier & exists.
+  *
+  * @param filter The action to remove
+  * @param [callback] Callback function to remove
+  */
+	function removeFilter(filter, callback) {
+		if ('string' === typeof filter) {
+			_removeHook('filters', filter, callback);
+		}
+
+		return MethodsAvailable;
+	}
+
+	/**
+  * Maintain a reference to the object scope so our public methods never get confusing.
+  */
+	MethodsAvailable = {
+		removeFilter: removeFilter,
+		applyFilters: applyFilters,
+		addFilter: addFilter,
+		removeAction: removeAction,
+		doAction: doAction,
+		addAction: addAction
+	};
+
+	// return all of the publicly available methods
+	return MethodsAvailable;
+};
+
+module.exports = EventManager;
+
+/***/ }),
+
+/***/ 16:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
 });
 
-module.exports = ViewModule;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_elementorModules$Mod) {
+	_inherits(_class, _elementorModules$Mod);
+
+	function _class() {
+		_classCallCheck(this, _class);
+
+		return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+	}
+
+	_createClass(_class, [{
+		key: 'get',
+		value: function get(key, options) {
+			options = options || {};
+
+			var storage = options.session ? sessionStorage : localStorage;
+
+			var elementorStorage = storage.getItem('elementor');
+
+			if (elementorStorage) {
+				elementorStorage = JSON.parse(elementorStorage);
+			} else {
+				elementorStorage = {};
+			}
+
+			if (!elementorStorage.__expiration) {
+				elementorStorage.__expiration = {};
+			}
+
+			var expiration = elementorStorage.__expiration;
+
+			var expirationToCheck = [];
+
+			if (key) {
+				if (expiration[key]) {
+					expirationToCheck = [key];
+				}
+			} else {
+				expirationToCheck = Object.keys(expiration);
+			}
+
+			var entryExpired = false;
+
+			expirationToCheck.forEach(function (expirationKey) {
+				if (new Date(expiration[expirationKey]) < new Date()) {
+					delete elementorStorage[expirationKey];
+
+					delete expiration[expirationKey];
+
+					entryExpired = true;
+				}
+			});
+
+			if (entryExpired) {
+				this.save(elementorStorage, options.session);
+			}
+
+			if (key) {
+				return elementorStorage[key];
+			}
+
+			return elementorStorage;
+		}
+	}, {
+		key: 'set',
+		value: function set(key, value, options) {
+			options = options || {};
+
+			var elementorStorage = this.get(null, options);
+
+			elementorStorage[key] = value;
+
+			if (options.lifetimeInSeconds) {
+				var date = new Date();
+
+				date.setTime(date.getTime() + options.lifetimeInSeconds * 1000);
+
+				elementorStorage.__expiration[key] = date.getTime();
+			}
+
+			this.save(elementorStorage, options.session);
+		}
+	}, {
+		key: 'save',
+		value: function save(object, session) {
+			var storage = session ? sessionStorage : localStorage;
+
+			storage.setItem('elementor', JSON.stringify(object));
+		}
+	}]);
+
+	return _class;
+}(elementorModules.Module);
+
+exports.default = _class;
 
 /***/ }),
 
@@ -342,152 +496,370 @@ module.exports = ViewModule;
 "use strict";
 
 
-var ViewModule = __webpack_require__(1);
-
-module.exports = ViewModule.extend({
-
-	getDefaultSettings: function getDefaultSettings() {
-		return {
-			container: null,
-			items: null,
-			columnsCount: 3,
-			verticalSpaceBetween: 30
-		};
-	},
-
-	getDefaultElements: function getDefaultElements() {
-		return {
-			$container: jQuery(this.getSettings('container')),
-			$items: jQuery(this.getSettings('items'))
-		};
-	},
-
-	run: function run() {
-		var heights = [],
-		    distanceFromTop = this.elements.$container.position().top,
-		    settings = this.getSettings(),
-		    columnsCount = settings.columnsCount;
-
-		distanceFromTop += parseInt(this.elements.$container.css('margin-top'), 10);
-
-		this.elements.$items.each(function (index) {
-			var row = Math.floor(index / columnsCount),
-			    $item = jQuery(this),
-			    itemHeight = $item[0].getBoundingClientRect().height + settings.verticalSpaceBetween;
-
-			if (row) {
-				var itemPosition = $item.position(),
-				    indexAtRow = index % columnsCount,
-				    pullHeight = itemPosition.top - distanceFromTop - heights[indexAtRow];
-
-				pullHeight -= parseInt($item.css('margin-top'), 10);
-
-				pullHeight *= -1;
-
-				$item.css('margin-top', pullHeight + 'px');
-
-				heights[indexAtRow] += itemHeight;
-			} else {
-				heights.push(itemHeight);
-			}
-		});
-	}
+Object.defineProperty(exports, "__esModule", {
+	value: true
 });
 
-/***/ }),
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-/***/ 181:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _hotKeys = __webpack_require__(22);
-
-var _hotKeys2 = _interopRequireDefault(_hotKeys);
-
-var _environment = __webpack_require__(3);
+var _environment = __webpack_require__(1);
 
 var _environment2 = _interopRequireDefault(_environment);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* global elementorFrontendConfig */
-(function ($) {
-	var elements = {},
-	    EventManager = __webpack_require__(20),
-	    Module = __webpack_require__(7),
-	    ElementsHandler = __webpack_require__(182),
-	    YouTubeModule = __webpack_require__(194),
-	    AnchorsModule = __webpack_require__(195),
-	    LightboxModule = __webpack_require__(196);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var ElementorFrontend = function ElementorFrontend() {
-		var self = this,
-		    dialogsManager;
+var HotKeys = function () {
+	function HotKeys() {
+		_classCallCheck(this, HotKeys);
 
-		this.config = elementorFrontendConfig;
+		this.hotKeysHandlers = {};
+	}
 
-		this.Module = Module;
+	_createClass(HotKeys, [{
+		key: 'applyHotKey',
+		value: function applyHotKey(event) {
+			var handlers = this.hotKeysHandlers[event.which];
 
-		var setDeviceModeData = function setDeviceModeData() {
-			elements.$body.attr('data-elementor-device-mode', self.getCurrentDeviceMode());
-		};
+			if (!handlers) {
+				return;
+			}
 
-		var initElements = function initElements() {
-			elements.window = window;
+			jQuery.each(handlers, function (key, handler) {
+				if (handler.isWorthHandling && !handler.isWorthHandling(event)) {
+					return;
+				}
 
-			elements.$window = $(window);
+				// Fix for some keyboard sources that consider alt key as ctrl key
+				if (!handler.allowAltKey && event.altKey) {
+					return;
+				}
 
-			elements.$document = $(document);
+				event.preventDefault();
 
-			elements.$body = $(document.body);
+				handler.handle(event);
+			});
+		}
+	}, {
+		key: 'isControlEvent',
+		value: function isControlEvent(event) {
+			return event[_environment2.default.mac ? 'metaKey' : 'ctrlKey'];
+		}
+	}, {
+		key: 'addHotKeyHandler',
+		value: function addHotKeyHandler(keyCode, handlerName, handler) {
+			if (!this.hotKeysHandlers[keyCode]) {
+				this.hotKeysHandlers[keyCode] = {};
+			}
 
-			elements.$elementor = elements.$document.find('.elementor');
+			this.hotKeysHandlers[keyCode][handlerName] = handler;
+		}
+	}, {
+		key: 'bindListener',
+		value: function bindListener($listener) {
+			$listener.on('keydown', this.applyHotKey.bind(this));
+		}
+	}]);
 
-			elements.$wpAdminBar = elements.$document.find('#wpadminbar');
-		};
+	return HotKeys;
+}();
 
-		var initHotKeys = function initHotKeys() {
-			self.hotKeys = new _hotKeys2.default();
+exports.default = HotKeys;
 
-			self.hotKeys.bindListener(elements.$window);
-		};
+/***/ }),
 
-		var bindEvents = function bindEvents() {
-			elements.$window.on('resize', setDeviceModeData);
-		};
+/***/ 18:
+/***/ (function(module, exports, __webpack_require__) {
 
-		var initOnReadyComponents = function initOnReadyComponents() {
-			self.utils = {
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_elementorModules$Vie) {
+	_inherits(_class, _elementorModules$Vie);
+
+	function _class() {
+		_classCallCheck(this, _class);
+
+		return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+	}
+
+	_createClass(_class, [{
+		key: 'getDefaultSettings',
+		value: function getDefaultSettings() {
+			return {
+				selectors: {
+					elements: '.elementor-element',
+					nestedDocumentElements: '.elementor .elementor-element'
+				},
+				classes: {
+					editMode: 'elementor-edit-mode'
+				}
+			};
+		}
+	}, {
+		key: 'getDefaultElements',
+		value: function getDefaultElements() {
+			var selectors = this.getSettings('selectors');
+
+			return {
+				$elements: this.$element.find(selectors.elements).not(this.$element.find(selectors.nestedDocumentElements))
+			};
+		}
+	}, {
+		key: 'getDocumentSettings',
+		value: function getDocumentSettings(setting) {
+			var elementSettings = void 0;
+
+			if (this.isEdit) {
+				elementSettings = {};
+
+				var settings = elementor.settings.page.model;
+
+				jQuery.each(settings.getActiveControls(), function (controlKey) {
+					elementSettings[controlKey] = settings.attributes[controlKey];
+				});
+			} else {
+				elementSettings = this.$element.data('elementor-settings') || {};
+			}
+
+			return this.getItems(elementSettings, setting);
+		}
+	}, {
+		key: 'runElementsHandlers',
+		value: function runElementsHandlers() {
+			this.elements.$elements.each(function (index, element) {
+				return elementorFrontend.elementsHandler.runReadyTrigger(jQuery(element));
+			});
+		}
+	}, {
+		key: 'onInit',
+		value: function onInit() {
+			this.$element = this.getSettings('$element');
+
+			_get(_class.prototype.__proto__ || Object.getPrototypeOf(_class.prototype), 'onInit', this).call(this);
+
+			this.isEdit = this.$element.hasClass(this.getSettings('classes.editMode'));
+
+			if (this.isEdit) {
+				elementor.settings.page.model.on('change', this.onSettingsChange.bind(this));
+			} else {
+				this.runElementsHandlers();
+			}
+		}
+	}, {
+		key: 'onSettingsChange',
+		value: function onSettingsChange() {}
+	}]);
+
+	return _class;
+}(elementorModules.ViewModule);
+
+exports.default = _class;
+
+/***/ }),
+
+/***/ 180:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _documentsManager = __webpack_require__(181);
+
+var _documentsManager2 = _interopRequireDefault(_documentsManager);
+
+var _hotKeys = __webpack_require__(17);
+
+var _hotKeys2 = _interopRequireDefault(_hotKeys);
+
+var _storage = __webpack_require__(16);
+
+var _storage2 = _interopRequireDefault(_storage);
+
+var _environment = __webpack_require__(1);
+
+var _environment2 = _interopRequireDefault(_environment);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* global elementorFrontendConfig */
+
+
+var EventManager = __webpack_require__(14),
+    ElementsHandler = __webpack_require__(182),
+    YouTubeModule = __webpack_require__(194),
+    AnchorsModule = __webpack_require__(195),
+    LightboxModule = __webpack_require__(196);
+
+var Frontend = function (_elementorModules$Vie) {
+	_inherits(Frontend, _elementorModules$Vie);
+
+	function Frontend() {
+		var _ref;
+
+		_classCallCheck(this, Frontend);
+
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
+		}
+
+		var _this = _possibleConstructorReturn(this, (_ref = Frontend.__proto__ || Object.getPrototypeOf(Frontend)).call.apply(_ref, [this].concat(args)));
+
+		_this.config = elementorFrontendConfig;
+
+		_this.Module = __webpack_require__(3);
+		return _this;
+	}
+
+	_createClass(Frontend, [{
+		key: 'getDefaultSettings',
+		value: function getDefaultSettings() {
+			return {
+				selectors: {
+					elementor: '.elementor',
+					adminBar: '#wpadminbar'
+				},
+				classes: {
+					ie: 'elementor-msie'
+				}
+			};
+		}
+	}, {
+		key: 'getDefaultElements',
+		value: function getDefaultElements() {
+			var selectors = this.getSettings('selectors');
+
+			var elements = {
+				window: window,
+				$window: jQuery(window),
+				$document: jQuery(document),
+				$body: jQuery(document.body)
+			};
+
+			elements.$elementor = elements.$document.find(selectors.elementor);
+
+			elements.$wpAdminBar = elements.$document.find(selectors.adminBar);
+
+			return elements;
+		}
+	}, {
+		key: 'bindEvents',
+		value: function bindEvents() {
+			var _this2 = this;
+
+			this.elements.$window.on('resize', function () {
+				return _this2.setDeviceModeData();
+			});
+		}
+
+		/**
+   * @deprecated 2.4.0 Use just `this.elements` instead
+   */
+
+	}, {
+		key: 'getElements',
+		value: function getElements(elementName) {
+			return this.getItems(this.elements, elementName);
+		}
+
+		/**
+   * @deprecated 2.4.0 This method was never in use
+   */
+
+	}, {
+		key: 'getPageSettings',
+		value: function getPageSettings(settingName) {
+			var settingsObject = this.isEditMode() ? elementor.settings.page.model.attributes : this.config.settings.page;
+
+			return this.getItems(settingsObject, settingName);
+		}
+	}, {
+		key: 'getGeneralSettings',
+		value: function getGeneralSettings(settingName) {
+			var settingsObject = this.isEditMode() ? elementor.settings.general.model.attributes : this.config.settings.general;
+
+			return this.getItems(settingsObject, settingName);
+		}
+	}, {
+		key: 'getCurrentDeviceMode',
+		value: function getCurrentDeviceMode() {
+			return getComputedStyle(this.elements.$elementor[0], ':after').content.replace(/"/g, '');
+		}
+	}, {
+		key: 'isEditMode',
+		value: function isEditMode() {
+			return this.config.environmentMode.edit;
+		}
+	}, {
+		key: 'isWPPreviewMode',
+		value: function isWPPreviewMode() {
+			return this.config.environmentMode.wpPreview;
+		}
+	}, {
+		key: 'initDialogsManager',
+		value: function initDialogsManager() {
+			var dialogsManager = void 0;
+
+			this.getDialogsManager = function () {
+				if (!dialogsManager) {
+					dialogsManager = new DialogsManager.Instance();
+				}
+
+				return dialogsManager;
+			};
+		}
+	}, {
+		key: 'initHotKeys',
+		value: function initHotKeys() {
+			this.hotKeys = new _hotKeys2.default();
+
+			this.hotKeys.bindListener(this.elements.$window);
+		}
+	}, {
+		key: 'initOnReadyComponents',
+		value: function initOnReadyComponents() {
+			this.utils = {
 				youtube: new YouTubeModule(),
 				anchors: new AnchorsModule(),
 				lightbox: new LightboxModule()
 			};
 
-			self.modules = {
-				utils: {
-					Module: __webpack_require__(0),
-					ViewModule: __webpack_require__(1)
-				},
-				StretchElement: __webpack_require__(197),
-				Masonry: __webpack_require__(17)
+			// TODO: BC since 2.4.0
+			this.modules = {
+				StretchElement: elementorModules.frontend.tools.StretchElement,
+				Masonry: elementorModules.utils.Masonry
 			};
 
-			self.elementsHandler = new ElementsHandler($);
-		};
+			this.elementsHandler = new ElementsHandler(jQuery);
 
-		var getSiteSettings = function getSiteSettings(settingType, settingName) {
-			var settingsObject = self.isEditMode() ? elementor.settings[settingType].model.attributes : self.config.settings[settingType];
+			this.documentsManager = new _documentsManager2.default();
 
-			if (settingName) {
-				return settingsObject[settingName];
-			}
-
-			return settingsObject;
-		};
-
-		var addIeCompatibility = function addIeCompatibility() {
+			this.trigger('components:init');
+		}
+	}, {
+		key: 'addIeCompatibility',
+		value: function addIeCompatibility() {
 			var el = document.createElement('div'),
 			    supportsGrid = 'string' === typeof el.style.grid;
 
@@ -495,67 +867,65 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 				return;
 			}
 
-			elements.$body.addClass('elementor-msie');
+			this.elements.$body.addClass(this.getSettings('classes.ie'));
 
-			var msieCss = '<link rel="stylesheet" id="elementor-frontend-css-msie" href="' + self.config.urls.assets + 'css/frontend-msie.min.css?' + self.config.version + '" type="text/css" />';
+			var msieCss = '<link rel="stylesheet" id="elementor-frontend-css-msie" href="' + this.config.urls.assets + 'css/frontend-msie.min.css?' + this.config.version + '" type="text/css" />';
 
-			elements.$body.append(msieCss);
-		};
-
-		this.init = function () {
-			self.hooks = new EventManager();
-
-			initElements();
-
-			addIeCompatibility();
-
-			bindEvents();
-
-			setDeviceModeData();
-
-			elements.$window.trigger('elementor/frontend/init');
-
-			if (!self.isEditMode()) {
-				initHotKeys();
+			this.elements.$body.append(msieCss);
+		}
+	}, {
+		key: 'setDeviceModeData',
+		value: function setDeviceModeData() {
+			this.elements.$body.attr('data-elementor-device-mode', this.getCurrentDeviceMode());
+		}
+	}, {
+		key: 'addListenerOnce',
+		value: function addListenerOnce(listenerID, event, callback, to) {
+			if (!to) {
+				to = this.elements.$window;
 			}
 
-			initOnReadyComponents();
-		};
+			if (!this.isEditMode()) {
+				to.on(event, callback);
 
-		this.getElements = function (element) {
-			if (element) {
-				return elements[element];
+				return;
 			}
 
-			return elements;
-		};
+			this.removeListeners(listenerID, event, to);
 
-		this.getPageSettings = function (settingName) {
-			return getSiteSettings('page', settingName);
-		};
+			if (to instanceof jQuery) {
+				var eventNS = event + '.' + listenerID;
 
-		this.getGeneralSettings = function (settingName) {
-			return getSiteSettings('general', settingName);
-		};
-
-		this.getDialogsManager = function () {
-			if (!dialogsManager) {
-				dialogsManager = new DialogsManager.Instance();
+				to.on(eventNS, callback);
+			} else {
+				to.on(event, callback, listenerID);
+			}
+		}
+	}, {
+		key: 'removeListeners',
+		value: function removeListeners(listenerID, event, callback, from) {
+			if (!from) {
+				from = this.elements.$window;
 			}
 
-			return dialogsManager;
-		};
+			if (from instanceof jQuery) {
+				var eventNS = event + '.' + listenerID;
 
-		this.isEditMode = function () {
-			return self.config.isEditMode;
-		};
+				from.off(eventNS, callback);
+			} else {
+				from.off(event, callback, listenerID);
+			}
+		}
 
 		// Based on underscore function
-		this.throttle = function (func, wait) {
-			var timeout,
-			    context,
-			    args,
-			    result,
+
+	}, {
+		key: 'throttle',
+		value: function throttle(func, wait) {
+			var timeout = void 0,
+			    context = void 0,
+			    args = void 0,
+			    result = void 0,
 			    previous = 0;
 
 			var later = function later() {
@@ -593,55 +963,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 				return result;
 			};
-		};
-
-		this.addListenerOnce = function (listenerID, event, callback, to) {
-			if (!to) {
-				to = elements.$window;
-			}
-
-			if (!self.isEditMode()) {
-				to.on(event, callback);
-
-				return;
-			}
-
-			this.removeListeners(listenerID, event, to);
-
-			if (to instanceof jQuery) {
-				var eventNS = event + '.' + listenerID;
-
-				to.on(eventNS, callback);
-			} else {
-				to.on(event, callback, listenerID);
-			}
-		};
-
-		this.removeListeners = function (listenerID, event, callback, from) {
-			if (!from) {
-				from = elements.$window;
-			}
-
-			if (from instanceof jQuery) {
-				var eventNS = event + '.' + listenerID;
-
-				from.off(eventNS, callback);
-			} else {
-				from.off(event, callback, listenerID);
-			}
-		};
-
-		this.getCurrentDeviceMode = function () {
-			return getComputedStyle(elements.$elementor[0], ':after').content.replace(/"/g, '');
-		};
-
-		this.waypoint = function ($element, callback, options) {
+		}
+	}, {
+		key: 'waypoint',
+		value: function waypoint($element, callback, options) {
 			var defaultOptions = {
 				offset: '100%',
 				triggerOnce: true
 			};
 
-			options = $.extend(defaultOptions, options);
+			options = jQuery.extend(defaultOptions, options);
 
 			var correctCallback = function correctCallback() {
 				var element = this.element || this,
@@ -656,15 +987,161 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 			};
 
 			return $element.elementorWaypoint(correctCallback, options);
-		};
-	};
+		}
+	}, {
+		key: 'muteMigrationTraces',
+		value: function muteMigrationTraces() {
+			jQuery.migrateMute = true;
 
-	window.elementorFrontend = new ElementorFrontend();
-})(jQuery);
+			jQuery.migrateTrace = false;
+		}
+	}, {
+		key: 'init',
+		value: function init() {
+			this.hooks = new EventManager();
+
+			this.storage = new _storage2.default();
+
+			this.addIeCompatibility();
+
+			this.setDeviceModeData();
+
+			this.initDialogsManager();
+
+			if (this.isEditMode()) {
+				this.muteMigrationTraces();
+			}
+
+			// Keep this line before `initOnReadyComponents` call
+			this.elements.$window.trigger('elementor/frontend/init');
+
+			if (!this.isEditMode()) {
+				this.initHotKeys();
+			}
+
+			this.initOnReadyComponents();
+		}
+	}]);
+
+	return Frontend;
+}(elementorModules.ViewModule);
+
+window.elementorFrontend = new Frontend();
 
 if (!elementorFrontend.isEditMode()) {
-	jQuery(elementorFrontend.init);
+	jQuery(function () {
+		return elementorFrontend.init();
+	});
 }
+
+/***/ }),
+
+/***/ 181:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _document = __webpack_require__(18);
+
+var _document2 = _interopRequireDefault(_document);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_elementorModules$Vie) {
+	_inherits(_class, _elementorModules$Vie);
+
+	function _class() {
+		var _ref;
+
+		_classCallCheck(this, _class);
+
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
+		}
+
+		var _this = _possibleConstructorReturn(this, (_ref = _class.__proto__ || Object.getPrototypeOf(_class)).call.apply(_ref, [this].concat(args)));
+
+		_this.documents = {};
+
+		_this.initDocumentClasses();
+
+		_this.attachDocumentsClasses();
+		return _this;
+	}
+
+	_createClass(_class, [{
+		key: 'getDefaultSettings',
+		value: function getDefaultSettings() {
+			return {
+				selectors: {
+					document: '.elementor'
+				}
+			};
+		}
+	}, {
+		key: 'getDefaultElements',
+		value: function getDefaultElements() {
+			var selectors = this.getSettings('selectors');
+
+			return {
+				$documents: jQuery(selectors.document)
+			};
+		}
+	}, {
+		key: 'initDocumentClasses',
+		value: function initDocumentClasses() {
+			this.documentClasses = {
+				base: _document2.default
+			};
+
+			elementorFrontend.hooks.doAction('elementor/frontend/documents-manager/init-classes', this);
+		}
+	}, {
+		key: 'addDocumentClass',
+		value: function addDocumentClass(documentType, documentClass) {
+			this.documentClasses[documentType] = documentClass;
+		}
+	}, {
+		key: 'attachDocumentsClasses',
+		value: function attachDocumentsClasses() {
+			var _this2 = this;
+
+			this.elements.$documents.each(function (index, document) {
+				return _this2.attachDocumentClass(jQuery(document));
+			});
+		}
+	}, {
+		key: 'attachDocumentClass',
+		value: function attachDocumentClass($document) {
+			var documentData = $document.data(),
+			    documentID = documentData.elementorId,
+			    documentType = documentData.elementorType,
+			    DocumentClass = this.documentClasses[documentType] || this.documentClasses.base;
+
+			this.documents[documentID] = new DocumentClass({
+				$element: $document,
+				id: documentID
+			});
+		}
+	}]);
+
+	return _class;
+}(elementorModules.ViewModule);
+
+exports.default = _class;
 
 /***/ }),
 
@@ -706,33 +1183,14 @@ ElementsHandler = function ElementsHandler($) {
 		});
 	};
 
-	var runElementsHandlers = function runElementsHandlers() {
-		var $elements;
-
-		if (elementorFrontend.isEditMode()) {
-			// Elements outside from the Preview
-			$elements = jQuery('.elementor-element', '.elementor:not(.elementor-edit-mode)');
-		} else {
-			$elements = $('.elementor-element');
-		}
-
-		$elements.each(function () {
-			self.runReadyTrigger($(this));
-		});
-	};
-
 	var init = function init() {
-		if (!elementorFrontend.isEditMode()) {
-			self.initHandlers();
-		}
+		self.initHandlers();
 	};
 
 	this.initHandlers = function () {
 		addGlobalHandlers();
 
 		addElementsHandlers();
-
-		runElementsHandlers();
 	};
 
 	this.getHandlers = function (handlerName) {
@@ -777,7 +1235,7 @@ module.exports = ElementsHandler;
 "use strict";
 
 
-var HandlerModule = __webpack_require__(7);
+var HandlerModule = __webpack_require__(3);
 
 var BackgroundVideo = HandlerModule.extend({
 	player: null,
@@ -896,7 +1354,7 @@ var BackgroundVideo = HandlerModule.extend({
 			}
 		});
 
-		elementorFrontend.getElements('$window').on('resize', self.changeVideoSize);
+		elementorFrontend.elements.$window.on('resize', self.changeVideoSize);
 	},
 
 	activate: function activate() {
@@ -967,7 +1425,7 @@ var StretchedSection = HandlerModule.extend({
 	},
 
 	initStretch: function initStretch() {
-		this.stretchElement = new elementorFrontend.modules.StretchElement({
+		this.stretchElement = new elementorModules.frontend.tools.StretchElement({
 			element: this.$element,
 			selectors: {
 				container: this.getStretchContainer()
@@ -1105,28 +1563,35 @@ var HandlesPosition = HandlerModule.extend({
 	},
 
 	getOffset: function getOffset() {
-		return this.$element.offset().top;
+		if ('body' === elementor.config.document.container) {
+			return this.$element.offset().top;
+		}
+
+		var $container = jQuery(elementor.config.document.container);
+		return this.$element.offset().top - $container.offset().top;
 	},
 
 	setHandlesPosition: function setHandlesPosition() {
 		var self = this;
 
-		if (self.isFirst()) {
-			var offset = self.getOffset(),
-			    $handlesElement = self.$element.find('> .elementor-element-overlay > .elementor-editor-section-settings'),
-			    insideHandleClass = 'elementor-section--handles-inside';
+		if (!self.isFirst()) {
+			return;
+		}
 
-			if (offset < 25) {
-				self.$element.addClass(insideHandleClass);
+		var offset = self.getOffset(),
+		    $handlesElement = self.$element.find('> .elementor-element-overlay > .elementor-editor-section-settings'),
+		    insideHandleClass = 'elementor-section--handles-inside';
 
-				if (offset < -5) {
-					$handlesElement.css('top', -offset);
-				} else {
-					$handlesElement.css('top', '');
-				}
+		if (offset < 25) {
+			self.$element.addClass(insideHandleClass);
+
+			if (offset < -5) {
+				$handlesElement.css('top', -offset);
 			} else {
-				self.$element.removeClass(insideHandleClass);
+				$handlesElement.css('top', '');
 			}
+		} else {
+			self.$element.removeClass(insideHandleClass);
 		}
 	},
 
@@ -1157,7 +1622,7 @@ module.exports = function ($scope) {
 "use strict";
 
 
-var TabsModule = __webpack_require__(23);
+var TabsModule = __webpack_require__(19);
 
 module.exports = function ($scope) {
 	new TabsModule({
@@ -1228,7 +1693,7 @@ module.exports = function ($scope, $) {
 "use strict";
 
 
-var TabsModule = __webpack_require__(23);
+var TabsModule = __webpack_require__(19);
 
 module.exports = function ($scope) {
 	new TabsModule({
@@ -1245,7 +1710,7 @@ module.exports = function ($scope) {
 "use strict";
 
 
-var TabsModule = __webpack_require__(23);
+var TabsModule = __webpack_require__(19);
 
 module.exports = function ($scope) {
 	new TabsModule({
@@ -1259,13 +1724,153 @@ module.exports = function ($scope) {
 
 /***/ }),
 
+/***/ 19:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var HandlerModule = __webpack_require__(3);
+
+module.exports = HandlerModule.extend({
+	$activeContent: null,
+
+	getDefaultSettings: function getDefaultSettings() {
+		return {
+			selectors: {
+				tabTitle: '.elementor-tab-title',
+				tabContent: '.elementor-tab-content'
+			},
+			classes: {
+				active: 'elementor-active'
+			},
+			showTabFn: 'show',
+			hideTabFn: 'hide',
+			toggleSelf: true,
+			hidePrevious: true,
+			autoExpand: true
+		};
+	},
+
+	getDefaultElements: function getDefaultElements() {
+		var selectors = this.getSettings('selectors');
+
+		return {
+			$tabTitles: this.findElement(selectors.tabTitle),
+			$tabContents: this.findElement(selectors.tabContent)
+		};
+	},
+
+	activateDefaultTab: function activateDefaultTab() {
+		var settings = this.getSettings();
+
+		if (!settings.autoExpand || 'editor' === settings.autoExpand && !this.isEdit) {
+			return;
+		}
+
+		var defaultActiveTab = this.getEditSettings('activeItemIndex') || 1,
+		    originalToggleMethods = {
+			showTabFn: settings.showTabFn,
+			hideTabFn: settings.hideTabFn
+		};
+
+		// Toggle tabs without animation to avoid jumping
+		this.setSettings({
+			showTabFn: 'show',
+			hideTabFn: 'hide'
+		});
+
+		this.changeActiveTab(defaultActiveTab);
+
+		// Return back original toggle effects
+		this.setSettings(originalToggleMethods);
+	},
+
+	deactivateActiveTab: function deactivateActiveTab(tabIndex) {
+		var settings = this.getSettings(),
+		    activeClass = settings.classes.active,
+		    activeFilter = tabIndex ? '[data-tab="' + tabIndex + '"]' : '.' + activeClass,
+		    $activeTitle = this.elements.$tabTitles.filter(activeFilter),
+		    $activeContent = this.elements.$tabContents.filter(activeFilter);
+
+		$activeTitle.add($activeContent).removeClass(activeClass);
+
+		$activeContent[settings.hideTabFn]();
+	},
+
+	activateTab: function activateTab(tabIndex) {
+		var settings = this.getSettings(),
+		    activeClass = settings.classes.active,
+		    $requestedTitle = this.elements.$tabTitles.filter('[data-tab="' + tabIndex + '"]'),
+		    $requestedContent = this.elements.$tabContents.filter('[data-tab="' + tabIndex + '"]');
+
+		$requestedTitle.add($requestedContent).addClass(activeClass);
+
+		$requestedContent[settings.showTabFn]();
+	},
+
+	isActiveTab: function isActiveTab(tabIndex) {
+		return this.elements.$tabTitles.filter('[data-tab="' + tabIndex + '"]').hasClass(this.getSettings('classes.active'));
+	},
+
+	bindEvents: function bindEvents() {
+		var _this = this;
+
+		this.elements.$tabTitles.on({
+			keydown: function keydown(event) {
+				if ('Enter' === event.key) {
+					event.preventDefault();
+
+					_this.changeActiveTab(event.currentTarget.dataset.tab);
+				}
+			},
+			click: function click(event) {
+				event.preventDefault();
+
+				_this.changeActiveTab(event.currentTarget.dataset.tab);
+			}
+		});
+	},
+
+	onInit: function onInit() {
+		HandlerModule.prototype.onInit.apply(this, arguments);
+
+		this.activateDefaultTab();
+	},
+
+	onEditSettingsChange: function onEditSettingsChange(propertyName) {
+		if ('activeItemIndex' === propertyName) {
+			this.activateDefaultTab();
+		}
+	},
+
+	changeActiveTab: function changeActiveTab(tabIndex) {
+		var isActiveTab = this.isActiveTab(tabIndex),
+		    settings = this.getSettings();
+
+		if ((settings.toggleSelf || !isActiveTab) && settings.hidePrevious) {
+			this.deactivateActiveTab();
+		}
+
+		if (!settings.hidePrevious && isActiveTab) {
+			this.deactivateActiveTab(tabIndex);
+		}
+
+		if (!isActiveTab) {
+			this.activateTab(tabIndex);
+		}
+	}
+});
+
+/***/ }),
+
 /***/ 190:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var HandlerModule = __webpack_require__(7),
+var HandlerModule = __webpack_require__(3),
     VideoModule;
 
 VideoModule = HandlerModule.extend({
@@ -1365,7 +1970,7 @@ module.exports = function ($scope) {
 "use strict";
 
 
-var HandlerModule = __webpack_require__(7),
+var HandlerModule = __webpack_require__(3),
     ImageCarouselHandler;
 
 ImageCarouselHandler = HandlerModule.extend({
@@ -1441,7 +2046,7 @@ module.exports = function ($scope) {
 "use strict";
 
 
-var HandlerModule = __webpack_require__(7),
+var HandlerModule = __webpack_require__(3),
     TextEditor;
 
 TextEditor = HandlerModule.extend({
@@ -1551,7 +2156,7 @@ module.exports = function ($scope) {
 "use strict";
 
 
-var HandlerModule = __webpack_require__(7),
+var HandlerModule = __webpack_require__(3),
     GlobalHandler;
 
 GlobalHandler = HandlerModule.extend({
@@ -1607,9 +2212,7 @@ module.exports = function ($scope) {
 "use strict";
 
 
-var ViewModule = __webpack_require__(1);
-
-module.exports = ViewModule.extend({
+module.exports = elementorModules.ViewModule.extend({
 	getDefaultSettings: function getDefaultSettings() {
 		return {
 			isInserted: false,
@@ -1664,9 +2267,7 @@ module.exports = ViewModule.extend({
 "use strict";
 
 
-var ViewModule = __webpack_require__(1);
-
-module.exports = ViewModule.extend({
+module.exports = elementorModules.ViewModule.extend({
 	getDefaultSettings: function getDefaultSettings() {
 		return {
 			scrollDuration: 500,
@@ -1688,26 +2289,31 @@ module.exports = ViewModule.extend({
 	},
 
 	bindEvents: function bindEvents() {
-		elementorFrontend.getElements('$document').on('click', this.getSettings('selectors.links'), this.handleAnchorLinks);
+		elementorFrontend.elements.$document.on('click', this.getSettings('selectors.links'), this.handleAnchorLinks);
 	},
 
 	handleAnchorLinks: function handleAnchorLinks(event) {
 		var clickedLink = event.currentTarget,
 		    isSamePathname = location.pathname === clickedLink.pathname,
-		    isSameHostname = location.hostname === clickedLink.hostname;
+		    isSameHostname = location.hostname === clickedLink.hostname,
+		    $anchor;
 
 		if (!isSameHostname || !isSamePathname || clickedLink.hash.length < 2) {
 			return;
 		}
 
-		var $anchor = jQuery(clickedLink.hash).filter(this.getSettings('selectors.targets'));
+		try {
+			$anchor = jQuery(clickedLink.hash).filter(this.getSettings('selectors.targets'));
+		} catch (e) {
+			return;
+		}
 
 		if (!$anchor.length) {
 			return;
 		}
 
 		var scrollTop = $anchor.offset().top,
-		    $wpAdminBar = elementorFrontend.getElements('$wpAdminBar'),
+		    $wpAdminBar = elementorFrontend.elements.$wpAdminBar,
 		    $activeStickies = jQuery('.elementor-sticky--active'),
 		    maxStickyHeight = 0;
 
@@ -1734,7 +2340,7 @@ module.exports = ViewModule.extend({
 	},
 
 	onInit: function onInit() {
-		ViewModule.prototype.onInit.apply(this, arguments);
+		elementorModules.ViewModule.prototype.onInit.apply(this, arguments);
 
 		this.bindEvents();
 	}
@@ -1748,10 +2354,7 @@ module.exports = ViewModule.extend({
 "use strict";
 
 
-var ViewModule = __webpack_require__(1),
-    LightboxModule;
-
-LightboxModule = ViewModule.extend({
+module.exports = elementorModules.ViewModule.extend({
 	oldAspectRatio: null,
 
 	oldAnimation: null,
@@ -1802,15 +2405,15 @@ LightboxModule = ViewModule.extend({
 	},
 
 	getModal: function getModal() {
-		if (!LightboxModule.modal) {
+		if (!module.exports.modal) {
 			this.initModal();
 		}
 
-		return LightboxModule.modal;
+		return module.exports.modal;
 	},
 
 	initModal: function initModal() {
-		var modal = LightboxModule.modal = elementorFrontend.getDialogsManager().createWidget('lightbox', {
+		var modal = module.exports.modal = elementorFrontend.getDialogsManager().createWidget('lightbox', {
 			className: 'elementor-lightbox',
 			closeButton: true,
 			closeButtonClass: 'eicon-close',
@@ -2178,11 +2781,11 @@ LightboxModule = ViewModule.extend({
 	},
 
 	bindEvents: function bindEvents() {
-		elementorFrontend.getElements('$document').on('click', this.getSettings('selectors.links'), this.openLink);
+		elementorFrontend.elements.$document.on('click', this.getSettings('selectors.links'), this.openLink);
 	},
 
 	onInit: function onInit() {
-		ViewModule.prototype.onInit.apply(this, arguments);
+		elementorModules.ViewModule.prototype.onInit.apply(this, arguments);
 
 		if (elementorFrontend.isEditMode()) {
 			elementor.settings.general.model.on('change', this.onGeneralSettingsChange);
@@ -2204,580 +2807,6 @@ LightboxModule = ViewModule.extend({
 	}
 });
 
-module.exports = LightboxModule;
-
-/***/ }),
-
-/***/ 197:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var ViewModule = __webpack_require__(1);
-
-module.exports = ViewModule.extend({
-	getDefaultSettings: function getDefaultSettings() {
-		return {
-			element: null,
-			direction: elementorFrontend.config.is_rtl ? 'right' : 'left',
-			selectors: {
-				container: window
-			}
-		};
-	},
-
-	getDefaultElements: function getDefaultElements() {
-		return {
-			$element: jQuery(this.getSettings('element'))
-		};
-	},
-
-	stretch: function stretch() {
-		var containerSelector = this.getSettings('selectors.container'),
-		    $container;
-
-		try {
-			$container = jQuery(containerSelector);
-		} catch (e) {}
-
-		if (!$container || !$container.length) {
-			$container = jQuery(this.getDefaultSettings().selectors.container);
-		}
-
-		this.reset();
-
-		var $element = this.elements.$element,
-		    containerWidth = $container.outerWidth(),
-		    elementOffset = $element.offset().left,
-		    isFixed = 'fixed' === $element.css('position'),
-		    correctOffset = isFixed ? 0 : elementOffset;
-
-		if (window !== $container[0]) {
-			var containerOffset = $container.offset().left;
-
-			if (isFixed) {
-				correctOffset = containerOffset;
-			}
-			if (elementOffset > containerOffset) {
-				correctOffset = elementOffset - containerOffset;
-			}
-		}
-
-		if (!isFixed) {
-			if (elementorFrontend.config.is_rtl) {
-				correctOffset = containerWidth - ($element.outerWidth() + correctOffset);
-			}
-
-			correctOffset = -correctOffset;
-		}
-
-		var css = {};
-
-		css.width = containerWidth + 'px';
-
-		css[this.getSettings('direction')] = correctOffset + 'px';
-
-		$element.css(css);
-	},
-
-	reset: function reset() {
-		var css = {};
-
-		css.width = '';
-
-		css[this.getSettings('direction')] = '';
-
-		this.elements.$element.css(css);
-	}
-});
-
-/***/ }),
-
-/***/ 20:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Handles managing all events for whatever you plug it into. Priorities for hooks are based on lowest to highest in
- * that, lowest priority hooks are fired first.
- */
-
-var EventManager = function EventManager() {
-	var slice = Array.prototype.slice,
-	    MethodsAvailable;
-
-	/**
-  * Contains the hooks that get registered with this EventManager. The array for storage utilizes a "flat"
-  * object literal such that looking up the hook utilizes the native object literal hash.
-  */
-	var STORAGE = {
-		actions: {},
-		filters: {}
-	};
-
-	/**
-  * Removes the specified hook by resetting the value of it.
-  *
-  * @param type Type of hook, either 'actions' or 'filters'
-  * @param hook The hook (namespace.identifier) to remove
-  *
-  * @private
-  */
-	function _removeHook(type, hook, callback, context) {
-		var handlers, handler, i;
-
-		if (!STORAGE[type][hook]) {
-			return;
-		}
-		if (!callback) {
-			STORAGE[type][hook] = [];
-		} else {
-			handlers = STORAGE[type][hook];
-			if (!context) {
-				for (i = handlers.length; i--;) {
-					if (handlers[i].callback === callback) {
-						handlers.splice(i, 1);
-					}
-				}
-			} else {
-				for (i = handlers.length; i--;) {
-					handler = handlers[i];
-					if (handler.callback === callback && handler.context === context) {
-						handlers.splice(i, 1);
-					}
-				}
-			}
-		}
-	}
-
-	/**
-  * Use an insert sort for keeping our hooks organized based on priority. This function is ridiculously faster
-  * than bubble sort, etc: http://jsperf.com/javascript-sort
-  *
-  * @param hooks The custom array containing all of the appropriate hooks to perform an insert sort on.
-  * @private
-  */
-	function _hookInsertSort(hooks) {
-		var tmpHook, j, prevHook;
-		for (var i = 1, len = hooks.length; i < len; i++) {
-			tmpHook = hooks[i];
-			j = i;
-			while ((prevHook = hooks[j - 1]) && prevHook.priority > tmpHook.priority) {
-				hooks[j] = hooks[j - 1];
-				--j;
-			}
-			hooks[j] = tmpHook;
-		}
-
-		return hooks;
-	}
-
-	/**
-  * Adds the hook to the appropriate storage container
-  *
-  * @param type 'actions' or 'filters'
-  * @param hook The hook (namespace.identifier) to add to our event manager
-  * @param callback The function that will be called when the hook is executed.
-  * @param priority The priority of this hook. Must be an integer.
-  * @param [context] A value to be used for this
-  * @private
-  */
-	function _addHook(type, hook, callback, priority, context) {
-		var hookObject = {
-			callback: callback,
-			priority: priority,
-			context: context
-		};
-
-		// Utilize 'prop itself' : http://jsperf.com/hasownproperty-vs-in-vs-undefined/19
-		var hooks = STORAGE[type][hook];
-		if (hooks) {
-			// TEMP FIX BUG
-			var hasSameCallback = false;
-			jQuery.each(hooks, function () {
-				if (this.callback === callback) {
-					hasSameCallback = true;
-					return false;
-				}
-			});
-
-			if (hasSameCallback) {
-				return;
-			}
-			// END TEMP FIX BUG
-
-			hooks.push(hookObject);
-			hooks = _hookInsertSort(hooks);
-		} else {
-			hooks = [hookObject];
-		}
-
-		STORAGE[type][hook] = hooks;
-	}
-
-	/**
-  * Runs the specified hook. If it is an action, the value is not modified but if it is a filter, it is.
-  *
-  * @param type 'actions' or 'filters'
-  * @param hook The hook ( namespace.identifier ) to be ran.
-  * @param args Arguments to pass to the action/filter. If it's a filter, args is actually a single parameter.
-  * @private
-  */
-	function _runHook(type, hook, args) {
-		var handlers = STORAGE[type][hook],
-		    i,
-		    len;
-
-		if (!handlers) {
-			return 'filters' === type ? args[0] : false;
-		}
-
-		len = handlers.length;
-		if ('filters' === type) {
-			for (i = 0; i < len; i++) {
-				args[0] = handlers[i].callback.apply(handlers[i].context, args);
-			}
-		} else {
-			for (i = 0; i < len; i++) {
-				handlers[i].callback.apply(handlers[i].context, args);
-			}
-		}
-
-		return 'filters' === type ? args[0] : true;
-	}
-
-	/**
-  * Adds an action to the event manager.
-  *
-  * @param action Must contain namespace.identifier
-  * @param callback Must be a valid callback function before this action is added
-  * @param [priority=10] Used to control when the function is executed in relation to other callbacks bound to the same hook
-  * @param [context] Supply a value to be used for this
-  */
-	function addAction(action, callback, priority, context) {
-		if ('string' === typeof action && 'function' === typeof callback) {
-			priority = parseInt(priority || 10, 10);
-			_addHook('actions', action, callback, priority, context);
-		}
-
-		return MethodsAvailable;
-	}
-
-	/**
-  * Performs an action if it exists. You can pass as many arguments as you want to this function; the only rule is
-  * that the first argument must always be the action.
-  */
-	function doAction() /* action, arg1, arg2, ... */{
-		var args = slice.call(arguments);
-		var action = args.shift();
-
-		if ('string' === typeof action) {
-			_runHook('actions', action, args);
-		}
-
-		return MethodsAvailable;
-	}
-
-	/**
-  * Removes the specified action if it contains a namespace.identifier & exists.
-  *
-  * @param action The action to remove
-  * @param [callback] Callback function to remove
-  */
-	function removeAction(action, callback) {
-		if ('string' === typeof action) {
-			_removeHook('actions', action, callback);
-		}
-
-		return MethodsAvailable;
-	}
-
-	/**
-  * Adds a filter to the event manager.
-  *
-  * @param filter Must contain namespace.identifier
-  * @param callback Must be a valid callback function before this action is added
-  * @param [priority=10] Used to control when the function is executed in relation to other callbacks bound to the same hook
-  * @param [context] Supply a value to be used for this
-  */
-	function addFilter(filter, callback, priority, context) {
-		if ('string' === typeof filter && 'function' === typeof callback) {
-			priority = parseInt(priority || 10, 10);
-			_addHook('filters', filter, callback, priority, context);
-		}
-
-		return MethodsAvailable;
-	}
-
-	/**
-  * Performs a filter if it exists. You should only ever pass 1 argument to be filtered. The only rule is that
-  * the first argument must always be the filter.
-  */
-	function applyFilters() /* filter, filtered arg, arg2, ... */{
-		var args = slice.call(arguments);
-		var filter = args.shift();
-
-		if ('string' === typeof filter) {
-			return _runHook('filters', filter, args);
-		}
-
-		return MethodsAvailable;
-	}
-
-	/**
-  * Removes the specified filter if it contains a namespace.identifier & exists.
-  *
-  * @param filter The action to remove
-  * @param [callback] Callback function to remove
-  */
-	function removeFilter(filter, callback) {
-		if ('string' === typeof filter) {
-			_removeHook('filters', filter, callback);
-		}
-
-		return MethodsAvailable;
-	}
-
-	/**
-  * Maintain a reference to the object scope so our public methods never get confusing.
-  */
-	MethodsAvailable = {
-		removeFilter: removeFilter,
-		applyFilters: applyFilters,
-		addFilter: addFilter,
-		removeAction: removeAction,
-		doAction: doAction,
-		addAction: addAction
-	};
-
-	// return all of the publicly available methods
-	return MethodsAvailable;
-};
-
-module.exports = EventManager;
-
-/***/ }),
-
-/***/ 22:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _environment = __webpack_require__(3);
-
-var _environment2 = _interopRequireDefault(_environment);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var HotKeys = function () {
-	function HotKeys() {
-		_classCallCheck(this, HotKeys);
-
-		this.hotKeysHandlers = {};
-	}
-
-	_createClass(HotKeys, [{
-		key: 'applyHotKey',
-		value: function applyHotKey(event) {
-			var handlers = this.hotKeysHandlers[event.which];
-
-			if (!handlers) {
-				return;
-			}
-
-			jQuery.each(handlers, function (key, handler) {
-				if (handler.isWorthHandling && !handler.isWorthHandling(event)) {
-					return;
-				}
-
-				// Fix for some keyboard sources that consider alt key as ctrl key
-				if (!handler.allowAltKey && event.altKey) {
-					return;
-				}
-
-				event.preventDefault();
-
-				handler.handle(event);
-			});
-		}
-	}, {
-		key: 'isControlEvent',
-		value: function isControlEvent(event) {
-			return event[_environment2.default.mac ? 'metaKey' : 'ctrlKey'];
-		}
-	}, {
-		key: 'addHotKeyHandler',
-		value: function addHotKeyHandler(keyCode, handlerName, handler) {
-			if (!this.hotKeysHandlers[keyCode]) {
-				this.hotKeysHandlers[keyCode] = {};
-			}
-
-			this.hotKeysHandlers[keyCode][handlerName] = handler;
-		}
-	}, {
-		key: 'bindListener',
-		value: function bindListener($listener) {
-			$listener.on('keydown', this.applyHotKey.bind(this));
-		}
-	}]);
-
-	return HotKeys;
-}();
-
-exports.default = HotKeys;
-
-/***/ }),
-
-/***/ 23:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var HandlerModule = __webpack_require__(7);
-
-module.exports = HandlerModule.extend({
-	$activeContent: null,
-
-	getDefaultSettings: function getDefaultSettings() {
-		return {
-			selectors: {
-				tabTitle: '.elementor-tab-title',
-				tabContent: '.elementor-tab-content'
-			},
-			classes: {
-				active: 'elementor-active'
-			},
-			showTabFn: 'show',
-			hideTabFn: 'hide',
-			toggleSelf: true,
-			hidePrevious: true,
-			autoExpand: true
-		};
-	},
-
-	getDefaultElements: function getDefaultElements() {
-		var selectors = this.getSettings('selectors');
-
-		return {
-			$tabTitles: this.findElement(selectors.tabTitle),
-			$tabContents: this.findElement(selectors.tabContent)
-		};
-	},
-
-	activateDefaultTab: function activateDefaultTab() {
-		var settings = this.getSettings();
-
-		if (!settings.autoExpand || 'editor' === settings.autoExpand && !this.isEdit) {
-			return;
-		}
-
-		var defaultActiveTab = this.getEditSettings('activeItemIndex') || 1,
-		    originalToggleMethods = {
-			showTabFn: settings.showTabFn,
-			hideTabFn: settings.hideTabFn
-		};
-
-		// Toggle tabs without animation to avoid jumping
-		this.setSettings({
-			showTabFn: 'show',
-			hideTabFn: 'hide'
-		});
-
-		this.changeActiveTab(defaultActiveTab);
-
-		// Return back original toggle effects
-		this.setSettings(originalToggleMethods);
-	},
-
-	deactivateActiveTab: function deactivateActiveTab(tabIndex) {
-		var settings = this.getSettings(),
-		    activeClass = settings.classes.active,
-		    activeFilter = tabIndex ? '[data-tab="' + tabIndex + '"]' : '.' + activeClass,
-		    $activeTitle = this.elements.$tabTitles.filter(activeFilter),
-		    $activeContent = this.elements.$tabContents.filter(activeFilter);
-
-		$activeTitle.add($activeContent).removeClass(activeClass);
-
-		$activeContent[settings.hideTabFn]();
-	},
-
-	activateTab: function activateTab(tabIndex) {
-		var settings = this.getSettings(),
-		    activeClass = settings.classes.active,
-		    $requestedTitle = this.elements.$tabTitles.filter('[data-tab="' + tabIndex + '"]'),
-		    $requestedContent = this.elements.$tabContents.filter('[data-tab="' + tabIndex + '"]');
-
-		$requestedTitle.add($requestedContent).addClass(activeClass);
-
-		$requestedContent[settings.showTabFn]();
-	},
-
-	isActiveTab: function isActiveTab(tabIndex) {
-		return this.elements.$tabTitles.filter('[data-tab="' + tabIndex + '"]').hasClass(this.getSettings('classes.active'));
-	},
-
-	bindEvents: function bindEvents() {
-		var _this = this;
-
-		this.elements.$tabTitles.on({
-			keydown: function keydown(event) {
-				if ('Enter' === event.key) {
-					event.preventDefault();
-
-					_this.changeActiveTab(event.currentTarget.dataset.tab);
-				}
-			},
-			click: function click(event) {
-				event.preventDefault();
-
-				_this.changeActiveTab(event.currentTarget.dataset.tab);
-			}
-		});
-	},
-
-	onInit: function onInit() {
-		HandlerModule.prototype.onInit.apply(this, arguments);
-
-		this.activateDefaultTab();
-	},
-
-	onEditSettingsChange: function onEditSettingsChange(propertyName) {
-		if ('activeItemIndex' === propertyName) {
-			this.activateDefaultTab();
-		}
-	},
-
-	changeActiveTab: function changeActiveTab(tabIndex) {
-		var isActiveTab = this.isActiveTab(tabIndex),
-		    settings = this.getSettings();
-
-		if ((settings.toggleSelf || !isActiveTab) && settings.hidePrevious) {
-			this.deactivateActiveTab();
-		}
-
-		if (!settings.hidePrevious && isActiveTab) {
-			this.deactivateActiveTab(tabIndex);
-		}
-
-		if (!isActiveTab) {
-			this.activateTab(tabIndex);
-		}
-	}
-});
-
 /***/ }),
 
 /***/ 3:
@@ -2786,31 +2815,7 @@ module.exports = HandlerModule.extend({
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var userAgent = navigator.userAgent;
-
-exports.default = {
-	webkit: -1 !== userAgent.indexOf('AppleWebKit'),
-	firefox: -1 !== userAgent.indexOf('Firefox'),
-	ie: /Trident|MSIE/.test(userAgent),
-	edge: -1 !== userAgent.indexOf('Edge'),
-	mac: -1 !== userAgent.indexOf('Macintosh')
-};
-
-/***/ }),
-
-/***/ 7:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var ViewModule = __webpack_require__(1),
-    HandlerModule;
-
-HandlerModule = ViewModule.extend({
+module.exports = elementorModules.ViewModule.extend({
 	$element: null,
 
 	editorListeners: null,
@@ -2996,8 +3001,6 @@ HandlerModule = ViewModule.extend({
 		}
 	}
 });
-
-module.exports = HandlerModule;
 
 /***/ })
 

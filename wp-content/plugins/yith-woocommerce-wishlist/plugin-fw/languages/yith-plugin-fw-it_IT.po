@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YITH Plugin Starter 1.0.0 Plugin FW\n"
 "Report-Msgid-Bugs-To: Your Inspiration Themes <plugins@yithemes.com>\n"
-"POT-Creation-Date: 2018-10-23 15:44+0200\n"
-"PO-Revision-Date: 2018-10-24 13:28+0200\n"
+"POT-Creation-Date: 2018-10-26 12:43+0200\n"
+"PO-Revision-Date: 2018-10-26 12:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: YIThemes <plugins@yithemes.com>\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
 "_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
 "esc_html_x:1,2c\n"
@@ -418,19 +418,23 @@ msgstr ""
 msgid "Update now."
 msgstr "Aggiorna adesso."
 
-#: lib/yit-upgrade.php:295
+#: lib/yit-upgrade.php:289
+msgid "You have to activate the plugin to benefit from automatic updates."
+msgstr "Devi attivare il plugin per usufruire degli update automatici."
+
+#: lib/yit-upgrade.php:311
 msgid "YITH Repository"
 msgstr "Repository YITH"
 
-#: lib/yit-upgrade.php:329
+#: lib/yit-upgrade.php:345
 msgid "Invalid URL Provided."
 msgstr "L'URL inserito non è valido."
 
-#: lib/yit-upgrade.php:342
+#: lib/yit-upgrade.php:358
 msgid "Could not create Temporary file."
 msgstr "Non è stato possibile creare il file temporaneo."
 
-#: lib/yit-upgrade.php:502
+#: lib/yit-upgrade.php:531
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox "
@@ -441,7 +445,7 @@ msgstr ""
 "yit-changelog-button\" title=\"%3$s\">Visualizza i dettagli della versione "
 "%4$s</a>."
 
-#: lib/yit-upgrade.php:504
+#: lib/yit-upgrade.php:533
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox "
@@ -454,7 +458,7 @@ msgstr ""
 "%4$s</a>. <em>Per poter usufruire degli aggiornamenti automatici è "
 "necessario attivare il plugin su un solo sito.</em>"
 
-#: lib/yit-upgrade.php:506
+#: lib/yit-upgrade.php:535
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox "
@@ -469,7 +473,7 @@ msgstr ""
 "plugin, per piacere <a href=\"%5$s\" title=\"License activation\">attiva</a> "
 "la tua copia di %6s.</em>"
 
-#: lib/yit-upgrade.php:508
+#: lib/yit-upgrade.php:537
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox "
@@ -480,99 +484,93 @@ msgstr ""
 "yit-changelog-button\" title=\"%3$s\">Visualizza i dettagli della versione "
 "%4$s</a> oppure <a href=\"%5$s\">aggiorna adesso</a>."
 
-#: lib/yit-upgrade.php:581
+#: lib/yit-upgrade.php:610
 msgid "You can't update the plugins for this site."
 msgstr "Non è possibile aggiornare i plugin per questo sito."
 
-#: lib/yit-upgrade.php:585
+#: lib/yit-upgrade.php:614
 msgid ""
 "You do not have sufficient permissions to update the plugins for this site."
 msgstr ""
 "Non sei in possesso delle autorizzazioni necessarie per aggiornare i plugin "
 "in questo sito."
 
-#: lib/yit-upgrade.php:592
+#: lib/yit-upgrade.php:621
 msgid "Update Plugin"
 msgstr "Aggiorna plugin"
 
 #: licence/lib/yit-licence.php:186
 #, php-format
 msgctxt "%s = field name"
-msgid "%s field cannot be empty"
-msgstr "Il campo %s non può essere vuoto"
+msgid "Please, insert a valid %s"
+msgstr "Per favore, inserisci una %s valida"
 
 #: licence/lib/yit-licence.php:187
 #, php-format
-msgid "%s and %s fields cannot be empty"
-msgstr "I campi %s e %s non possono essere vuoti"
+msgid "Please, insert a valid %s and a valid %s"
+msgstr "Per favore, inserire una %s valida ed una %s valida"
 
 #: licence/lib/yit-licence.php:188
 msgid "Unable to contact the remote server, please try again later. Thanks!"
 msgstr "Impossibile contattare il server remoto, prova più tardi. Grazie!"
 
 #: licence/lib/yit-licence.php:189
-#: licence/templates/panel/activation/activation-panel.php:92
-#: licence/templates/panel/activation/activation-panel.php:170
-#: licence/templates/panel/activation/activation-panel.php:201
-msgid "Email"
-msgstr "Email"
+msgid "email address"
+msgstr "email"
 
 #: licence/lib/yit-licence.php:190
-#: licence/templates/panel/activation/activation-panel.php:93
-#: licence/templates/panel/activation/activation-panel.php:171
-#: licence/templates/panel/activation/activation-panel.php:202
-msgid "License Key"
-msgstr "Chiave di licenza"
+msgid "license key"
+msgstr "chiave di licenza"
 
 #: licence/lib/yit-licence.php:191
 msgid "Are you sure you want to deactivate the license for current site?"
 msgstr "Sei sicuro di voler disattivare la licenza per questo sito?"
 
-#: licence/lib/yit-licence.php:685
+#: licence/lib/yit-licence.php:734
 msgid "Invalid Request"
 msgstr "Richiesta non valida"
 
-#: licence/lib/yit-licence.php:686
+#: licence/lib/yit-licence.php:735
 msgid "Invalid license key"
 msgstr "Chiave di licenza non valida"
 
-#: licence/lib/yit-licence.php:687
+#: licence/lib/yit-licence.php:736
 msgid "Software has been deactivated"
 msgstr "Il software è stato disattivato"
 
-#: licence/lib/yit-licence.php:688
+#: licence/lib/yit-licence.php:737
 msgid "Maximum number of activations exceeded"
 msgstr "Hai raggiunto il numero massimo di attivazioni"
 
-#: licence/lib/yit-licence.php:689
+#: licence/lib/yit-licence.php:738
 msgid "Invalid instance ID"
 msgstr "Istanza ID non valida"
 
-#: licence/lib/yit-licence.php:690
+#: licence/lib/yit-licence.php:739
 msgid "Invalid security key"
 msgstr "Chiave di sicurezza non valida"
 
-#: licence/lib/yit-licence.php:691
+#: licence/lib/yit-licence.php:740
 msgid "License key has expired"
 msgstr "La chiave di licenza è scaduta"
 
-#: licence/lib/yit-licence.php:692
+#: licence/lib/yit-licence.php:741
 msgid "License key has been banned"
 msgstr "La chiave di licenza è stata bloccata"
 
-#: licence/lib/yit-licence.php:693
+#: licence/lib/yit-licence.php:742
 msgid "Current product is not included in your YITH Club Subscription key"
 msgstr "Questo prodotto non è incluso nella tua licenze YITH Club Subscription"
 
-#: licence/lib/yit-licence.php:694
+#: licence/lib/yit-licence.php:743
 msgid "Great"
 msgstr "Grande!"
 
-#: licence/lib/yit-licence.php:694
+#: licence/lib/yit-licence.php:743
 msgid "License successfully activated"
 msgstr "Licenza attivata con successo"
 
-#: licence/lib/yit-licence.php:695
+#: licence/lib/yit-licence.php:744
 msgid "License key deactivated for website"
 msgstr "Chiave di licenza disattivata per il sito web"
 
@@ -654,6 +652,18 @@ msgstr "Attivato"
 #: licence/templates/panel/activation/activation-panel.php:198
 msgid "Product Name"
 msgstr "Nome prodotto"
+
+#: licence/templates/panel/activation/activation-panel.php:92
+#: licence/templates/panel/activation/activation-panel.php:170
+#: licence/templates/panel/activation/activation-panel.php:201
+msgid "Email"
+msgstr "Email"
+
+#: licence/templates/panel/activation/activation-panel.php:93
+#: licence/templates/panel/activation/activation-panel.php:171
+#: licence/templates/panel/activation/activation-panel.php:202
+msgid "License Key"
+msgstr "Chiave di licenza"
 
 #: licence/templates/panel/activation/activation-panel.php:96
 #: licence/templates/panel/activation/activation-panel.php:205
@@ -849,6 +859,13 @@ msgstr "Impostazioni"
 #: yit-plugin.php:191
 msgid "License"
 msgstr "Chiave di licenza"
+
+#~ msgctxt "%s = field name"
+#~ msgid "%s field cannot be empty"
+#~ msgstr "Il campo %s non può essere vuoto"
+
+#~ msgid "%s and %s fields cannot be empty"
+#~ msgstr "I campi %s e %s non possono essere vuoti"
 
 #~ msgid "Hide sidebar"
 #~ msgstr "Nascondi barra laterale"

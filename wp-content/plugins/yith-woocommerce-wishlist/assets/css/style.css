@@ -86,8 +86,7 @@
 /* Wishlist table */
 .woocommerce .wishlist_table td.product-add-to-cart a{
     display: block!important;
-    margin: 0;
-    margin-bottom: 5px;
+    margin: 0 0 5px;
     text-align: center;
 }
 .woocommerce .wishlist_table td.product-add-to-cart span.dateadded{
@@ -98,69 +97,90 @@
 .yith-wcwl-add-button a.open-pretty-photo{
     display: none;
 }
-.yes-js .yith-wcwl-add-button a.open-pretty-photo{
+.yes-js .yith-wcwl-add-button a.open-pretty-photo,
+.block-editor .yith-wcwl-add-button a.open-pretty-photo{
     display: inline-block;
 }
-.yes-js .yith-wcwl-popup{
+.yes-js .yith-wcwl-popup,
+.block-editor .yith-wcwl-popup{
     display: none;
     text-align: center;
 }
-.yes-js .yith-wcwl-popup-content{
+.yes-js .yith-wcwl-popup-content,
+.block-editor .yith-wcwl-popup-content{
 
 }
-.yes-js .yith-wcwl-popup-content{
+.yes-js .yith-wcwl-popup-content,
+.block-editor .yith-wcwl-popup-content{
     display: table;
     width: 100%;
 }
-.yes-js .yith-wcwl-popup-content .yith-wcwl-first-row{
+.yes-js .yith-wcwl-popup-content .yith-wcwl-first-row,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-first-row{
     display: table-header-group;
 }
-.yes-js .yith-wcwl-popup-content .yith-wcwl-second-row{
+.yes-js .yith-wcwl-popup-content .yith-wcwl-second-row,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-second-row{
     display: none;
 }
 .yes-js .yith-wcwl-popup-content .yith-wcwl-wishlist-select-container,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-wishlist-select-container,
 .yes-js .yith-wcwl-popup-content .yith-wcwl-wishlist-thumb,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-wishlist-thumb,
 .yes-js .yith-wcwl-popup-content .yith-wcwl-popup-new,
-.yes-js .yith-wcwl-popup-content .yith-wcwl-visibility{
+.block-editor .yith-wcwl-popup-content .yith-wcwl-popup-new,
+.yes-js .yith-wcwl-popup-content .yith-wcwl-visibility.
+.block-editor .yith-wcwl-popup-content .yith-wcwl-visibility{
     display: table-cell;
     vertical-align: bottom;
 }
-.yes-js .yith-wcwl-popup-content .yith-wcwl-wishlist-select-container{
+.yes-js .yith-wcwl-popup-content .yith-wcwl-wishlist-select-container,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-wishlist-select-container{
     width: 80%;
     padding-bottom: 20px;
 }
 .yes-js .yith-wcwl-popup-content .yith-wcwl-wishlist-select-container select,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-wishlist-select-container select,
 .yes-js .yith-wcwl-popup-content .yith-wcwl-visibility select,
-.yes-js .yith-wcwl-popup-content .yith-wcwl-popup-new input{
+.block-editor .yith-wcwl-popup-content .yith-wcwl-visibility select,
+.yes-js .yith-wcwl-popup-content .yith-wcwl-popup-new input,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-popup-new input{
     border: 1px solid #ccc;
     height: 35px;
     border-radius: 3px;
 }
-.yes-js .yith-wcwl-popup-content .yith-wcwl-wishlist-select-container select{
+.yes-js .yith-wcwl-popup-content .yith-wcwl-wishlist-select-container select,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-wishlist-select-container select{
     width: 100%;
     font-weight: 700;
     padding-left: 10px;
 }
-.yes-js .yith-wcwl-popup-content .yith-wcwl-wishlist-thumb{
+.yes-js .yith-wcwl-popup-content .yith-wcwl-wishlist-thumb,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-wishlist-thumb{
     width: 20%;
     padding-bottom: 20px;
 }
-.yes-js .yith-wcwl-popup-content .yith-wcwl-wishlist-thumb img{
+.yes-js .yith-wcwl-popup-content .yith-wcwl-wishlist-thumb img,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-wishlist-thumb img{
     float: right;
     border: 1px solid #ccc;
     border-radius: 3px;
 }
-.yes-js .yith-wcwl-popup-content .yith-wcwl-popup-new{
+.yes-js .yith-wcwl-popup-content .yith-wcwl-popup-new,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-popup-new{
     text-align: right;
 }
-.yes-js .yith-wcwl-popup-content .yith-wcwl-popup-new label{
+.yes-js .yith-wcwl-popup-content .yith-wcwl-popup-new label,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-popup-new label{
     font-weight: 700;
 }
-.yes-js .yith-wcwl-popup-content .yith-wcwl-visibility select{
+.yes-js .yith-wcwl-popup-content .yith-wcwl-visibility select,
+.block-editor .yith-wcwl-popup-content .yith-wcwl-visibility select{
     float: right;
     min-width: 90px;
 }
-.yes-js .yith-wcwl-popup-footer{
+.yes-js .yith-wcwl-popup-footer,
+.block-editor .yith-wcwl-popup-footer{
     border-top: 1px solid #CCC;
     padding: 20px 20px 0 20px;
     margin: 20px -20px 0;

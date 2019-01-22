@@ -49,7 +49,7 @@ if ( ! class_exists( 'YITH_WCWL_Init' ) ) {
 		 * @var string
 		 * @since 1.0.0
 		 */
-		public $version = '2.2.5';
+		public $version = '2.2.7';
 
 		/**
 		 * Plugin database version
@@ -198,6 +198,10 @@ if ( ! class_exists( 'YITH_WCWL_Init' ) ) {
 			$this->_update_cookies();
 			$this->_destroy_serialized_cookies();
 
+			// register assets
+            $this->register_styles();
+            $this->register_scripts();
+
 			if ( is_user_logged_in() ) {
 				YITH_WCWL()->details['user_id'] = get_current_user_id();
 
@@ -276,31 +280,29 @@ if ( ! class_exists( 'YITH_WCWL_Init' ) ) {
 		}
 
 		/**
-		 * Enqueue styles, scripts and other stuffs needed in the <head>.
-		 *
-		 * @return void
-		 * @since 1.0.0
+         * Register styles required by the plugin
+         *
+         * @return void
 		 */
-		public function enqueue_styles_and_stuffs() {
-            $woocommerce_base = WC()->template_path();
+		public function register_styles() {
+			$woocommerce_base = WC()->template_path();
 			$assets_path = str_replace( array( 'http:', 'https:' ), '', WC()->plugin_url() ) . '/assets/';
 
+			// register dependencies
 			wp_register_style( 'jquery-selectBox', YITH_WCWL_URL . 'assets/css/jquery.selectBox.css', array(), '1.2.0' );
-			wp_register_style( 'yith-wcwl-main', YITH_WCWL_URL . 'assets/css/style.css', array(), $this->version );
 			wp_register_style( 'yith-wcwl-font-awesome', YITH_WCWL_URL . 'assets/css/font-awesome.min.css', array(), '4.7.0' );
+			wp_register_style( 'woocommerce_prettyPhoto_css', $assets_path . 'css/prettyPhoto.css' );
 
-			wp_enqueue_style( 'woocommerce_prettyPhoto_css', $assets_path . 'css/prettyPhoto.css' );
-			wp_enqueue_style( 'jquery-selectBox' );
-
+			// register main style
 			$located = locate_template( array(
 				$woocommerce_base . 'wishlist.css',
 				'wishlist.css'
 			) );
 
-			if ( ! $located ) {
-				wp_enqueue_style( 'yith-wcwl-main' );
+			if( ! $located ){
+			    wp_register_style( 'yith-wcwl-main', YITH_WCWL_URL . 'assets/css/style.css', array( 'jquery-selectBox', 'yith-wcwl-font-awesome' ), $this->version );
 			}
-			else {
+			else{
 				$stylesheet_directory = get_stylesheet_directory();
 				$stylesheet_directory_uri = get_stylesheet_directory_uri();
 				$template_directory = get_template_directory();
@@ -308,7 +310,54 @@ if ( ! class_exists( 'YITH_WCWL_Init' ) ) {
 
 				$style_url = ( strpos( $located, $stylesheet_directory ) ) ? str_replace( $stylesheet_directory, $stylesheet_directory_uri, $located ) : str_replace( $template_directory, $template_directory_uri, $located );
 
-				wp_register_style( 'yith-wcwl-user-main', $style_url, array(), $this->version );
+				wp_register_style( 'yith-wcwl-user-main', $style_url, array( 'jquery-selectBox', 'yith-wcwl-font-awesome' ), $this->version );
+            }
+		}
+
+		/**
+         * Register scripts required by the plugin
+         *
+         * @return void
+		 */
+		public function register_scripts() {
+			$woocommerce_base = WC()->template_path();
+			$assets_path = str_replace( array( 'http:', 'https:' ), '', WC()->plugin_url() ) . '/assets/';
+			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+			$located = locate_template( array(
+				$woocommerce_base . 'wishlist.js',
+				'wishlist.js'
+			) );
+
+			wp_register_script( 'prettyPhoto', $assets_path . 'js/prettyPhoto/jquery.prettyPhoto' . $suffix . '.js', array( 'jquery' ), '3.1.6', true );
+			wp_register_script( 'jquery-selectBox', YITH_WCWL_URL . 'assets/js/jquery.selectBox.min.js', array( 'jquery' ), '1.2.0', true );
+
+			$yith_wcwl_l10n = $this->get_localize();
+
+			if ( ! $located ) {
+				wp_register_script( 'jquery-yith-wcwl', YITH_WCWL_URL . 'assets/js/jquery.yith-wcwl.js', array( 'jquery', 'jquery-selectBox' ), $this->version, true );
+				wp_localize_script( 'jquery-yith-wcwl', 'yith_wcwl_l10n', $yith_wcwl_l10n );
+			}
+			else {
+				wp_register_script( 'jquery-yith-wcwl-user', str_replace( get_stylesheet_directory(), get_stylesheet_directory_uri(), $located ), array( 'jquery', 'jquery-selectBox' ), $this->version, true );
+				wp_localize_script( 'jquery-yith-wcwl-user', 'yith_wcwl_l10n', $yith_wcwl_l10n );
+			}
+		}
+
+		/**
+		 * Enqueue styles, scripts and other stuffs needed in the <head>.
+		 *
+		 * @return void
+		 * @since 1.0.0
+		 */
+		public function enqueue_styles_and_stuffs() {
+		    wp_enqueue_style( 'woocommerce_prettyPhoto_css' );
+			wp_enqueue_style( 'jquery-selectBox' );
+
+			if ( ! wp_script_is( 'yith-wcwl-user-main', 'registered' ) ) {
+				wp_enqueue_style( 'yith-wcwl-main' );
+			}
+			else {
 				wp_enqueue_style( 'yith-wcwl-user-main' );
 			}
 
@@ -358,29 +407,14 @@ if ( ! class_exists( 'YITH_WCWL_Init' ) ) {
 		 * @since 1.0.0
 		 */
 		public function enqueue_scripts() {
-            $woocommerce_base = WC()->template_path();
-			$assets_path = str_replace( array( 'http:', 'https:' ), '', WC()->plugin_url() ) . '/assets/';
-			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+            wp_enqueue_script( 'prettyPhoto' );
+			wp_enqueue_script( 'jquery-selectBox' );
 
-			$located = locate_template( array(
-				$woocommerce_base . 'wishlist.js',
-				'wishlist.js'
-			) );
-
-			wp_enqueue_script( 'prettyPhoto', $assets_path . 'js/prettyPhoto/jquery.prettyPhoto' . $suffix . '.js', array( 'jquery' ), '3.1.6', true );
-			wp_enqueue_script( 'jquery-selectBox', YITH_WCWL_URL . 'assets/js/jquery.selectBox.min.js', array( 'jquery' ), '1.2.0', true );
-			wp_register_script( 'jquery-yith-wcwl', YITH_WCWL_URL . 'assets/js/jquery.yith-wcwl.js', array( 'jquery', 'jquery-selectBox' ), $this->version, true );
-			wp_register_script( 'jquery-yith-wcwl-user', str_replace( get_stylesheet_directory(), get_stylesheet_directory_uri(), $located ), array( 'jquery', 'jquery-selectBox' ), $this->version, true );
-
-			$yith_wcwl_l10n = $this->get_localize();
-
-			if ( ! $located ) {
+			if ( ! wp_script_is( 'jquery-yith-wcwl-user', 'registered' ) ) {
 				wp_enqueue_script( 'jquery-yith-wcwl' );
-				wp_localize_script( 'jquery-yith-wcwl', 'yith_wcwl_l10n', $yith_wcwl_l10n );
 			}
 			else {
 				wp_enqueue_script( 'jquery-yith-wcwl-user' );
-				wp_localize_script( 'jquery-yith-wcwl-user', 'yith_wcwl_l10n', $yith_wcwl_l10n );
 			}
 		}
 

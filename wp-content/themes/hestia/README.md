@@ -2,7 +2,7 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
 **Tags:** blog, custom-logo, portfolio, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready  
 **Requires at least:** 4.0  
-**Tested up to:** 4.9.8  
+**Tested up to:** 5.0  
 **Stable tag:** 2.0.7  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
@@ -17,6 +17,47 @@ Hestia WordPress theme, Copyright 2018 Themeisle
 Hestia is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.1.1 - 2019-01-17  ###
+
+* Changed the boxed layout for the third header layout
+* Improved layout of the onboarding notice and page
+* Small layout fixes for the Orfeo child theme
+* Fixed the upgrade link
+
+
+### 2.1.0 - 2019-01-09  ###
+
+* NEW Custom integration with Gutenberg
+* NEW Options to differentially enable/disable navigation and footer areas on posts/pages
+* Fixed compatibility with Everest Forms plugin
+* Fixed compatibility with Quiz Cat plugin
+* Fixed problem with the About Section background image remaining fixed in Firefox
+* Removed the Featured tag for the sticky posts
+
+
+### 2.0.19 - 2018-12-18  ###
+
+* Fixed WooCommerce related product layout in Fagri
+* Fixed issue with the Very Top Bar not visible on Elementor Full Width page templates
+* Fixed issue with the Contact section content area that did not opened with Gutenberg
+
+
+### 2.0.18 - 2018-12-12  ###
+
+* Revert Font Awesome 5
+
+
+### 2.0.17 - 2018-12-11  ###
+
+* Update to Font Awesome 5
+
+
+### 2.0.16 - 2018-12-10  ###
+
+* Updated Tested up to version to 5.0
+* Removed unused notice
+
+
 ### 2.0.15 - 2018-12-05  ###
 
 * Fixed problem with Very Top Bar not visible on mobile on the single product page

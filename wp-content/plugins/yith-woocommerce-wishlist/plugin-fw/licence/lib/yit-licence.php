@@ -183,11 +183,11 @@ if ( !class_exists( 'YIT_Licence' ) ) {
 
             /* Localize Scripts */
             wp_localize_script( 'yit-licence', 'licence_message', array(
-                                                 'error'        => sprintf( _x( '%s field cannot be empty', '%s = field name', 'yith-plugin-fw' ), '%field%' ),  // sprintf must be used to avoid errors with '%field%' string in translation in .po file
-                                                 'errors'       => sprintf( __( '%s and %s fields cannot be empty', 'yith-plugin-fw' ), '%field_1%', '%field_2%' ),
+                                                 'error'        => sprintf( _x( 'Please, insert a valid %s', '%s = field name', 'yith-plugin-fw' ), '%field%' ),  // sprintf must be used to avoid errors with '%field%' string in translation in .po file
+                                                 'errors'       => sprintf( __( 'Please, insert a valid %s and a valid %s', 'yith-plugin-fw' ), '%field_1%', '%field_2%' ),
                                                  'server'       => __( 'Unable to contact the remote server, please try again later. Thanks!', 'yith-plugin-fw' ),
-                                                 'email'        => __( 'Email', 'yith-plugin-fw' ),
-                                                 'license_key'  => __( 'License Key', 'yith-plugin-fw' ),
+                                                 'email'        => __( 'email address', 'yith-plugin-fw' ),
+                                                 'license_key'  => __( 'license key', 'yith-plugin-fw' ),
                                                  'are_you_sure' => __( 'Are you sure you want to deactivate the license for current site?', 'yith-plugin-fw' )
                                              )
             );
@@ -309,32 +309,84 @@ if ( !class_exists( 'YIT_Licence' ) ) {
                 $body = is_object( $body ) ? get_object_vars( $body ) : false;
             }
 
-            if ( $body && is_array( $body ) && isset( $body[ 'activated' ] ) && !$body[ 'activated' ] && !isset( $body[ 'error' ] ) ) {
+            if ( $body && is_array( $body )  ) {
+            	/* === Get License === */
+	            $options = $this->get_licence();
+            	if(  isset( $body[ 'activated' ] ) && ! $body[ 'activated' ] && ! isset( $body[ 'error' ] ) ){
+		            $option[ $product[ 'product_id' ] ] = array(
+			            'activated'            => false,
+			            'email'                => urldecode( $args[ 'email' ] ),
+			            'licence_key'          => $args[ 'licence_key' ],
+			            'licence_expires'      => $body[ 'licence_expires' ],
+			            'message'              => $body[ 'message' ],
+			            'activation_limit'     => $body[ 'activation_limit' ],
+			            'activation_remaining' => $body[ 'activation_remaining' ],
+			            'is_membership'        => isset( $body[ 'is_membership' ] ) ? $body[ 'is_membership' ] : false,
+		            );
 
-                $option[ $product[ 'product_id' ] ] = array(
-                    'activated'            => false,
-                    'email'                => urldecode( $args[ 'email' ] ),
-                    'licence_key'          => $args[ 'licence_key' ],
-                    'licence_expires'      => $body[ 'licence_expires' ],
-                    'message'              => $body[ 'message' ],
-                    'activation_limit'     => $body[ 'activation_limit' ],
-                    'activation_remaining' => $body[ 'activation_remaining' ],
-                    'is_membership'        => isset( $body[ 'is_membership' ] ) ? $body[ 'is_membership' ] : false,
-                );
+		            /* === Check for other plugins activation === */
+		            $options[ $product[ 'product_id' ] ] = $option[ $product[ 'product_id' ] ];
 
-                /* === Check for other plugins activation === */
-                $options                             = $this->get_licence();
-                $options[ $product[ 'product_id' ] ] = $option[ $product[ 'product_id' ] ];
+		            /* === Update Plugin Licence Information === */
+		            YIT_Upgrade()->force_regenerate_update_transient();
 
-                update_option( $this->_licence_option, $options );
+		            update_option( $this->_licence_option, $options );
 
-                /* === Update Plugin Licence Information === */
-                YIT_Upgrade()->force_regenerate_update_transient();
+		            /* === Licence Activation Template === */
+		            $body[ 'template' ] = $this->show_activation_panel( $this->get_response_code_message( 'deactivated', array( 'instance' => $body[ 'instance' ] ) ) );
+	            }
 
-                /* === Licence Activation Template === */
-                $body[ 'template' ] = $this->show_activation_panel( $this->get_response_code_message( 'deactivated', array( 'instance' => $body[ 'instance' ] ) ) );
-            } else {
-                $body[ 'error' ] = $this->get_response_code_message( $body[ 'code' ] );
+	            else {
+		            $body[ 'error' ] = $this->get_response_code_message( $body[ 'code' ] );
+
+		            switch ( $body[ 'code' ] ) {
+
+			            /**
+			             * Error Code List:
+			             *
+			             * 100 -> Invalid Request
+			             * 101 -> Invalid licence key
+			             * 102 -> Software has been deactivate
+			             * 103 -> Exceeded maximum number of activations
+			             * 104 -> Invalid instance ID
+			             * 105 -> Invalid security key
+			             * 106 -> Licence key has expired
+			             * 107 -> Licence key has be banned
+			             *
+			             * Only code 101, 106 and 107 have effect on DB during activation
+			             * All error code have effect on DB during deactivation
+			             *
+			             */
+
+			            case '101':
+			            case '102':
+			            case '104':
+				            unset( $options[ $product[ 'product_id' ]  ] );
+				            break;
+
+			            case '106':
+				            $options[ $product[ 'product_id' ]  ][ 'activated' ]       = false;
+				            $options[ $product[ 'product_id' ]  ][ 'message' ]         = $body[ 'error' ];
+				            $options[ $product[ 'product_id' ]  ][ 'status_code' ]     = $body[ 'code' ];
+				            $options[ $product[ 'product_id' ]  ][ 'licence_expires' ] = $body[ 'licence_expires' ];
+				            break;
+
+			            case '107':
+				            $options[ $product[ 'product_id' ]  ][ 'activated' ]   = false;
+				            $options[ $product[ 'product_id' ]  ][ 'message' ]     = $body[ 'error' ];
+				            $options[ $product[ 'product_id' ]  ][ 'status_code' ] = $body[ 'code' ];
+				            break;
+		            }
+
+		            update_option( $this->_licence_option, $options );
+
+		            /* === Licence Activation Template === */
+		            $deactivate_message = $this->get_response_code_message( 'deactivated' );
+		            $error_code_message = $this->get_response_code_message( $body['code'] );
+		            $message            = sprintf( "<strong>%s</strong>: %s", $deactivate_message, $error_code_message );
+		            $body['template']   = $this->show_activation_panel( $message );
+		            $body['activated']  = false;
+	            }
             }
 
             wp_send_json( $body );
@@ -376,13 +428,13 @@ if ( !class_exists( 'YIT_Licence' ) ) {
             $timeout  = apply_filters( 'yith_plugin_fw_licence_timeout', 30, __FUNCTION__ );
             $response = wp_remote_get( $api_uri, array( 'timeout' => $timeout ) );
 
-            if ( !is_wp_error( $response ) ) {
+            if ( ! is_wp_error( $response ) ) {
                 $body = json_decode( $response[ 'body' ] );
                 $body = is_object( $body ) ? get_object_vars( $body ) : false;
             }
 
-            if ( $body && is_array( $body ) && isset( $body[ 'success' ] ) ) {
-                if ( $body[ 'success' ] ) {
+            if ( $body && is_array( $body ) ) {
+                if ( isset( $body[ 'success' ] ) && $body[ 'success' ] == true ) {
 
                     /**
                      * Code 200 -> Licence key is valid
@@ -417,6 +469,7 @@ if ( !class_exists( 'YIT_Licence' ) ) {
 
                         case '101':
                         case '102':
+	                    case '104':
                             unset( $licence[ $product_id ] );
                             break;
 
@@ -425,14 +478,12 @@ if ( !class_exists( 'YIT_Licence' ) ) {
                             $licence[ $product_id ][ 'message' ]         = $body[ 'error' ];
                             $licence[ $product_id ][ 'status_code' ]     = $body[ 'code' ];
                             $licence[ $product_id ][ 'licence_expires' ] = $body[ 'licence_expires' ];
-                            //$licence[ $product_id ]['is_membership']    = isset( $body['is_membership'] ) ? $body['is_membership'] : false;
                             break;
 
                         case '107':
                             $licence[ $product_id ][ 'activated' ]   = false;
                             $licence[ $product_id ][ 'message' ]     = $body[ 'error' ];
                             $licence[ $product_id ][ 'status_code' ] = $body[ 'code' ];
-                            //$licence[ $product_id ]['is_membership']    = isset( $body['is_membership'] ) ? $body['is_membership'] : false;
                             break;
                     }
                 }

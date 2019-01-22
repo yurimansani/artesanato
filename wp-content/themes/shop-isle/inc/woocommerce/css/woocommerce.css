@@ -4188,7 +4188,7 @@ a.button.yith-wcqv-button {
 	text-transform: uppercase;
 }
 
-a.button.yith-wcqv-button:hover{
+a.button.yith-wcqv-button:hover {
 	background-color: rgba( 0, 0, 0, 0.75);
 }
 
@@ -4784,8 +4784,8 @@ h3#ship-to-different-address {
 	.shop-item .product-button-wrap {
 		clear: both;
 		position: static;
-		opacity: 1;
 		padding-bottom: 10px;
+		opacity: 1;
 	}
 
 	.shop-item:hover .shop-item-detail,

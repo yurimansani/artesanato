@@ -4,7 +4,6 @@
 import { __, _n, sprintf } from '@wordpress/i18n';
 import {
 	Button,
-	MenuItem,
 	MenuGroup,
 	Spinner,
 	TextControl,
@@ -22,7 +21,7 @@ import { Tag } from '@woocommerce/components';
  */
 import './style.scss';
 import { buildTermsTree } from './hierarchy';
-import { CheckedIcon, UncheckedIcon } from './icons';
+import SearchListItem from './item';
 
 const defaultMessages = {
 	clear: __( 'Clear all selected items', 'woo-gutenberg-products-block' ),
@@ -51,21 +50,28 @@ export class SearchListControl extends Component {
 	}
 
 	onRemove( id ) {
-		const { selected, onChange } = this.props;
+		const { isSingle, onChange, selected } = this.props;
 		return () => {
+			if ( isSingle ) {
+				onChange( [] );
+			}
 			const i = findIndex( selected, { id } );
 			onChange( [ ...selected.slice( 0, i ), ...selected.slice( i + 1 ) ] );
 		};
 	}
 
 	onSelect( item ) {
-		const { selected, onChange } = this.props;
+		const { isSingle, onChange, selected } = this.props;
 		return () => {
 			if ( this.isSelected( item ) ) {
 				this.onRemove( item.id )();
 				return;
 			}
-			onChange( [ ...selected, item ] );
+			if ( isSingle ) {
+				onChange( [ item ] );
+			} else {
+				onChange( [ ...selected, item ] );
+			}
 		};
 	}
 
@@ -91,50 +97,12 @@ export class SearchListControl extends Component {
 		return isHierarchical ? buildTermsTree( filteredList, list ) : filteredList;
 	}
 
-	getHighlightedName( name, search ) {
-		if ( ! search ) {
-			return name;
-		}
-		const re = new RegExp( escapeRegExp( search ), 'ig' );
-		return name.replace( re, '<strong>$&</strong>' );
-	}
-
-	defaultRenderItem( {
-		depth = 0,
-		getHighlightedName,
-		item,
-		isSelected,
-		onSelect,
-		search = '',
-	} ) {
-		const classes = [ 'woocommerce-search-list__item' ];
-		if ( this.props.isHierarchical ) {
-			classes.push( `depth-${ depth }` );
-		}
-
-		return (
-			<MenuItem
-				key={ item.id }
-				role="menuitemcheckbox"
-				className={ classes.join( ' ' ) }
-				onClick={ onSelect( item ) }
-				isSelected={ isSelected }
-			>
-				<span className="woocommerce-search-list__item-state">
-					{ isSelected ? <CheckedIcon /> : <UncheckedIcon /> }
-				</span>
-				<span
-					className="woocommerce-search-list__item-name"
-					dangerouslySetInnerHTML={ {
-						__html: getHighlightedName( item.name, search ),
-					} }
-				/>
-			</MenuItem>
-		);
+	defaultRenderItem( args ) {
+		return <SearchListItem { ...args } />;
 	}
 
 	renderList( list, depth = 0 ) {
-		const { search } = this.props;
+		const { isSingle, search } = this.props;
 		const renderItem = this.props.renderItem || this.defaultRenderItem;
 		if ( ! list ) {
 			return null;
@@ -142,10 +110,10 @@ export class SearchListControl extends Component {
 		return list.map( ( item ) => (
 			<Fragment key={ item.id }>
 				{ renderItem( {
-					getHighlightedName: this.getHighlightedName,
 					item,
 					isSelected: this.isSelected( item ),
 					onSelect: this.onSelect,
+					isSingle,
 					search,
 					depth,
 				} ) }
@@ -195,36 +163,44 @@ export class SearchListControl extends Component {
 		);
 	}
 
-	render() {
-		const { className = '', search, selected, setState } = this.props;
+	renderSelectedSection() {
+		const { isLoading, isSingle, selected } = this.props;
 		const messages = { ...defaultMessages, ...this.props.messages };
+
+		if ( isLoading || isSingle || ! selected ) {
+			return null;
+		}
+
 		const selectedCount = selected.length;
+		return (
+			<div className="woocommerce-search-list__selected">
+				<div className="woocommerce-search-list__selected-header">
+					<strong>{ messages.selected( selectedCount ) }</strong>
+					{ selectedCount > 0 ? (
+						<Button
+							isLink
+							isDestructive
+							onClick={ this.onClear }
+							aria-label={ messages.clear }
+						>
+							{ __( 'Clear all', 'woo-gutenberg-products-block' ) }
+						</Button>
+					) : null }
+				</div>
+				{ selected.map( ( item, i ) => (
+					<Tag key={ i } label={ item.name } id={ item.id } remove={ this.onRemove } />
+				) ) }
+			</div>
+		);
+	}
+
+	render() {
+		const { className = '', search, setState } = this.props;
+		const messages = { ...defaultMessages, ...this.props.messages };
 
 		return (
 			<div className={ `woocommerce-search-list ${ className }` }>
-				<div className="woocommerce-search-list__selected">
-					<div className="woocommerce-search-list__selected-header">
-						<strong>{ messages.selected( selectedCount ) }</strong>
-						{ selectedCount > 0 ? (
-							<Button
-								isLink
-								isDestructive
-								onClick={ this.onClear }
-								aria-label={ messages.clear }
-							>
-								{ __( 'Clear all', 'woo-gutenberg-products-block' ) }
-							</Button>
-						) : null }
-					</div>
-					{ selected.map( ( item, i ) => (
-						<Tag
-							key={ i }
-							label={ item.name }
-							id={ item.id }
-							remove={ this.onRemove }
-						/>
-					) ) }
-				</div>
+				{ this.renderSelectedSection() }
 
 				<div className="woocommerce-search-list__search">
 					<TextControl
@@ -255,6 +231,10 @@ SearchListControl.propTypes = {
 	 * Whether the list of items is still loading.
 	 */
 	isLoading: PropTypes.bool,
+	/**
+	 * Restrict selections to one item.
+	 */
+	isSingle: PropTypes.bool,
 	/**
 	 * A complete list of item objects, each with id, name properties. This is displayed as a
 	 * clickable/keyboard-able list, and possibly filtered by the search term (searches name).

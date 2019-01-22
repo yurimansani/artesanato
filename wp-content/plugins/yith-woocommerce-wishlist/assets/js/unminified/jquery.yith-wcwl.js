@@ -13,6 +13,8 @@ jQuery( document ).ready( function( $ ){
 
             ev.preventDefault();
 
+            jQuery( document.body ).trigger( 'adding_to_wishlist' );
+
             call_ajax_add_to_wishlist( t );
 
             return false;

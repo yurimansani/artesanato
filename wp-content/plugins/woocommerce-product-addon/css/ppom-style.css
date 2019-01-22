@@ -305,3 +305,8 @@ padding: 5px;
 #ppomSlider .slider-selection {
 	background: #81bfde;
 }
+
+.ppom-delete-option-table{
+  color: red;
+  cursor: pointer;
+}

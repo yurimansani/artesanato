@@ -21,6 +21,9 @@ class Hestia_Header extends Hestia_Abstract_Main {
 	 * Render navigation
 	 */
 	public function navigation() {
+		if ( apply_filters( 'hestia_filter_components_toggle', false, 'header' ) === true ) {
+			return;
+		}
 		$nav_classes = $this->header_classes(); ?>
 		<nav class="navbar navbar-default navbar-fixed-top <?php echo esc_attr( $nav_classes ); ?>">
 			<?php hestia_before_header_content_trigger(); ?>

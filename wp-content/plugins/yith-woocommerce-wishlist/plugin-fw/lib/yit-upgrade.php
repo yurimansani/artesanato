@@ -236,12 +236,23 @@ if ( ! class_exists( 'YIT_Upgrade' ) ) {
 		 * @author   Andrea Grillo <andrea.grillo@yithemes.com>
 		 */
 		public function upgrader_pre_download( $reply, $package, $upgrader ) {
-			$plugin  = false;
-			$is_bulk = $upgrader->skin instanceof Bulk_Plugin_Upgrader_Skin;
+			$plugin       = false;
+			$is_bulk      = $upgrader->skin instanceof Bulk_Plugin_Upgrader_Skin;
+			$is_bulk_ajax = $upgrader->skin instanceof WP_Ajax_Upgrader_Skin;
 
-			if ( ! $is_bulk ) {
+			if ( ! $is_bulk && ! $is_bulk_ajax ) {
+				//Bulk Action: Support for old WordPress Version
 				$plugin = isset( $upgrader->skin->plugin ) ? $upgrader->skin->plugin : false;
-			} else {
+			}
+
+			elseif( $is_bulk_ajax ){
+				//Bulk Update for WordPress 4.9 or greater
+				if( ! empty( $_POST['plugin'] ) ){
+					$plugin = plugin_basename( sanitize_text_field( wp_unslash( $_POST['plugin'] ) ) );
+				}
+			}
+
+			else {
 				//Bulk action upgrade
 				$action_url = parse_url( $upgrader->skin->options['url'] );
 				parse_str( rawurldecode( htmlspecialchars_decode( $action_url['query'] ) ), $output );
@@ -273,6 +284,11 @@ if ( ! class_exists( 'YIT_Upgrade' ) ) {
 
 			$licence    = YIT_Plugin_Licence()->get_licence();
 			$product_id = $plugin_info['product_id'];
+
+			if( empty( $licence[ $product_id ] ) ){
+				return new WP_Error( 'license_not_valid', __( 'You have to activate the plugin to benefit from automatic updates.', '[Update Plugin Message: License not enabled]', 'yith-plugin-fw' ) );
+			}
+
 			$args       = array(
 				'email'       => $licence[ $product_id ]['email'],
 				'licence_key' => $licence[ $product_id ]['licence_key'],
@@ -326,7 +342,7 @@ if ( ! class_exists( 'YIT_Upgrade' ) ) {
 
 			//WARNING: The file is not automatically deleted, The script must unlink() the file.
 			if ( ! $url ) {
-				return new WP_Error( 'http_no_url', __( 'Invalid URL Provided.', 'yit' ) );
+				return new WP_Error( 'http_no_url', __( 'Invalid URL Provided.', 'yith-plugin-fw' ) );
 			}
 
 			$tmpfname = wp_tempnam( $url );
@@ -339,7 +355,7 @@ if ( ! class_exists( 'YIT_Upgrade' ) ) {
 			);
 
 			if ( ! $tmpfname ) {
-				return new WP_Error( 'http_no_file', __( 'Could not create Temporary file.', 'yit' ) );
+				return new WP_Error( 'http_no_file', __( 'Could not create Temporary file.', 'yith-plugin-fw' ) );
 			}
 
 			$response = wp_safe_remote_post( $url, $args );

@@ -66,14 +66,15 @@ if( ! defined('ABSPATH') ) die('Not Allowed');
         wp_enqueue_script('PPOM-tooltip', PPOM_URL."/scripts/ppom-tooltip.js", array('jquery'), PPOM_VERSION, true);
 
         // codemirror files
-        wp_enqueue_style('PPOM-codemirror-css', PPOM_URL."/scripts/codemirror/codemirror.min.css");
+        wp_enqueue_style('PPOM-codemirror-css', PPOM_URL."/scripts/codemirror/codemirror.min.css", '', PPOM_VERSION);
         wp_enqueue_script('PPOM-codemirror-js', PPOM_URL."/scripts/codemirror/codemirror.js", array('jquery'), PPOM_VERSION, true);
         wp_enqueue_script('PPOM-codemirror-css-js', PPOM_URL."/scripts/codemirror/css.js", array('jquery'), PPOM_VERSION, true);
         
         // PPOM Admin Files
-        wp_enqueue_style('PPOM-field', PPOM_URL."/scripts/ppom-admin.css");
+        wp_enqueue_style('PPOM-field', PPOM_URL."/scripts/ppom-admin.css", '', PPOM_VERSION);
         wp_enqueue_script('PPOM-field', PPOM_URL."/scripts/ppom-admin.js", array('PPOM-swal','PPOM-select2','PPOM-tabletojson','PPOM-datatables','PPOM-tooltip','jquery-ui-core', 'jquery-ui-sortable'), PPOM_VERSION, true);
 
+		wp_enqueue_media ();
 
         $ppom_admin_meta = array(
 	      'plugin_admin_page' => admin_url( 'admin.php?page=ppom'),
@@ -100,26 +101,22 @@ if( ! defined('ABSPATH') ) die('Not Allowed');
            	$field_desc  = isset($meta -> desc) ? $meta -> desc : null;
            	$settings    = isset($meta -> settings) ? $meta -> settings : array();
 
-            $html .= '<div class="modal fade ppom-slider ppom-field-'.esc_attr($fields_type).'" role="dialog" data-backdrop="static" data-keyboard="false">';
-                $html   .='<div class="modal-dialog modal-md">';
-                    $html   .= '<div class="modal-content">';
-                        $html .= '<div class="modal-header">';
-                            $html .= '<h4 class="modal-title">'.sprintf(__("%s","ppom"),$field_title).'</h4>';
-                        $html .= '</div>';
-                        $html .= '<div class="modal-body">';
-                            
-                        	$html .= $this->render_field_meta($settings, $fields_type);
-                            
-                        $html .= '</div>';
-                        $html .= '<div class="modal-footer">';
-                            $html .='<span class="ppom-req-field-id"></span>';
-                            $html .= '<button type="button" class="btn btn-default ppom-close-checker ppom-close-fields" data-dismiss="modal">'.esc_html__( 'close', 'ppom' ).'</button>';
-                            $html .= '<button type="button" class="btn btn-primary ppom-field-checker  ppom-add-field" data-field-type="'.esc_attr($field_title).'">'.esc_html__( 'Add Field', 'ppom' ).'</button>';
-                        
-                       $html .= '</div>';
-                    $html .= '</div>';
-                $html .= '</div>';
-            $html .= '</div>';
+            // new model
+            $html .= '<div class="ppom-modal-box ppom-slider ppom-field-'.esc_attr($fields_type).'">';
+			    $html .= '<header>';
+			        $html .= '<h3>'.sprintf(__("%s","ppom"), $field_title).'</h3>';
+			    $html .= '</header>';
+			    $html .= '<div class="ppom-modal-body">';
+
+			        $html .= $this->render_field_meta($settings, $fields_type);
+
+			    $html .= '</div>';
+			    $html .= '<footer>';
+			    	$html .= '<span class="ppom-req-field-id"></span>';
+                   	$html .= '<button type="button" class="btn btn-default ppom-close-checker ppom-close-fields ppom-js-modal-close" style="margin-right: 5px;">'.esc_html__( 'close', 'ppom' ).'</button>';
+                    $html .= '<button type="button" class="btn btn-primary ppom-field-checker ppom-add-field" data-field-type="'.esc_attr($field_title).'">'.esc_html__( 'Add Field', 'ppom' ).'</button>';
+			    $html .= '</footer>';
+			$html .= '</div>';
         }
 
         $html .= '</div>';

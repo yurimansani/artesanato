@@ -36,7 +36,7 @@
 
 .woocommerce-search-list__list {
 	padding: 0;
-	max-height: 18.5em;
+	max-height: 17em;
 	overflow-x: hidden;
 	overflow-y: auto;
 	border-top: 1px solid $core-grey-light-500;
@@ -85,27 +85,110 @@
 		display: flex;
 		align-items: center;
 		margin-bottom: 0;
-		padding: $gap;
+		padding: $gap-small $gap;
 		background: $white;
 		// !important to keep the border around on hover
 		border-bottom: 1px solid $core-grey-light-500 !important;
 		color: $core-grey-dark-500;
 
-		.woocommerce-search-list__item-state {
-			flex: 0 0 16px;
-			margin-right: $gap-smaller;
-		}
-
-		.woocommerce-search-list__item-name {
-			flex: 1;
-		}
-
 		@include hover-state {
 			background: $core-grey-light-100;
 		}
 
-		&:last-of-type {
+		&:last-child {
 			border-bottom: none !important;
 		}
+
+		.woocommerce-search-list__item-state {
+			flex: 0 0 16px;
+			margin-right: $gap-smaller;
+			// Set an explicit height to ensure vertical alignment
+			height: 24px;
+		}
+
+		.woocommerce-search-list__item-label {
+			display: flex;
+			flex: 1;
+		}
+
+		// Anything deeper than 5 levels will use this fallback depth
+		&[class*="depth-"] .woocommerce-search-list__item-label:before {
+			margin-right: $gap-smallest;
+			content: repeat( '— ', 5 );
+		}
+
+		&.depth-0 .woocommerce-search-list__item-label:before {
+			margin-right: 0;
+			content: '';
+		}
+
+		@for $i from 1 to 5 {
+			&.depth-#{$i} .woocommerce-search-list__item-label:before {
+				content: repeat( '— ', $i );
+			}
+		}
+
+		.woocommerce-search-list__item-name {
+			display: inline-block;
+		}
+
+		.woocommerce-search-list__item-prefix {
+			display: none;
+			color: $core-grey-dark-300;
+		}
+
+		&.is-searching,
+		&.is-skip-level {
+			.woocommerce-search-list__item-label {
+				// Un-flex the label, so the prefix (breadcrumbs) and name are aligned.
+				display: inline-block;
+			}
+
+			.woocommerce-search-list__item-prefix {
+				display: inline;
+
+				&:after {
+					margin-right: $gap-smallest;
+					content: " ›";
+				}
+			}
+		}
+
+		&.is-searching {
+			.woocommerce-search-list__item-name {
+				color: $core-grey-dark-900;
+			}
+		}
+
+		.woocommerce-search-list__item-count {
+			flex: 0;
+			padding: $gap-smallest/2 $gap-smaller;
+			border: 1px solid $core-grey-light-500;
+			border-radius: 12px;
+			font-size: 0.8em;
+			line-height: 1.4;
+			color: $core-grey-dark-300;
+			background: $white;
+		}
+	}
+}
+
+.components-panel {
+	.woocommerce-search-list {
+		padding: 0;
+	}
+
+	.woocommerce-search-list__selected {
+		margin: 0 0 $gap;
+		padding: 0;
+		border-top: none;
+		// 54px is the height of 1 row of tags in the sidebar.
+		min-height: 54px;
+	}
+
+	.woocommerce-search-list__search {
+		margin: 0 0 $gap;
+		padding: 0;
+		border-top: none;
 	}
 }

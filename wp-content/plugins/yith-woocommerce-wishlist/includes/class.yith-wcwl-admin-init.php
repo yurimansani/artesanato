@@ -1012,6 +1012,12 @@ if ( ! class_exists( 'YITH_WCWL_Admin_Init' ) ) {
 
 			ksort( $icons );
 
+			$message = __( 'Enable all plugin features','yith-woocommerce-wishlist' );
+			$message2 = __( 'Be sure to select at least one option in the Wishlist page menu in this settings page', 'yith-woocommerce-wishlist' );
+			$message3 = _x( 'Also, please read the plugin', '[Part of]: Also, please read the plugin documentation', 'yith-woocommerce-wishlist' );
+			$documentation = _x( 'documentation', '[Part Of]: Also, please read the plugin documentation', 'yith-woocommerce-wishlist' );
+			$url = esc_url( $this->doc_url );
+
 			$options['general_settings'] = array(
 
 				'section_general_settings_videobox' => array(
@@ -1045,7 +1051,7 @@ if ( ! class_exists( 'YITH_WCWL_Admin_Init' ) ) {
 
 				'wishlist_enable' => array(
 					'name'    => __( 'Enable YITH Wishlist', 'yith-woocommerce-wishlist' ),
-					'desc'    => sprintf( __( 'Enable all plugin features. <strong>Be sure to select at least one option in the Wishlist page menu in this settings page.</strong> Also, please read the plugin <a href="%s" target="_blank">documentation</a>.', 'yith-woocommerce-wishlist' ), esc_url( $this->doc_url ) ),
+					'desc'    => sprintf( '%s. <strong>%s.</strong> %s <a href="%s" target="_blank">%s</a>.', $message, $message2, $message3, $url, $documentation ),
 					'id'      => 'yith_wcwl_enabled',
 					'default' => 'yes',
 					'type'    => 'checkbox'

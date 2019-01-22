@@ -7,11 +7,11 @@
 if( ! defined("ABSPATH") ) die("Not Allowed");
 
 // $ppom_fields_meta = json_decode ( $ppom_settings -> the_meta, true );
-// ppom_pa($ppom_fields_meta);
+$ppom_id = is_array($ppom_id) ? implode(',', $ppom_id) : $ppom_id;
 
 // echo '<input type="hidden" name="woo_option_price">';	// it will be populated while dynamic prices set in script.js
 echo '<input type="hidden" id="ppom_product_price" value="'.esc_attr($product->get_price()).'">';	// it is setting price to be used for dymanic prices in script.js
-echo '<input type="hidden" name="ppom[fields][id]" id="ppom_productmeta_id" value="'.esc_attr(PPOM()->productmeta_id).'">';
+echo '<input type="hidden" name="ppom[fields][id]" id="ppom_productmeta_id" value="'.esc_attr($ppom_id).'">';
 echo '<input type="hidden" name="ppom_product_id" id="ppom_product_id" value="'.esc_attr(ppom_get_product_id($product)).'">';
 // Hidden input for validation callback
 echo '<input type="hidden" name="action" value="ppom_ajax_validation">';
@@ -377,6 +377,7 @@ foreach( $ppom_fields_meta as $meta ) {
     				$onetime = isset($meta['onetime']) ? $meta['onetime'] : '';
                 	$taxable		= (isset( $meta['onetime_taxable'] ) ? $meta['onetime_taxable'] : '' );
                 	$display_circle	= (isset($meta['circle']) && $meta['circle'] == 'on') ? true : false;
+                	$multiple_allowed	= isset($meta['multiple_allowed']) ? $meta['multiple_allowed'] : '';
                 	
 					$ppom_field_setting = array(  
                     				'id'        => $data_name,
@@ -391,6 +392,7 @@ foreach( $ppom_fields_meta as $meta ) {
                                     'onetime'		=> $onetime,
 					            	'taxable'		=> $taxable,
 					            	'display_circle'	=> $display_circle,
+					            	'multiple_allowed' => $multiple_allowed,
                                     
                                     );
                     

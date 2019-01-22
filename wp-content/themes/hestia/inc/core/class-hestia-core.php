@@ -84,7 +84,9 @@ class Hestia_Core {
 				'upsell-manager',
 				'featured-posts',
 				'authors-section',
-				'page-settings',
+				'metabox-manager',
+				'metabox-main',
+				'metabox-view',
 				'additional-views',
 				'sidebar-layout-manager',
 				'header-layout-manager',
@@ -99,6 +101,7 @@ class Hestia_Core {
 				'infinite-scroll',
 				'buttons-style-controls',
 				'woocommerce-header-manager',
+				'gutenberg',
 				'sync-about',
 			)
 		);
@@ -156,6 +159,7 @@ class Hestia_Core {
 		add_action( 'after_setup_theme', array( $front_end, 'setup_theme' ) );
 		add_action( 'widgets_init', array( $front_end, 'initialize_widgets' ) );
 		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );
+		add_action( 'enqueue_block_editor_assets', array( $front_end, 'enqueue_custom_fonts' ) );
 		add_action( 'elementor/frontend/before_register_styles', array( $front_end, 'enqueue_before_elementor' ) );
 	}
 }
