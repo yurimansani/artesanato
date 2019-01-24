@@ -4,7 +4,7 @@ Tags: woocommerce, pesonalized products, woocommerce variations, woocommerce pro
 Donate link: http://www.najeebmedia.com/donate
 Requires at least: 3.5
 Tested up to: 5.0
-Stable tag: 16.4
+Stable tag: 16.5
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 5.6
@@ -83,6 +83,9 @@ Drag & Drop input fields with many options. Prices can also be added with option
 9. Attach inputs to bulk products
 
 == Changelog ==
+= 16.5 January 22, 2019 =
+* Bug fixed: [Images prices were not added to cart, it's fixed now](https://wordpress.org/support/topic/price-not-change-when-atc/)
+* Bug fixed: [PPOM meta by categories was not working, it is fixed now](https://wordpress.org/support/topic/not-applying-to-categories/)
 = 16.4 January 16, 2019 =
 * Feature: [Palette now have option to be selected multiple](https://clients.najeebmedia.com/forums/topic/multiple-selection-for-color-palettes-on-frontend/)
 * Feature: Queries optimized for fast page loading.

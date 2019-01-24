@@ -16,12 +16,13 @@ class PPOM_Meta {
         function __construct( $product_id=null ) {
             
             self::$wc_product = wc_get_product( $product_id );
-            $this->meta_id    = get_post_meta ( $product_id, PPOM_PRODUCT_META_KEY, true );
+            
+            $this->ppom_with_cat = $this->all_ppom_with_categories();
+            $this->meta_id    = $this->get_meta_id($product_id);
             $this->product_id = $product_id;
             
             
             $this->ppom_settings = $this->settings();
-            $this->ppom_with_cat = $this->all_ppom_with_categories();
             $this->fields        = $this->get_fields();
             
             //Now we are creating properties agains each methods in our Alpha class.
@@ -32,6 +33,7 @@ class PPOM_Meta {
                                         'settings',
                                         'all_ppom_with_categories',
                                         'ppom_has_category_meta',
+                                        'get_meta_id',
                                         'get_fields');
                                         
             foreach ( $methods as $method ) {
@@ -40,9 +42,30 @@ class PPOM_Meta {
                 }
             }
             
-            
         }
         
+        
+        function get_meta_id($product_id) {
+            
+            $meta_id = get_post_meta ( $product_id, PPOM_PRODUCT_META_KEY, true );
+            
+            if( $meta_id == 0 || $meta_id == 'None' ) {
+        		$meta_id = null;
+        	}
+            
+            if( $meta_id == null ) {
+        		if($meta_found = $this->ppom_has_category_meta( $product_id ) ){
+        		  	
+            		/**
+            		 * checking product against categories
+            		 * @since 6.4
+            		 */
+            		$meta_id = $meta_found;
+            	}
+        	}
+        	
+        	return $meta_id;
+        }
         
         // Properties functions
         function is_exists() {
@@ -51,18 +74,7 @@ class PPOM_Meta {
         		$this->meta_id = null;
         	}
             
-            if( $this->meta_id == null ) {
-        		if($meta_found = $this->ppom_has_category_meta( $this->product_id ) ){
-            		
-            		/**
-            		 * checking product against categories
-            		 * @since 6.4
-            		 */
-            		$this->meta_id = $meta_found;
-            	}
-        	}
-        	
-        	return $this->meta_id == null ? false : true;
+            return $this->meta_id == null ? false : true;
         }
         
         
@@ -166,7 +178,7 @@ class PPOM_Meta {
 		
         	$p_categories = get_the_terms($product_id, 'product_cat');
         	$meta_found = false;
-        	 if($p_categories){
+        	if($p_categories){
         	 	
         	 	if( $this->ppom_with_cat ) {
             		foreach($this->ppom_with_cat as $meta_cats){
@@ -182,7 +194,6 @@ class PPOM_Meta {
             				
             				//Now iterating the p_categories to check it's slug in meta cats
             				foreach($p_categories as $cat) {
-            					
             					if( in_array($cat->slug, $meta_cat_array) ) {
             						$meta_found = $meta_cats->productmeta_id;
             					}

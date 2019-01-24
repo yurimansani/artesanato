@@ -20,7 +20,7 @@ function ppom_woocommerce_show_fields() {
     
 	$product_id = ppom_get_product_id( $product ); 
 	$ppom		= new PPOM_Meta( $product_id );
-	
+
 	if( ! $ppom->fields ) return '';
 	 
 	if( ! $ppom->has_unique_datanames ) {

@@ -979,21 +979,52 @@ function ppom_get_field_option_price_by_id( $option, $product, $ppom_meta_ids ) 
 	
 	if( empty($field_meta) ) return 0;
 	
-	if( ! isset( $field_meta['options']) || $field_meta['type'] == 'bulkquantity' || $field_meta['type'] == 'cropper' ) return 0;
+	$field_type = isset($field_meta['type']) ? $field_meta['type'] : '';
+	
+	if( $field_type == 'bulkquantity' || $field_type == 'cropper' ) return 0;
 	
 	$option_price = 0;
-	foreach( $field_meta['options'] as $option ) {
+	
+	switch( $field_type ) {
 		
-		if( $option['id'] == $option_id && isset($option['price']) && $option['price'] != '' ) {
+		case 'image':
 			
-			if(strpos($option['price'],'%') !== false){
-					$option_price = ppom_get_amount_after_percentage($product->get_price(), $option['price']);
-			}else {
-				// For currency switcher
-				$option_price = apply_filters('ppom_option_price', $option['price']);
+			if( isset( $field_meta['images']) ) {
+				foreach( $field_meta['images'] as $option ) {
+				
+					$image_id	= $field_meta['data_name'].'-'.$option['id'];
+					if( $image_id == $option_id && isset($option['price']) && $option['price'] != '' ) {
+						
+						if(strpos($option['price'],'%') !== false){
+								$option_price = ppom_get_amount_after_percentage($product->get_price(), $option['price']);
+						}else {
+							// For currency switcher
+							$option_price = apply_filters('ppom_option_price', $option['price']);
+						}
+					}
+				}
 			}
-		}
+		break;
+		
+		default:
+			
+			if( isset( $field_meta['options']) ) {
+				foreach( $field_meta['options'] as $option ) {
+			
+					if( $option['id'] == $option_id && isset($option['price']) && $option['price'] != '' ) {
+						
+						if(strpos($option['price'],'%') !== false){
+								$option_price = ppom_get_amount_after_percentage($product->get_price(), $option['price']);
+						}else {
+							// For currency switcher
+							$option_price = apply_filters('ppom_option_price', $option['price']);
+						}
+					}
+				}
+			}
+		break;
 	}
+	
 	
 	return apply_filters("ppom_field_option_price_by_id", wc_format_decimal($option_price), $field_meta, $option_id, $product);
 }
